@@ -34,6 +34,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		
 		$stub = new DriverStub('foo', array());
 
 		$refl   = new \ReflectionObject($stub);
@@ -67,6 +68,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+
 		$stub = new DriverStub('foo', array());
 
 		$this->assertEquals(array(), $stub->getItem());
@@ -86,6 +88,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+
 		$stub = new DriverStub('foo', array());
 
 		$stub->helloWorld;
