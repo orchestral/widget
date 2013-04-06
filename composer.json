@@ -1,0 +1,28 @@
+{
+	"name": "orchestra/widget",
+	"description": "Orchestra Platform Widget Component",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Mior Muhammad Zaki",
+			"email": "crynobone@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3",
+		"illuminate/support": "4.0.*@dev"
+	},
+	"require-dev": {
+		"mockery/mockery": "0.8.0"
+	},
+	"suggest": {
+		"laravel/framework": "Allow using Orchestra Platform Widget Component outside of Orchestra Platform",
+		"orchestra/foundation": "Using Orchestra Facile with Orchestra Platform"
+	},
+	"autoload": {
+		"psr-0": { 
+			"Orchestra\\Widget" : "src/" 
+		}
+	},
+	"minimum-stability": "dev"
+}
