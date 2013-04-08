@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Widget\Tests;
 
-class MenuTest extends \PHPUnit_Framework_TestCase {
+class PaneTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * Setup the test environment.
@@ -22,7 +22,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test construct a Orchestra\Widget\Menu
+	 * Test construct a Orchestra\Widget\Pane
 	 *
 	 * @test
 	 */
@@ -30,13 +30,13 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.menu", \Mockery::any())
+			->with("orchestra::widget.pane", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Menu('foo', array());
+		$stub = new \Orchestra\Widget\Pane('foo', array());
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -51,16 +51,17 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
 		$expected = array(
 			'defaults' => array(
-				'title'      => '', 
-				'link'       => '#', 
 				'attributes' => array(),
+				'title'      => '',
+				'content'    => '',
+				'html'       => '',
 			),
 		);
-		
+
 		$this->assertEquals($expected, $config->getValue($stub));
 		$this->assertEquals('foo', $name->getValue($stub));
 		$this->assertInstanceOf('\Orchestra\Widget\Nesty', $nesty->getValue($stub));
-		$this->assertEquals('menu', $type->getValue($stub));
+		$this->assertEquals('pane', $type->getValue($stub));
 	}
 
 	/**
@@ -72,26 +73,28 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.menu", \Mockery::any())
+			->with("orchestra::widget.pane", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Menu('foo', array());
+		$stub = new \Orchestra\Widget\Pane('foo', array());
 
 		$expected = array(
 			'foo' => new \Illuminate\Support\Fluent(array(
-				'title'      => 'hello world',
-				'link'       => '#',
 				'attributes' => array(),
+				'title'      => '',
+				'content'    => 'hello world',
+				'html'       => '',
 				'id'         => 'foo',
 				'childs'     => array(),
 			)),
 			'foobar' => new \Illuminate\Support\Fluent(array(
-				'title'      => 'hello world 2',
-				'link'       => '#',
 				'attributes' => array(),
+				'title'      => 'hello world',
+				'content'    => '',
+				'html'       => '',
 				'id'         => 'foobar',
 				'childs'     => array(),
 			)),
@@ -99,12 +102,12 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
 		$stub->add('foo', function ($item)
 		{
-			$item->title = 'hello world';
+			$item->content('hello world');
 		});
 
 		$stub->add('foobar', 'after:foo', function ($item)
 		{
-			$item->title = 'hello world 2';
+			$item->title('hello world');
 		});
 
 		$this->assertEquals($expected, $stub->getItem());
