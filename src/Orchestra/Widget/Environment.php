@@ -1,5 +1,8 @@
 <?php namespace Orchestra\Widget;
 
+use InvalidArgumentException,
+	Closure;
+
 class Environment {
 
 	/**
@@ -7,7 +10,7 @@ class Environment {
 	 *
 	 * @var array
 	 */
-	public static $registrar = array();
+	protected $registrar = array();
 
 	/**
 	 * Cache widget instance so we can reuse it
@@ -51,7 +54,7 @@ class Environment {
 			{
 				$resolver = $this->registrar[$type];
 
-				return $this->instances[$name] = $resolver($type, $config);
+				return $this->instances[$driver] = $resolver($type, $config);
 			}
 
 			switch ($type)
@@ -82,7 +85,7 @@ class Environment {
 	 * @param  Closure  $resolver
 	 * @return void
 	 */
-	public static function extend($driver, Closure $resolver)
+	public function extend($driver, Closure $resolver)
 	{
 		$this->registrar[$driver] = $resolver;
 	}
