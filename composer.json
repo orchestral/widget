@@ -16,8 +16,8 @@
 		"mockery/mockery": "0.8.0"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using Orchestra Platform Widget Component outside of Orchestra Platform",
-		"orchestra/foundation": "Using Orchestra Facile with Orchestra Platform"
+		"laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform",
+		"orchestra/foundation": "Using orchestra/widget with Orchestra Platform"
 	},
 	"autoload": {
 		"psr-0": { 
