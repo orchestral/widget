@@ -1,7 +1,7 @@
 <?php namespace Orchestra\Widget\Tests;
 
-class DriverTest extends \PHPUnit_Framework_TestCase {
-	
+class PlaceholderTest extends \PHPUnit_Framework_TestCase {
+
 	/**
 	 * Setup the test environment.
 	 */
@@ -22,7 +22,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test construct a Orchestra\Widget\Driver
+	 * Test construct a Orchestra\Widget\Drivers\Placeholder
 	 *
 	 * @test
 	 */
@@ -30,13 +30,13 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::stub", \Mockery::any())
+			->with("orchestra/widget::placeholder", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new DriverStub('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Placeholder('foo', array());
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -49,67 +49,57 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 		$nesty->setAccessible(true);
 		$type->setAccessible(true);
 
-		$this->assertEquals(array(), 
-			$config->getValue($stub));
+		$expected = array(
+			'defaults' => array(
+				'value' => '',
+			),
+		);
+
+		$this->assertEquals($expected, $config->getValue($stub));
 		$this->assertEquals('foo', $name->getValue($stub));
 		$this->assertInstanceOf('\Orchestra\Widget\Nesty', $nesty->getValue($stub));
-		$this->assertEquals('stub', $type->getValue($stub));
+		$this->assertEquals('placeholder', $type->getValue($stub));
 	}
 
 	/**
-	 * Test Orchestra\Widget\Driver::getItem() method.
+	 * Test Orchestra\Widget\Menu::add() method.
 	 *
 	 * @test
 	 */
-	public function testGetItemMethod()
+	public function testAddMethod()
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
+			->with("orchestra/widget::placeholder", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		
+		$stub = new \Orchestra\Widget\Drivers\Placeholder('foo', array());
 
-		$stub = new DriverStub('foo', array());
-
-		$this->assertEquals(array(), $stub->getItem());
-		$this->assertEquals(array(), $stub->items);
-	}
-
-	/**
-	 * Test Orchestra\Widget\Driver::__get() throws an exception.
-	 *
-	 * @expectedException \InvalidArgumentException
-	 */
-	public function testMagicMethodGetThrowsException()
-	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->once()
-			->andReturn(array());
-
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
-
-		$stub = new DriverStub('foo', array());
-
-		$stub->helloWorld;
-	}
-}
-
-class DriverStub extends \Orchestra\Widget\Driver {
-
-	protected $type   = 'stub';
-	protected $config = array();
-
-	public function add($id, $location = 'parent', $callback = null)
-	{
-		$item = $this->nesty->add($id, $location ?: 'parent');
-
-		if ($callback instanceof \Closure)
+		$callback = function ()
 		{
-			call_user_func($callback, $item);
-		}
+			return 'hello world';
+		};
 
-		return $item;
+		$expected = array(
+			'foo' => new \Illuminate\Support\Fluent(array(
+				'value'  => $callback,
+				'id'     => 'foo',
+				'childs' => array(),
+			)),
+			'foobar' => new \Illuminate\Support\Fluent(array(
+				'value'  => $callback,
+				'id'     => 'foobar',
+				'childs' => array(),
+			)),
+		);
+
+		$stub->add('foo', $callback);
+
+		$stub->add('foobar', 'after:foo', $callback);
+
+		$this->assertEquals($expected, $stub->getItem());
 	}
 }

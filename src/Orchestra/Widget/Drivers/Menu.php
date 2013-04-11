@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Widget;
+<?php namespace Orchestra\Widget\Drivers;
 
 use Closure;
 

@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Widget\Tests;
+<?php namespace Orchestra\Widget\Tests\Drivers;
 
 class PaneTest extends \PHPUnit_Framework_TestCase {
 
@@ -22,7 +22,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test construct a Orchestra\Widget\Pane
+	 * Test construct a Orchestra\Widget\Drivers\Pane
 	 *
 	 * @test
 	 */
@@ -36,7 +36,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Pane('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Pane('foo', array());
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -79,7 +79,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Pane('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Pane('foo', array());
 
 		$expected = array(
 			'foo' => new \Illuminate\Support\Fluent(array(

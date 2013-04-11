@@ -1,16 +1,15 @@
-<?php namespace Orchestra\Widget;
+<?php namespace Orchestra\Widget\Drivers;
 
-use \Closure, 
-	\Exception;
+use Closure;
 
-class Pane extends Driver {
+class Placeholder extends Driver {
 
 	/**
 	 * Type of Widget.
 	 * 
 	 * @var string
 	 */
-	protected $type = 'pane';
+	protected $type = 'placeholder';
 
 	/**
 	 * Widget Configuration.
@@ -19,10 +18,7 @@ class Pane extends Driver {
 	 */
 	protected $config = array(
 		'defaults' => array(
-			'attributes' => array(),
-			'title'      => '',
-			'content'    => '',
-			'html'       => '',
+			'value' => '',
 		),
 	);
 
@@ -49,7 +45,7 @@ class Pane extends Driver {
 
 		if ($callback instanceof Closure)
 		{
-			call_user_func($callback, $item);
+			$item->value = $callback;
 		}
 
 		return $item;

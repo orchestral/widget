@@ -88,7 +88,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$stub = with(new \Orchestra\Widget\Environment)->make('menu.foo');
 
-		$this->assertInstanceOf('\Orchestra\Widget\Menu', $stub);
+		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Menu', $stub);
 	}
 
 	/**
@@ -108,7 +108,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$stub = with(new \Orchestra\Widget\Environment)->make('pane.foo');
 
-		$this->assertInstanceOf('\Orchestra\Widget\Pane', $stub);
+		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Pane', $stub);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase {
 
 		$stub = with(new \Orchestra\Widget\Environment)->make('placeholder.foo');
 
-		$this->assertInstanceOf('\Orchestra\Widget\Placeholder', $stub);
+		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Placeholder', $stub);
 	}
 
 	/**

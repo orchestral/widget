@@ -60,13 +60,13 @@ class Environment {
 			switch ($type)
 			{
 				case 'menu' :
-					$this->instances[$driver] = new Menu($name, $config);
+					$this->instances[$driver] = new Drivers\Menu($name, $config);
 					break;
 				case 'pane' :
-					$this->instances[$driver] = new Pane($name, $config);
+					$this->instances[$driver] = new Drivers\Pane($name, $config);
 					break;
 				case 'placeholder' :
-					$this->instances[$driver] = new Placeholder($name, $config);
+					$this->instances[$driver] = new Drivers\Placeholder($name, $config);
 					break;
 				default :
 					throw new InvalidArgumentException(

@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Widget\Tests;
+<?php namespace Orchestra\Widget\Tests\Drivers;
 
 class MenuTest extends \PHPUnit_Framework_TestCase {
 
@@ -22,7 +22,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test construct a Orchestra\Widget\Menu
+	 * Test construct a Orchestra\Widget\Drivers\Menu
 	 *
 	 * @test
 	 */
@@ -36,7 +36,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Menu('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Menu('foo', array());
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -64,7 +64,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test Orchestra\Widget\Menu::add() method.
+	 * Test Orchestra\Widget\Drivers\Menu::add() method.
 	 *
 	 * @test
 	 */
@@ -78,7 +78,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Menu('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Menu('foo', array());
 
 		$expected = array(
 			'foo' => new \Illuminate\Support\Fluent(array(
