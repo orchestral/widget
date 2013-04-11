@@ -44,7 +44,7 @@ abstract class Driver {
 	public function __construct($name, $config = array())
 	{
 		$configuration = array_merge(
-			Config::get("orchestra::widget.{$this->type}", array()), 
+			Config::get("orchestra/widget::{$this->type}", array()), 
 			$this->config
 		);
 

@@ -30,7 +30,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.pane", \Mockery::any())
+			->with("orchestra/widget::pane", \Mockery::any())
 			->once()
 			->andReturn(array());
 
@@ -73,7 +73,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.pane", \Mockery::any())
+			->with("orchestra/widget::pane", \Mockery::any())
 			->once()
 			->andReturn(array());
 

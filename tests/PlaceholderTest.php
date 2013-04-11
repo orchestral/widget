@@ -30,7 +30,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.placeholder", \Mockery::any())
+			->with("orchestra/widget::placeholder", \Mockery::any())
 			->once()
 			->andReturn(array());
 
@@ -70,7 +70,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.placeholder", \Mockery::any())
+			->with("orchestra/widget::placeholder", \Mockery::any())
 			->once()
 			->andReturn(array());
 

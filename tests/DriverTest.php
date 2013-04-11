@@ -30,7 +30,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.stub", \Mockery::any())
+			->with("orchestra/widget::stub", \Mockery::any())
 			->once()
 			->andReturn(array());
 

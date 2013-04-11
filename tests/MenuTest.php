@@ -30,7 +30,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.menu", \Mockery::any())
+			->with("orchestra/widget::menu", \Mockery::any())
 			->once()
 			->andReturn(array());
 
@@ -72,7 +72,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra::widget.menu", \Mockery::any())
+			->with("orchestra/widget::menu", \Mockery::any())
 			->once()
 			->andReturn(array());
 
