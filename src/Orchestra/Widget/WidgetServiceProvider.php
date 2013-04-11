@@ -15,4 +15,14 @@ class WidgetServiceProvider extends ServiceProvider {
 			return new Environment;
 		});
 	}
+
+	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->package('orchestra/widget');
+	}
 }
