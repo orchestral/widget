@@ -3,14 +3,22 @@
 class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * Application mock instance.
+	 *
+	 * @var Illuminate\Foundation\Application
+	 */
+	protected $app = null;
+
+	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$appMock = \Mockery::mock('Application')
-			->shouldReceive('instance')->andReturn(true);
+		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')
+				->andReturn(true);
 
-		\Illuminate\Support\Facades\Config::setFacadeApplication($appMock->getMock());
+		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
 
 	/**
@@ -18,6 +26,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function tearDown()
 	{
+		unset($this->app);
 		\Mockery::close();
 	}
 
@@ -30,13 +39,13 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::placeholder", \Mockery::any())
+			->with("orchestra/widget::placeholder.foo", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Drivers\Placeholder('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Placeholder($this->app, 'foo');
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -70,13 +79,13 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::placeholder", \Mockery::any())
+			->with("orchestra/widget::placeholder.foo", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Drivers\Placeholder('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Placeholder($this->app, 'foo');
 
 		$callback = function ()
 		{

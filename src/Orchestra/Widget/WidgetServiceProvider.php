@@ -10,9 +10,9 @@ class WidgetServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['orchestra.widget'] = $this->app->share(function()
+		$this->app['orchestra.widget'] = $this->app->share(function($app)
 		{
-			return new Environment;
+			return new WidgetManager($app);
 		});
 	}
 

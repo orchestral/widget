@@ -7,6 +7,13 @@ use InvalidArgumentException,
 abstract class Driver {
 
 	/**
+	 * Application instance.
+	 *
+	 * @var Illuminate\Foundation\Application
+	 */
+	protected $app = null;
+
+	/**
 	 * Nesty instance
 	 *
 	 * @var Orchestra\Widget\Nesty
@@ -38,18 +45,18 @@ abstract class Driver {
 	 * Construct a new instance
 	 *
 	 * @access  public
-	 * @param   string  $name
-	 * @param   array   $config
+	 * @param   Illuminate\Foundation\Application   $app
+	 * @param   string                              $name
 	 * @return  void
 	 */
-	public function __construct($name, $config = array())
+	public function __construct($app, $name)
 	{
-		$configuration = array_merge(
-			Config::get("orchestra/widget::{$this->type}", array()), 
+		$this->app    = $app;
+		$this->config = array_merge(
+			Config::get("orchestra/widget::{$this->type}.{$name}", array()), 
 			$this->config
 		);
 
-		$this->config = array_merge($configuration, $config);
 		$this->name   = $name;
 		$this->nesty  = new Nesty($this->config);
 	}

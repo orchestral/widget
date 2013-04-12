@@ -3,14 +3,22 @@
 class PaneTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * Application mock instance.
+	 *
+	 * @var Illuminate\Foundation\Application
+	 */
+	protected $app = null;
+
+	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$appMock = \Mockery::mock('Application')
-			->shouldReceive('instance')->andReturn(true);
+		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')
+				->andReturn(true);
 
-		\Illuminate\Support\Facades\Config::setFacadeApplication($appMock->getMock());
+		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
 
 	/**
@@ -18,6 +26,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function tearDown()
 	{
+		unset($this->app);
 		\Mockery::close();
 	}
 
@@ -30,13 +39,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::pane", \Mockery::any())
+			->with("orchestra/widget::pane.foo", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Drivers\Pane('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Pane($this->app, 'foo');
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -73,13 +82,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::pane", \Mockery::any())
+			->with("orchestra/widget::pane.foo", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new \Orchestra\Widget\Drivers\Pane('foo', array());
+		$stub = new \Orchestra\Widget\Drivers\Pane($this->app, 'foo');
 
 		$expected = array(
 			'foo' => new \Illuminate\Support\Fluent(array(

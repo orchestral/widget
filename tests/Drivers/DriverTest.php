@@ -3,14 +3,22 @@
 class DriverTest extends \PHPUnit_Framework_TestCase {
 	
 	/**
+	 * Application mock instance.
+	 *
+	 * @var Illuminate\Foundation\Application
+	 */
+	protected $app = null;
+
+	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$appMock = \Mockery::mock('Application')
-			->shouldReceive('instance')->andReturn(true);
+		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')
+				->andReturn(true);
 
-		\Illuminate\Support\Facades\Config::setFacadeApplication($appMock->getMock());
+		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
 
 	/**
@@ -18,6 +26,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function tearDown()
 	{
+		unset($this->app);
 		\Mockery::close();
 	}
 
@@ -30,13 +39,13 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	{
 		$configMock = \Mockery::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::stub", \Mockery::any())
+			->with("orchestra/widget::stub.foo", \Mockery::any())
 			->once()
 			->andReturn(array());
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 		
-		$stub = new DriverStub('foo', array());
+		$stub = new DriverStub($this->app, 'foo');
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -70,7 +79,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 
-		$stub = new DriverStub('foo', array());
+		$stub = new DriverStub($this->app, 'foo');
 
 		$this->assertEquals(array(), $stub->getItem());
 		$this->assertEquals(array(), $stub->items);
@@ -90,7 +99,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
 		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
 
-		$stub = new DriverStub('foo', array());
+		$stub = new DriverStub($this->app, 'foo');
 
 		$stub->helloWorld;
 	}
