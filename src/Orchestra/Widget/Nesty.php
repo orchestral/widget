@@ -37,7 +37,7 @@ class Nesty {
 	 *
 	 * @access protected
 	 * @param  int  $id
-	 * @return Orchestra\Support\Fluent
+	 * @return Illuminate\Support\Fluent
 	 */
 	protected function toFluent($id)
 	{
@@ -135,7 +135,7 @@ class Nesty {
 	 * @access protected
 	 * @param  string   $id
 	 * @param  string   $parent
-	 * @return Orchestra\Support\Fluent
+	 * @return Illuminate\Support\Fluent
 	 */
 	protected function addChild($id, $parent)
 	{
