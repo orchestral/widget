@@ -3,6 +3,14 @@
 use Illuminate\Support\ServiceProvider;
 
 class WidgetServiceProvider extends ServiceProvider {
+
+	/**
+	 * Indicates if loading of the provider is deferred.
+	 *
+	 * @var bool
+	 */
+	protected $defer = true;
+
 	/**
 	 * Register the service provider.
 	 *
@@ -24,5 +32,15 @@ class WidgetServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('orchestra/widget', 'orchestra/widget');
+	}
+
+	/**
+	 * Get the services provided by the provider.
+	 *
+	 * @return array
+	 */
+	public function provides()
+	{
+		return array('orchestra.widget');
 	}
 }
