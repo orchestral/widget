@@ -176,19 +176,19 @@ class Nesty {
 	 */
 	public function add($id, $location = 'parent')
 	{
-		preg_match('/^(before|after|child[\_|-]?of):(.+)$/', $location, $matches);
+		preg_match('/^(<|>|\^):(.+)$/', $location, $matches);
 
 		switch (true)
 		{
-			case count($matches) >= 3 and $matches[1] === 'before' :
+			case count($matches) >= 3 and $matches[1] === '<' :
 				return $this->addBefore($id, $matches[2]);
 				break;
 
-			case count($matches) >= 3 and $matches[1] === 'after' :
+			case count($matches) >= 3 and $matches[1] === '>' :
 				return $this->addAfter($id, $matches[2]);
 				break;
 
-			case count($matches) >= 3 and preg_match('/^child[\_|-]?of$/', $matches[1]) :
+			case count($matches) >= 3 and $matches[1] === '^' :
 				return $this->addChild($id, $matches[2]);
 				break;
 

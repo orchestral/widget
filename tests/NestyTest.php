@@ -104,13 +104,13 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 		);
 
 		$this->stub->add('foo');
-		$this->stub->add('hello', 'before:foo');
-		$this->stub->add('world', 'after:hello');
-		$this->stub->add('bar', 'childof:foo');
-		$this->stub->add('foobar', 'child_of:foo');
-		$this->stub->add('foo-bar', 'child-of:foo');
-		$this->stub->add('hello-foobar', 'child-of:foo.foobar');
-		$this->stub->add('hello-world-foobar', 'child-of:foo.dummy');
+		$this->stub->add('hello', '<:foo');
+		$this->stub->add('world', '>:hello');
+		$this->stub->add('bar', '^:foo');
+		$this->stub->add('foobar', '^:foo');
+		$this->stub->add('foo-bar', '^:foo');
+		$this->stub->add('hello-foobar', '^:foo.foobar');
+		$this->stub->add('hello-world-foobar', '^:foo.dummy');
 
 		$this->assertEquals($expected, $this->stub->getItem());
 	}
@@ -127,7 +127,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	{
 		$stub = new \Orchestra\Widget\Nesty(array());
 
-		$stub->add('foo', 'childof:home');
+		$stub->add('foo', '^:home');
 		$this->assertEquals(array(), $stub->getItem());
 	}
 }
