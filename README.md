@@ -9,7 +9,6 @@ Orchestra\Widget allow you to manage widgetize actions in Orchestra Platform. By
 
 [![Build Status](https://travis-ci.org/orchestral/widget.png?branch=master)](https://travis-ci.org/orchestral/widget)
 
-
 ## Quick Installation
 
 To install through composer, simply put the following in your `composer.json` file:
