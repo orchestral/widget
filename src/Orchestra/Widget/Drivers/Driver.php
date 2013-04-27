@@ -1,11 +1,12 @@
 <?php namespace Orchestra\Widget\Drivers;
 
-use ArrayAccess;
+use ArrayIterator;
+use IteratorAggregate;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\Config;
 use Orchestra\Widget\Nesty;
 
-abstract class Driver implements ArrayAccess {
+abstract class Driver implements IteratorAggregate {
 
 	/**
 	 * Application instance.
@@ -103,49 +104,12 @@ abstract class Driver implements ArrayAccess {
 	}
 
 	/**
-	 * Determine if the given attribute exists.
+	 * Get an iterator for the items.
 	 *
-	 * @param  mixed  $key
-	 * @return bool
+	 * @return ArrayIterator
 	 */
-	public function offsetExists($key)
+	public function getIterator()
 	{
-		$items = $this->getItems();
-		return isset($items[$key]);
-	}
-
-	/**
-	 * Get the value for a given offset.
-	 *
-	 * @param  mixed  $key
-	 * @return mixed
-	 */
-	public function offsetGet($key)
-	{
-		$items = $this->getItems();
-		return $items[$key];
-	}
-
-	/**
-	 * Set the value for a given offset.
-	 *
-	 * @param  mixed  $key
-	 * @param  mixed  $value
-	 * @return void
-	 */
-	public function offsetSet($key, $value)
-	{
-		throw new RuntimeException("Unable to set [{$key}]");
-	}
-
-	/**
-	 * Unset the value for a given offset.
-	 *
-	 * @param  mixed  $key
-	 * @return void
-	 */
-	public function offsetUnset($key)
-	{
-		throw new RuntimeException("Unable to unset [{$key}]");
+		return new ArrayIterator($this->nesty->getItems());
 	}
 }
