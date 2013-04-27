@@ -1,5 +1,7 @@
 <?php namespace Orchestra\Widget\Tests\Drivers;
 
+use Mockery as m;
+
 class DriverTest extends \PHPUnit_Framework_TestCase {
 	
 	/**
@@ -7,16 +9,15 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @var Illuminate\Foundation\Application
 	 */
-	protected $app = null;
+	private $app = null;
 
 	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
-		$this->app->shouldReceive('instance')
-				->andReturn(true);
+		$this->app = m::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')->andReturn(true);
 
 		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
@@ -27,7 +28,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown()
 	{
 		unset($this->app);
-		\Mockery::close();
+		m::close();
 	}
 
 	/**
@@ -37,13 +38,11 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::stub.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::stub.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 		
 		$stub = new DriverStub($this->app, 'foo');
 
@@ -58,8 +57,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 		$nesty->setAccessible(true);
 		$type->setAccessible(true);
 
-		$this->assertEquals(array(), 
-			$config->getValue($stub));
+		$this->assertEquals(array(), $config->getValue($stub));
 		$this->assertEquals('foo', $name->getValue($stub));
 		$this->assertInstanceOf('\Orchestra\Widget\Nesty', $nesty->getValue($stub));
 		$this->assertEquals('stub', $type->getValue($stub));
@@ -72,12 +70,10 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGetItemMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 
 		$stub = new DriverStub($this->app, 'foo');
 
@@ -92,16 +88,12 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMagicMethodGetThrowsException()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 
-		$stub = new DriverStub($this->app, 'foo');
-
-		$stub->helloWorld;
+		with(new DriverStub($this->app, 'foo'))->helloWorld;
 	}
 }
 

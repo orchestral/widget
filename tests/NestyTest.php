@@ -1,5 +1,8 @@
 <?php namespace Orchestra\Widget\Tests;
 
+use Illuminate\Support\Fluent;
+use Orchestra\Widget\Nesty;
+
 class NestyTest extends \PHPUnit_Framework_TestCase {
 
 	/**
@@ -14,7 +17,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->stub = new \Orchestra\Widget\Nesty(array());
+		$this->stub = new Nesty(array());
 	}
 
 	/**
@@ -54,7 +57,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	public function testNewInstanceReturnEmptyArray()
 	{
 		$this->assertEquals(array(),
-			with(new \Orchestra\Widget\Nesty(array()))->getItem());
+			with(new Nesty(array()))->getItem());
 	}
 
 	/**
@@ -67,35 +70,35 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	public function testAddMethod()
 	{
 		$expected = array(
-			'hello' => new \Illuminate\Support\Fluent(array(
+			'hello' => new Fluent(array(
 				'id'     => 'hello',
 				'childs' => array(),
 			)),
-			'world' => new \Illuminate\Support\Fluent(array(
+			'world' => new Fluent(array(
 				'id'     => 'world',
 				'childs' => array(),
 			)),
-			'foo' => new \Illuminate\Support\Fluent(array(
+			'foo' => new Fluent(array(
 				'id'     => 'foo',
 				'childs' => array(
-					'bar' => new \Illuminate\Support\Fluent(array(
+					'bar' => new Fluent(array(
 						'id'     => 'bar',
 						'childs' => array(),
 					)),
-					'foobar' => new \Illuminate\Support\Fluent(array(
+					'foobar' => new Fluent(array(
 						'id'     => 'foobar',
 						'childs' => array(
-							'hello-foobar' => new \Illuminate\Support\Fluent(array(
+							'hello-foobar' => new Fluent(array(
 								'id'     => 'hello-foobar',
 								'childs' => array(),
 							)),
 						),
 					)),
-					'foo-bar' => new \Illuminate\Support\Fluent(array(
+					'foo-bar' => new Fluent(array(
 						'id'     => 'foo-bar',
 						'childs' => array(),
 					)),
-					'hello-world-foobar' => new \Illuminate\Support\Fluent(array(
+					'hello-world-foobar' => new Fluent(array(
 						'id'     => 'hello-world-foobar',
 						'childs' => array(),
 					)),
@@ -125,7 +128,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testAddMethodWhenDecendantIsNotPresented()
 	{
-		$stub = new \Orchestra\Widget\Nesty(array());
+		$stub = new Nesty(array());
 
 		$stub->add('foo', '^:home');
 		$this->assertEquals(array(), $stub->getItem());

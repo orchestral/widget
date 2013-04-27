@@ -1,5 +1,9 @@
 <?php namespace Orchestra\Widget\Tests\Drivers;
 
+use Mockery as m;
+use Orchestra\Widget\Drivers\Menu;
+use Illuminate\Support\Fluent;
+
 class MenuTest extends \PHPUnit_Framework_TestCase {
 
 	/**
@@ -7,16 +11,15 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @var Illuminate\Foundation\Application
 	 */
-	protected $app = null;
+	private $app = null;
 
 	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
-		$this->app->shouldReceive('instance')
-				->andReturn(true);
+		$this->app = m::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')->andReturn(true);
 
 		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
@@ -27,7 +30,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown()
 	{
 		unset($this->app);
-		\Mockery::close();
+		m::close();
 	}
 
 	/**
@@ -37,16 +40,13 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::menu.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::menu.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 		
-		$stub = new \Orchestra\Widget\Drivers\Menu($this->app, 'foo');
-
+		$stub   = new Menu($this->app, 'foo');
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
 		$name   = $refl->getProperty('name');
@@ -79,25 +79,23 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testAddMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::menu.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::menu.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 		
-		$stub = new \Orchestra\Widget\Drivers\Menu($this->app, 'foo');
+		$stub = new Menu($this->app, 'foo');
 
 		$expected = array(
-			'foo' => new \Illuminate\Support\Fluent(array(
+			'foo' => new Fluent(array(
 				'title'      => 'hello world',
 				'link'       => '#',
 				'attributes' => array(),
 				'id'         => 'foo',
 				'childs'     => array(),
 			)),
-			'foobar' => new \Illuminate\Support\Fluent(array(
+			'foobar' => new Fluent(array(
 				'title'      => 'hello world 2',
 				'link'       => '#',
 				'attributes' => array(),
@@ -111,7 +109,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 			$item->title = 'hello world';
 		});
 
-		$stub->add('foobar', 'after:foo', function ($item)
+		$stub->add('foobar', '>:foo', function ($item)
 		{
 			$item->title = 'hello world 2';
 		});

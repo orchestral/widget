@@ -1,5 +1,8 @@
 <?php namespace Orchestra\Widget\Tests;
 
+use Mockery as m;
+use Orchestra\Widget\WidgetManager;
+
 class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 
 	/**
@@ -7,16 +10,15 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @var Illuminate\Foundation\Application
 	 */
-	protected $app = null;
+	private $app = null;
 
 	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
-		$this->app->shouldReceive('instance')
-				->andReturn(true);
+		$this->app = m::mock('\Illuminate\Foundation\Application');
+		$this->app->shouldReceive('instance')->andReturn(true);
 
 		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
 	}
@@ -27,7 +29,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown()
 	{
 		unset($this->app);
-		\Mockery::close();
+		m::close();
 	}
 
 	/**
@@ -37,7 +39,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$stub = new \Orchestra\Widget\WidgetManager($this->app);
+		$stub = new WidgetManager($this->app);
 
 		$this->assertInstanceOf('\Orchestra\Widget\WidgetManager', $stub);
 		$this->assertInstanceOf('\Orchestra\Support\Manager', $stub);
@@ -56,7 +58,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 			return 'foobar';
 		};
 
-		$stub = new \Orchestra\Widget\WidgetManager($this->app);
+		$stub = new WidgetManager($this->app);
 		$stub->extend('foo', $callback);
 
 		$refl = new \ReflectionObject($stub);
@@ -77,15 +79,13 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMakeMethodForMenu()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::menu.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::menu.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 
-		$stub = with(new \Orchestra\Widget\WidgetManager($this->app))->make('menu.foo');
+		$stub = with(new WidgetManager($this->app))->make('menu.foo');
 
 		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Menu', $stub);
 	}
@@ -97,15 +97,13 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMakeMethodForPane()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::pane.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::pane.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 
-		$stub = with(new \Orchestra\Widget\WidgetManager($this->app))->make('pane.foo');
+		$stub = with(new WidgetManager($this->app))->make('pane.foo');
 
 		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Pane', $stub);
 	}
@@ -117,9 +115,9 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMakeMethodForPlaceholder()
 	{
-		$configMock = \Mockery::mock('Config')
+		$configMock = m::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::placeholder.foo", \Mockery::any())
+			->with("orchestra/widget::placeholder.foo", m::any())
 			->once()
 			->andReturn(array());
 
@@ -137,9 +135,9 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMakeMethodForDefaultDriver()
 	{
-		$configMock = \Mockery::mock('Config')
+		$configMock = m::mock('Config')
 			->shouldReceive('get')
-			->with("orchestra/widget::placeholder.default", \Mockery::any())
+			->with("orchestra/widget::placeholder.default", m::any())
 			->once()
 			->andReturn(array());
 

@@ -1,5 +1,9 @@
 <?php namespace Orchestra\Widget\Tests;
 
+use Mockery as m;
+use Orchestra\Widget\Drivers\Placeholder;
+use Illuminate\Support\Fluent;
+
 class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 
 	/**
@@ -7,14 +11,14 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @var Illuminate\Foundation\Application
 	 */
-	protected $app = null;
+	private $app = null;
 
 	/**
 	 * Setup the test environment.
 	 */
 	public function setUp()
 	{
-		$this->app = \Mockery::mock('\Illuminate\Foundation\Application');
+		$this->app = m::mock('\Illuminate\Foundation\Application');
 		$this->app->shouldReceive('instance')
 				->andReturn(true);
 
@@ -27,7 +31,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	public function tearDown()
 	{
 		unset($this->app);
-		\Mockery::close();
+		m::close();
 	}
 
 	/**
@@ -37,15 +41,13 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::placeholder.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::placeholder.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 		
-		$stub = new \Orchestra\Widget\Drivers\Placeholder($this->app, 'foo');
+		$stub = new Placeholder($this->app, 'foo');
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -77,15 +79,13 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testAddMethod()
 	{
-		$configMock = \Mockery::mock('Config')
-			->shouldReceive('get')
-			->with("orchestra/widget::placeholder.foo", \Mockery::any())
-			->once()
-			->andReturn(array());
+		$config = m::mock('Config');
+		$config->shouldReceive('get')
+			->with("orchestra/widget::placeholder.foo", m::any())->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($configMock->getMock());
+		\Illuminate\Support\Facades\Config::swap($config);
 		
-		$stub = new \Orchestra\Widget\Drivers\Placeholder($this->app, 'foo');
+		$stub = new Placeholder($this->app, 'foo');
 
 		$callback = function ()
 		{
@@ -93,12 +93,12 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 		};
 
 		$expected = array(
-			'foo' => new \Illuminate\Support\Fluent(array(
+			'foo' => new Fluent(array(
 				'value'  => $callback,
 				'id'     => 'foo',
 				'childs' => array(),
 			)),
-			'foobar' => new \Illuminate\Support\Fluent(array(
+			'foobar' => new Fluent(array(
 				'value'  => $callback,
 				'id'     => 'foobar',
 				'childs' => array(),
@@ -106,8 +106,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 		);
 
 		$stub->add('foo', $callback);
-
-		$stub->add('foobar', 'after:foo', $callback);
+		$stub->add('foobar', '>:foo', $callback);
 
 		$this->assertEquals($expected, $stub->getItem());
 	}

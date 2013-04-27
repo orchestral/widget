@@ -1,8 +1,8 @@
 <?php namespace Orchestra\Widget\Drivers;
 
-use InvalidArgumentException,
-	Illuminate\Support\Facades\Config,
-	Orchestra\Widget\Nesty;
+use InvalidArgumentException;
+use Illuminate\Support\Facades\Config;
+use Orchestra\Widget\Nesty;
 
 abstract class Driver {
 
