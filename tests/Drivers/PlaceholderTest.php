@@ -108,6 +108,6 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 		$stub->add('foo', $callback);
 		$stub->add('foobar', '>:foo', $callback);
 
-		$this->assertEquals($expected, $stub->getItem());
+		$this->assertEquals($expected, $stub->getItems());
 	}
 }

@@ -241,7 +241,7 @@ class Nesty {
 	 * @access public
 	 * @return array
 	 */
-	public function getItem()
+	public function getItems()
 	{
 		return $this->items;
 	}

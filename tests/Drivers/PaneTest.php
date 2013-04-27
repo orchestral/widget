@@ -118,6 +118,6 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 			$item->title('hello world');
 		});
 
-		$this->assertEquals($expected, $stub->getItem());
+		$this->assertEquals($expected, $stub->getItems());
 	}
 }

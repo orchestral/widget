@@ -1,10 +1,11 @@
 <?php namespace Orchestra\Widget\Drivers;
 
+use ArrayAccess;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\Config;
 use Orchestra\Widget\Nesty;
 
-abstract class Driver {
+abstract class Driver implements ArrayAccess {
 
 	/**
 	 * Application instance.
@@ -79,9 +80,9 @@ abstract class Driver {
 	 * @return array
 	 * @see    Orchestra\Widget\Nesty::getItem()
 	 */
-	public function getItem()
+	public function getItems()
 	{
-		return $this->nesty->getItem();
+		return $this->nesty->getItems();
 	}
 
 	/**
@@ -98,6 +99,53 @@ abstract class Driver {
 			throw new InvalidArgumentException("Access to [{$key}] is not allowed.");
 		}
 
-		return $this->getItem();
+		return $this->getItems();
+	}
+
+	/**
+	 * Determine if the given attribute exists.
+	 *
+	 * @param  mixed  $key
+	 * @return bool
+	 */
+	public function offsetExists($key)
+	{
+		$items = $this->getItems();
+		return isset($items[$key]);
+	}
+
+	/**
+	 * Get the value for a given offset.
+	 *
+	 * @param  mixed  $key
+	 * @return mixed
+	 */
+	public function offsetGet($key)
+	{
+		$items = $this->getItems();
+		return $items[$key];
+	}
+
+	/**
+	 * Set the value for a given offset.
+	 *
+	 * @param  mixed  $key
+	 * @param  mixed  $value
+	 * @return void
+	 */
+	public function offsetSet($key, $value)
+	{
+		throw new RuntimeException("Unable to set [{$key}]");
+	}
+
+	/**
+	 * Unset the value for a given offset.
+	 *
+	 * @param  mixed  $key
+	 * @return void
+	 */
+	public function offsetUnset($key)
+	{
+		throw new RuntimeException("Unable to unset [{$key}]");
 	}
 }

@@ -77,7 +77,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
 		$stub = new DriverStub($this->app, 'foo');
 
-		$this->assertEquals(array(), $stub->getItem());
+		$this->assertEquals(array(), $stub->getItems());
 		$this->assertEquals(array(), $stub->items);
 	}
 

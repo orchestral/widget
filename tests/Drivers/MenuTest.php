@@ -114,6 +114,6 @@ class MenuTest extends \PHPUnit_Framework_TestCase {
 			$item->title = 'hello world 2';
 		});
 
-		$this->assertEquals($expected, $stub->getItem());
+		$this->assertEquals($expected, $stub->getItems());
 	}
 }

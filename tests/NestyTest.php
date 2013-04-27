@@ -57,7 +57,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 	public function testNewInstanceReturnEmptyArray()
 	{
 		$this->assertEquals(array(),
-			with(new Nesty(array()))->getItem());
+			with(new Nesty(array()))->getItems());
 	}
 
 	/**
@@ -115,7 +115,7 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 		$this->stub->add('hello-foobar', '^:foo.foobar');
 		$this->stub->add('hello-world-foobar', '^:foo.dummy');
 
-		$this->assertEquals($expected, $this->stub->getItem());
+		$this->assertEquals($expected, $this->stub->getItems());
 	}
 
 	/**
@@ -131,6 +131,6 @@ class NestyTest extends \PHPUnit_Framework_TestCase {
 		$stub = new Nesty(array());
 
 		$stub->add('foo', '^:home');
-		$this->assertEquals(array(), $stub->getItem());
+		$this->assertEquals(array(), $stub->getItems());
 	}
 }
