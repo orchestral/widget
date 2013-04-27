@@ -1,12 +1,13 @@
 <?php namespace Orchestra\Widget\Drivers;
 
+use Countable;
 use ArrayIterator;
 use IteratorAggregate;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\Config;
 use Orchestra\Widget\Nesty;
 
-abstract class Driver implements IteratorAggregate {
+abstract class Driver implements Countable, IteratorAggregate {
 
 	/**
 	 * Application instance.
@@ -101,6 +102,16 @@ abstract class Driver implements IteratorAggregate {
 		}
 
 		return $this->getItems();
+	}
+
+	/**
+	 * Get the number of items for the current page.
+	 *
+	 * @return int
+	 */
+	public function count()
+	{
+		return count($this->nesty->getItems());
 	}
 
 	/**
