@@ -5,7 +5,7 @@ use ArrayIterator;
 use IteratorAggregate;
 use InvalidArgumentException;
 use Illuminate\Support\Facades\Config;
-use Orchestra\Widget\Nesty;
+use Orchestra\Support\Nesty;
 
 abstract class Driver implements Countable, IteratorAggregate {
 

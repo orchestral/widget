@@ -59,7 +59,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(array(), $config->getValue($stub));
 		$this->assertEquals('foo', $name->getValue($stub));
-		$this->assertInstanceOf('\Orchestra\Widget\Nesty', $nesty->getValue($stub));
+		$this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
 		$this->assertEquals('stub', $type->getValue($stub));
 		$this->assertInstanceOf('\ArrayIterator', $stub->getIterator());
 		$this->assertEquals(0, count($stub));

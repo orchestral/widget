@@ -68,7 +68,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals($expected, $config->getValue($stub));
 		$this->assertEquals('foo', $name->getValue($stub));
-		$this->assertInstanceOf('\Orchestra\Widget\Nesty', $nesty->getValue($stub));
+		$this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
 		$this->assertEquals('placeholder', $type->getValue($stub));
 	}
 
