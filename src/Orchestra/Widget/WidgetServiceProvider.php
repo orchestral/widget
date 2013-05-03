@@ -25,6 +25,16 @@ class WidgetServiceProvider extends ServiceProvider {
 	}
 
 	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->package('orchestra/widget', 'orchestra/widget');
+	}
+
+	/**
 	 * Get the services provided by the provider.
 	 *
 	 * @return array
