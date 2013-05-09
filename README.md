@@ -30,7 +30,6 @@ Next add the service provider in `app/config/app.php`.
 	// ...
 	
 	'Orchestra\Widget\WidgetServiceProvider',
-	'Orchestra\Widget\PackageServiceProvider',
 ),
 ```
 
