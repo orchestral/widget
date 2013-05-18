@@ -33,17 +33,6 @@ Next add the service provider in `app/config/app.php`.
 ),
 ```
 
-You might want to add `Orchestra\Widget` to class aliases in `app/config/app.php`:
-
-```php
-'aliases' => array(
-
-	// ...
-
-	'Orchestra\Widget' => 'Orchestra\Support\Facades\Widget',
-),
-```
-
 ## Resources
 
 * [Documentation](http://docs.orchestraplatform.com/pages/components/widget)

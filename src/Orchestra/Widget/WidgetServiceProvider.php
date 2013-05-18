@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Widget;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\AliasLoader;
 
 class WidgetServiceProvider extends ServiceProvider {
 
@@ -21,6 +22,12 @@ class WidgetServiceProvider extends ServiceProvider {
 		$this->app['orchestra.widget'] = $this->app->share(function($app)
 		{
 			return new WidgetManager($app);
+		});
+
+		$this->app->booting(function()
+		{
+			$loader = AliasLoader::getInstance();
+			$loader->alias('Orchestra\Widget', 'Orchestra\Support\Facades\Widget');
 		});
 	}
 
