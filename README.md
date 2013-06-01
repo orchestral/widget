@@ -35,5 +35,5 @@ Next add the service provider in `app/config/app.php`.
 
 ## Resources
 
-* [Documentation](http://docs.orchestraplatform.com/pages/components/widget)
+* [Documentation](http://orchestraplatform.com/docs/2.0/components/widget)
 * [Change Logs](https://github.com/orchestral/widget/wiki/Change-Logs)
