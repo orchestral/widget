@@ -16,10 +16,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->app = m::mock('\Illuminate\Foundation\Application');
-		$this->app->shouldReceive('instance')->andReturn(true);
-
-		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
+		$this->app = new \Illuminate\Container\Container;
 	}
 
 	/**
@@ -38,13 +35,13 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$config = m::mock('Config');
-		$config->shouldReceive('get')
-			->with("orchestra/widget::stub.foo", m::any())->once()->andReturn(array());
+		$app = $this->app;
+		$app['config'] = $config = m::mock('Config');
 
-		\Illuminate\Support\Facades\Config::swap($config);
-		
-		$stub = new DriverStub($this->app, 'foo');
+		$config->shouldReceive('get')->once()
+			->with("orchestra/widget::stub.foo", m::any())->andReturn(array());
+
+		$stub = new DriverStub($app, 'foo');
 
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
@@ -72,12 +69,12 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGetItemMethod()
 	{
-		$config = m::mock('Config');
+		$app = $this->app;
+		$app['config'] = $config = m::mock('Config');
+		
 		$config->shouldReceive('get')->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($config);
-
-		$stub = new DriverStub($this->app, 'foo');
+		$stub = new DriverStub($app, 'foo');
 
 		$this->assertEquals(array(), $stub->getItems());
 		$this->assertEquals(array(), $stub->items);
@@ -90,12 +87,12 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testMagicMethodGetThrowsException()
 	{
-		$config = m::mock('Config');
+		$app = $this->app;
+		$app['config'] = $config = m::mock('Config');
+		
 		$config->shouldReceive('get')->once()->andReturn(array());
 
-		\Illuminate\Support\Facades\Config::swap($config);
-
-		with(new DriverStub($this->app, 'foo'))->helloWorld;
+		with(new DriverStub($app, 'foo'))->helloWorld;
 	}
 }
 
