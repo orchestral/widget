@@ -5,14 +5,14 @@ use Closure;
 class Placeholder extends Driver {
 
 	/**
-	 * Type of Widget.
+	 * Type of widget.
 	 * 
 	 * @var string
 	 */
 	protected $type = 'placeholder';
 
 	/**
-	 * Widget Configuration.
+	 * Widget configuration.
 	 * 
 	 * @var array
 	 */
@@ -28,7 +28,7 @@ class Placeholder extends Driver {
 	 * @access public
 	 * @param  string   $id
 	 * @param  mixed    $location
-	 * @param  Closure  $callback
+	 * @param  \Closure $callback
 	 * @return mixed
 	 */
 	public function add($id, $location = 'parent', $callback = null)

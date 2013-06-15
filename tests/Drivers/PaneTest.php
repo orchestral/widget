@@ -18,11 +18,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function setUp()
 	{
-		$this->app = m::mock('\Illuminate\Foundation\Application');
-		$this->app->shouldReceive('instance')
-				->andReturn(true);
-
-		\Illuminate\Support\Facades\Config::setFacadeApplication($this->app);
+		$this->app = new \Illuminate\Container\Container;
 	}
 
 	/**
@@ -41,13 +37,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructMethod()
 	{
-		$config = m::mock('Config');
-		$config->shouldReceive('get')
-			->with("orchestra/widget::pane.foo", m::any())->once()->andReturn(array());
+		$app = $this->app;
+		$app['config'] = $config = m::mock('Config');
 
-		\Illuminate\Support\Facades\Config::swap($config);
+		$config->shouldReceive('get')->once()
+			->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
 		
-		$stub   = new Pane($this->app, 'foo');
+		$stub   = new Pane($app, 'foo');
 		$refl   = new \ReflectionObject($stub);
 		$config = $refl->getProperty('config');
 		$name   = $refl->getProperty('name');
@@ -81,13 +77,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testAddMethod()
 	{
-		$config = m::mock('Config');
-		$config->shouldReceive('get')
-			->with("orchestra/widget::pane.foo", m::any())->once()->andReturn(array());
+		$app = $this->app;
+		$app['config'] = $config = m::mock('Config');
 
-		\Illuminate\Support\Facades\Config::swap($config);
+		$config->shouldReceive('get')->once()
+			->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
 		
-		$stub = new Pane($this->app, 'foo');
+		$stub = new Pane($app, 'foo');
 
 		$expected = array(
 			'foo' => new Fluent(array(

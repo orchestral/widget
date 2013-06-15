@@ -5,14 +5,14 @@ use Closure;
 class Pane extends Driver {
 
 	/**
-	 * Type of Widget.
+	 * Type of widget.
 	 * 
 	 * @var string
 	 */
 	protected $type = 'pane';
 
 	/**
-	 * Widget Configuration.
+	 * Widget configuration.
 	 * 
 	 * @var array
 	 */
@@ -31,7 +31,7 @@ class Pane extends Driver {
 	 * @access public
 	 * @param  string   $id
 	 * @param  mixed    $location
-	 * @param  Closure  $callback
+	 * @param  \Closure $callback
 	 * @return mixed
 	 */
 	public function add($id, $location = 'parent', $callback = null)

@@ -1,8 +1,8 @@
 <?php namespace Orchestra\Widget;
 
-use InvalidArgumentException,
-	Closure,
-	Orchestra\Support\Manager;
+use InvalidArgumentException;
+use Closure;
+use Orchestra\Support\Manager;
 
 class WidgetManager extends Manager {
 
@@ -11,7 +11,7 @@ class WidgetManager extends Manager {
 	 * 
 	 * @access protected
 	 * @param  string   $name
-	 * @return Orchestra\Widget\Drivers\Menu
+	 * @return \Orchestra\Widget\Drivers\Menu
 	 */
 	protected function createMenuDriver($name)
 	{
@@ -23,7 +23,7 @@ class WidgetManager extends Manager {
 	 * 
 	 * @access protected
 	 * @param  string   $name
-	 * @return Orchestra\Widget\Drivers\Pane
+	 * @return \Orchestra\Widget\Drivers\Pane
 	 */
 	protected function createPaneDriver($name)
 	{
@@ -35,7 +35,7 @@ class WidgetManager extends Manager {
 	 * 
 	 * @access protected
 	 * @param  string   $name
-	 * @return Orchestra\Widget\Drivers\Placeholder
+	 * @return \Orchestra\Widget\Drivers\Placeholder
 	 */
 	protected function createPlaceholderDriver($name)
 	{
@@ -43,11 +43,11 @@ class WidgetManager extends Manager {
 	}
 
 	/**
-	 * Create Default driver.
+	 * Create default driver.
 	 * 
 	 * @access protected
 	 * @param  string   $name
-	 * @return Orchestra\Widget\Drivers\Placeholder
+	 * @return \Orchestra\Widget\Drivers\Placeholder
 	 */
 	protected function getDefaultDriver()
 	{

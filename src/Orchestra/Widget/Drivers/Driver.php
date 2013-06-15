@@ -4,7 +4,6 @@ use Countable;
 use ArrayIterator;
 use IteratorAggregate;
 use InvalidArgumentException;
-use Illuminate\Support\Facades\Config;
 use Orchestra\Support\Nesty;
 
 abstract class Driver implements Countable, IteratorAggregate {
@@ -12,14 +11,14 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Application instance.
 	 *
-	 * @var Illuminate\Foundation\Application
+	 * @var \Illuminate\Foundation\Application
 	 */
 	protected $app = null;
 
 	/**
-	 * Nesty instance
+	 * Nesty instance.
 	 *
-	 * @var Orchestra\Widget\Nesty
+	 * @var \Orchestra\Support\Nesty
 	 */
 	protected $nesty = null;
 
@@ -31,24 +30,24 @@ abstract class Driver implements Countable, IteratorAggregate {
 	protected $name = null;
 
 	/**
-	 * Widget Configuration.
+	 * Widget configuration.
 	 *
 	 * @var array
 	 */
 	protected $config = array();
 
 	/**
-	 * Type of Widget.
+	 * Type of widget.
 	 *
 	 * @var string
 	 */
 	protected $type = null;
 
 	/**
-	 * Construct a new instance
+	 * Construct a new instance.
 	 *
 	 * @access  public
-	 * @param   Illuminate\Foundation\Application   $app
+	 * @param   \Illuminate\Foundation\Application  $app
 	 * @param   string                              $name
 	 * @return  void
 	 */
@@ -56,12 +55,12 @@ abstract class Driver implements Countable, IteratorAggregate {
 	{
 		$this->app    = $app;
 		$this->config = array_merge(
-			Config::get("orchestra/widget::{$this->type}.{$name}", array()), 
+			$this->app['config']->get("orchestra/widget::{$this->type}.{$name}", array()), 
 			$this->config
 		);
 
-		$this->name   = $name;
-		$this->nesty  = new Nesty($this->config);
+		$this->name  = $name;
+		$this->nesty = new Nesty($this->config);
 	}
 
 	/**
@@ -70,7 +69,7 @@ abstract class Driver implements Countable, IteratorAggregate {
 	 * @access public
 	 * @param  string   $id
 	 * @param  mixed    $location
-	 * @param  Closure  $callback
+	 * @param  \Closure $callback
 	 * @return mixed
 	 */
 	public abstract function add($id, $location = 'parent', $callback = null);
@@ -80,7 +79,7 @@ abstract class Driver implements Countable, IteratorAggregate {
 	 *
 	 * @access public
 	 * @return array
-	 * @see    Orchestra\Widget\Nesty::getItem()
+	 * @see    \Orchestra\Support\Nesty::getItem()
 	 */
 	public function getItems()
 	{
@@ -88,11 +87,12 @@ abstract class Driver implements Countable, IteratorAggregate {
 	}
 
 	/**
-	 * Magic method to get all items
+	 * Magic method to get all items.
 	 *
+	 * @access public
 	 * @param  string   $key
 	 * @return mixed
-	 * @throws InvalidArgumentException
+	 * @throws \InvalidArgumentException
 	 */
 	public function __get($key)
 	{
@@ -107,7 +107,8 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Get the number of items for the current page.
 	 *
-	 * @return int
+	 * @access public
+	 * @return integer
 	 */
 	public function count()
 	{
@@ -117,7 +118,8 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Get an iterator for the items.
 	 *
-	 * @return ArrayIterator
+	 * @access public
+	 * @return \ArrayIterator
 	 */
 	public function getIterator()
 	{

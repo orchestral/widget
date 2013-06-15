@@ -22,6 +22,7 @@
 	},
 	"require-dev": {
 		"mockery/mockery": "0.8.0",
+		"illuminate/container": "4.1.*",
 		"illuminate/support": "4.1.*",
 		"satooshi/php-coveralls": "~0.6"
 	},
