@@ -7,6 +7,13 @@ use Orchestra\Support\Manager;
 class WidgetManager extends Manager {
 
 	/**
+	 * Define blacklisted character in name.
+	 *
+	 * @var
+	 */
+	protected $blacklisted = array();
+
+	/**
 	 * Create Menu driver.
 	 * 
 	 * @access protected

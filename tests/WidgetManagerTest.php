@@ -80,11 +80,15 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase {
 		$app['config'] = $config = m::mock('Config');
 		
 		$config->shouldReceive('get')->once()
-			->with("orchestra/widget::menu.foo", m::any())->andReturn(array());
+				->with("orchestra/widget::menu.foo", m::any())->andReturn(array())
+			->shouldReceive('get')->once()
+				->with("orchestra/widget::menu.foo.bar", m::any())->andReturn(array());
 
 		$stub = with(new WidgetManager($app))->make('menu.foo');
 
 		$this->assertInstanceOf('\Orchestra\Widget\Drivers\Menu', $stub);
+
+		with(new WidgetManager($app))->make('menu.foo.bar');
 	}
 
 	/**
