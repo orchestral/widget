@@ -7,7 +7,10 @@ Orchestra\Widget allow you to manage widgetize actions in Orchestra Platform. By
 * **Pane** to manage dashboard items.
 * **Placeholder** to manage sidebar widgets.
 
-[![Build Status](https://travis-ci.org/orchestral/widget.png?branch=2.0)](https://travis-ci.org/orchestral/widget) [![Coverage Status](https://coveralls.io/repos/orchestral/widget/badge.png?branch=2.0)](https://coveralls.io/r/orchestral/widget?branch=2.0)
+[![Latest Stable Version](https://poser.pugx.org/orchestra/widget/v/stable.png)](https://packagist.org/packages/orchestra/widget) 
+[![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads.png)](https://packagist.org/packages/orchestra/widget) 
+[![Build Status](https://travis-ci.org/orchestral/widget.png?branch=2.0)](https://travis-ci.org/orchestral/widget) 
+[![Coverage Status](https://coveralls.io/repos/orchestral/widget/badge.png?branch=2.0)](https://coveralls.io/r/orchestral/widget?branch=2.0)
 
 ## Quick Installation
 
@@ -35,4 +38,4 @@ Next add the service provider in `app/config/app.php`.
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/2.0/components/widget)
-* [Change Logs](https://github.com/orchestral/widget/wiki/Change-Logs)
+* [Change Log](http://orchestraplatform.com/docs/2.0/components/widget/changes#v2.0)
