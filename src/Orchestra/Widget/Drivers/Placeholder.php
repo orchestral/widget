@@ -25,7 +25,6 @@ class Placeholder extends Driver {
 	/**
 	 * Add an item to current widget.
 	 *
-	 * @access public
 	 * @param  string   $id
 	 * @param  mixed    $location
 	 * @param  \Closure $callback

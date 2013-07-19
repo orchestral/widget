@@ -46,7 +46,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Construct a new instance.
 	 *
-	 * @access  public
 	 * @param   \Illuminate\Foundation\Application  $app
 	 * @param   string                              $name
 	 * @return  void
@@ -66,7 +65,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Add an item to current widget.
 	 *
-	 * @access public
 	 * @param  string   $id
 	 * @param  mixed    $location
 	 * @param  \Closure $callback
@@ -77,7 +75,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Get all item from Nesty.
 	 *
-	 * @access public
 	 * @return array
 	 * @see    \Orchestra\Support\Nesty::getItem()
 	 */
@@ -89,7 +86,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Magic method to get all items.
 	 *
-	 * @access public
 	 * @param  string   $key
 	 * @return mixed
 	 * @throws \InvalidArgumentException
@@ -107,7 +103,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Get the number of items for the current page.
 	 *
-	 * @access public
 	 * @return integer
 	 */
 	public function count()
@@ -118,7 +113,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Get an iterator for the items.
 	 *
-	 * @access public
 	 * @return \ArrayIterator
 	 */
 	public function getIterator()

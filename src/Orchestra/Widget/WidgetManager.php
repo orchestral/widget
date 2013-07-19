@@ -16,7 +16,6 @@ class WidgetManager extends Manager {
 	/**
 	 * Create Menu driver.
 	 * 
-	 * @access protected
 	 * @param  string   $name
 	 * @return \Orchestra\Widget\Drivers\Menu
 	 */
@@ -28,7 +27,6 @@ class WidgetManager extends Manager {
 	/**
 	 * Create Pane driver.
 	 * 
-	 * @access protected
 	 * @param  string   $name
 	 * @return \Orchestra\Widget\Drivers\Pane
 	 */
@@ -40,7 +38,6 @@ class WidgetManager extends Manager {
 	/**
 	 * Create Placeholder driver.
 	 * 
-	 * @access protected
 	 * @param  string   $name
 	 * @return \Orchestra\Widget\Drivers\Placeholder
 	 */
@@ -52,9 +49,8 @@ class WidgetManager extends Manager {
 	/**
 	 * Create default driver.
 	 * 
-	 * @access protected
 	 * @param  string   $name
-	 * @return \Orchestra\Widget\Drivers\Placeholder
+	 * @return string
 	 */
 	protected function getDefaultDriver()
 	{
