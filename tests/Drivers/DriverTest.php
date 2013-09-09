@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Widget\Tests\Drivers;
 
 use Mockery as m;
+use Illuminate\Support\Fluent;
 
 class DriverTest extends \PHPUnit_Framework_TestCase {
 	
@@ -78,6 +79,16 @@ class DriverTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertEquals(array(), $stub->getItems());
 		$this->assertEquals(array(), $stub->items);
+		$this->assertNull($stub->is('foo'));
+
+		$stub->add('foobar')->hello('world');
+		$expected = new Fluent(array(
+			'id'     => 'foobar',
+			'hello'  => 'world',
+			'childs' => array(),
+		));
+
+		$this->assertEquals($expected, $stub->is('foobar'));
 	}
 
 	/**
