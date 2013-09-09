@@ -73,6 +73,17 @@ abstract class Driver implements Countable, IteratorAggregate {
 	public abstract function add($id, $location = 'parent', $callback = null);
 
 	/**
+	 * Get an instance of item from current widget.
+	 *
+	 * @param  string   $id
+	 * @return mixed
+	 */
+	public function is($id)
+	{
+		return $this->nesty->is($id);
+	}
+
+	/**
 	 * Get all item from Nesty.
 	 *
 	 * @return array
