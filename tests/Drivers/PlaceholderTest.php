@@ -99,10 +99,16 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase {
 				'id'     => 'foobar',
 				'childs' => array(),
 			)),
+			'hello' => new Fluent(array(
+				'value'  => $callback,
+				'id'     => 'hello',
+				'childs' => array(),
+			)),
 		);
 
 		$stub->add('foo', $callback);
 		$stub->add('foobar', '>:foo', $callback);
+		$stub->add('hello', '^:foo', $callback);
 
 		$this->assertEquals($expected, $stub->getItems());
 	}

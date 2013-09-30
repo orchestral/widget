@@ -1,5 +1,6 @@
 <?php namespace Orchestra\Widget\Drivers;
 
+use Closure;
 use Countable;
 use ArrayIterator;
 use IteratorAggregate;
@@ -71,6 +72,32 @@ abstract class Driver implements Countable, IteratorAggregate {
 	 * @return mixed
 	 */
 	public abstract function add($id, $location = 'parent', $callback = null);
+
+	/**
+	 * Attach item to current widget.
+	 *
+	 * @param  string   $id
+	 * @param  mixed    $location
+	 * @param  \Closure $callback
+	 * @return mixed
+	 */
+	protected function addItem($id, $location = 'parent', $callback = null)
+	{
+		if ($location instanceof Closure)
+		{
+			$callback = $location;
+			$location = 'parent';
+		}
+
+		$item = $this->nesty->add($id, $location ?: 'parent');
+
+		if ($callback instanceof Closure)
+		{
+			call_user_func($callback, $item);
+		}
+
+		return $item;
+	}
 
 	/**
 	 * Get an instance of item from current widget.
