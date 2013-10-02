@@ -33,23 +33,13 @@ class Pane extends Driver {
 	 * @param  \Closure $callback
 	 * @return mixed
 	 */
-	public function add($id, $location = 'parent', $callback = null)
+	public function add($id, $location = '#', $callback = null)
 	{
-		if ($location instanceof Closure)
+		if (is_string($location) and starts_with($location, '^:')) 
 		{
-			$callback = $location;
-			$location = 'parent';
+			$location = '#';
 		}
 
-		if (starts_with($location, 'child')) $location = 'parent';
-
-		$item = $this->nesty->add($id, $location ?: 'parent');
-
-		if ($callback instanceof Closure)
-		{
-			call_user_func($callback, $item);
-		}
-
-		return $item;
+		return $this->addItem($id, $location, $callback);
 	}
 }

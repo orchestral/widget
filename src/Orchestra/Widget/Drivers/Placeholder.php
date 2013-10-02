@@ -30,17 +30,19 @@ class Placeholder extends Driver {
 	 * @param  \Closure $callback
 	 * @return mixed
 	 */
-	public function add($id, $location = 'parent', $callback = null)
+	public function add($id, $location = '#', $callback = null)
 	{
-		if ($location instanceof Closure)
+		if (is_string($location) and starts_with($location, '^:')) 
+		{
+			$location = '#';
+		}
+		elseif ($location instanceof Closure)
 		{
 			$callback = $location;
-			$location = 'parent';
+			$location = '#';
 		}
 
-		if (starts_with($location, 'child')) $location = 'parent';
-
-		$item = $this->nesty->add($id, $location ?: 'parent');
+		$item = $this->nesty->add($id, $location ?: '#');
 
 		if ($callback instanceof Closure)
 		{

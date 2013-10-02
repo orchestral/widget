@@ -102,17 +102,29 @@ class PaneTest extends \PHPUnit_Framework_TestCase {
 				'id'         => 'foobar',
 				'childs'     => array(),
 			)),
+			'hello' => new Fluent(array(
+				'attributes' => array(),
+				'title'      => 'hello world',
+				'content'    => '',
+				'html'       => '',
+				'id'         => 'hello',
+				'childs'     => array(),
+			)),
 		);
 
-		$stub->add('foo', function ($item)
+		$callback = function ($item)
+		{
+			$item->title('hello world');
+		};
+
+		$stub->add('foo', function($item)
 		{
 			$item->content('hello world');
 		});
 
-		$stub->add('foobar', '>:foo', function ($item)
-		{
-			$item->title('hello world');
-		});
+		$stub->add('foobar', '>:foo', $callback);
+
+		$stub->add('hello', '^:foo', $callback);
 
 		$this->assertEquals($expected, $stub->getItems());
 	}
