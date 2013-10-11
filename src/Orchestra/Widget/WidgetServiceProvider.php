@@ -38,7 +38,9 @@ class WidgetServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('orchestra/widget', 'orchestra/widget');
+		$path = realpath(dirname(__DIR__).'/../../');
+
+		$this->package('orchestra/widget', 'orchestra/widget', $path);
 	}
 
 	/**
