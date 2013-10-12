@@ -1,7 +1,5 @@
 <?php namespace Orchestra\Widget;
 
-use InvalidArgumentException;
-use Closure;
 use Orchestra\Support\Manager;
 
 class WidgetManager extends Manager {
@@ -9,7 +7,7 @@ class WidgetManager extends Manager {
 	/**
 	 * Define blacklisted character in name.
 	 *
-	 * @var
+	 * @var array
 	 */
 	protected $blacklisted = array();
 
@@ -49,7 +47,6 @@ class WidgetManager extends Manager {
 	/**
 	 * Create default driver.
 	 * 
-	 * @param  string   $name
 	 * @return string
 	 */
 	protected function getDefaultDriver()

@@ -1,7 +1,5 @@
 <?php namespace Orchestra\Widget\Drivers;
 
-use Closure;
-
 class Menu extends Driver {
 
 	/**
