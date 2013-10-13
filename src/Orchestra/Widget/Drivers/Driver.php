@@ -49,7 +49,6 @@ abstract class Driver implements Countable, IteratorAggregate {
 	 *
 	 * @param   \Illuminate\Foundation\Application  $app
 	 * @param   string                              $name
-	 * @return  void
 	 */
 	public function __construct($app, $name)
 	{

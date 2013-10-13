@@ -1,7 +1,5 @@
 <?php namespace Orchestra\Widget\Drivers;
 
-use Closure;
-
 class Pane extends Driver {
 
 	/**
