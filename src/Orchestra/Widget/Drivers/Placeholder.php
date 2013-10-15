@@ -5,16 +5,12 @@ use Closure;
 class Placeholder extends Driver {
 
 	/**
-	 * Type of widget.
-	 * 
-	 * @var string
+	 * {@inheritdoc}
 	 */
 	protected $type = 'placeholder';
 
 	/**
-	 * Widget configuration.
-	 * 
-	 * @var array
+	 * {@inheritdoc}
 	 */
 	protected $config = array(
 		'defaults' => array(
@@ -23,12 +19,7 @@ class Placeholder extends Driver {
 	);
 
 	/**
-	 * Add an item to current widget.
-	 *
-	 * @param  string   $id
-	 * @param  mixed    $location
-	 * @param  \Closure $callback
-	 * @return mixed
+	 * {@inheritdoc}
 	 */
 	public function add($id, $location = '#', $callback = null)
 	{

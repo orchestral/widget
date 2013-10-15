@@ -3,16 +3,12 @@
 class Pane extends Driver {
 
 	/**
-	 * Type of widget.
-	 * 
-	 * @var string
+	 * {@inheritdoc}
 	 */
 	protected $type = 'pane';
 
 	/**
-	 * Widget configuration.
-	 * 
-	 * @var array
+	 * {@inheritdoc}
 	 */
 	protected $config = array(
 		'defaults' => array(
@@ -24,12 +20,7 @@ class Pane extends Driver {
 	);
 
 	/**
-	 * Add an item to current widget.
-	 *
-	 * @param  string   $id
-	 * @param  mixed    $location
-	 * @param  \Closure $callback
-	 * @return mixed
+	 * {@inheritdoc}
 	 */
 	public function add($id, $location = '#', $callback = null)
 	{

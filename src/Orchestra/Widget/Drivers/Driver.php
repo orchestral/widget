@@ -5,6 +5,7 @@ use Countable;
 use ArrayIterator;
 use IteratorAggregate;
 use InvalidArgumentException;
+use Illuminate\Container\Container;
 use Orchestra\Support\Nesty;
 
 abstract class Driver implements Countable, IteratorAggregate {
@@ -12,7 +13,7 @@ abstract class Driver implements Countable, IteratorAggregate {
 	/**
 	 * Application instance.
 	 *
-	 * @var \Illuminate\Foundation\Application
+	 * @var \Illuminate\Container\Container
 	 */
 	protected $app = null;
 
@@ -46,11 +47,11 @@ abstract class Driver implements Countable, IteratorAggregate {
 
 	/**
 	 * Construct a new instance.
-	 *
-	 * @param   \Illuminate\Foundation\Application  $app
-	 * @param   string                              $name
+	 * 
+	 * @param  \Illuminate\Container\Container  $app
+	 * @param  string                           $name
 	 */
-	public function __construct($app, $name)
+	public function __construct(Container $app, $name)
 	{
 		$this->app    = $app;
 		$this->config = array_merge(
