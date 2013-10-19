@@ -1,7 +1,7 @@
 Orchestra Platform Widget Component
 ==============
 
-Orchestra\Widget allow you to manage widgetize actions in Orchestra Platform. By default Orchestra Platform provides the following widgets:
+`Orchestra\Widget` allow you to manage widgetize actions in Orchestra Platform. By default Orchestra Platform provides the following widgets:
 
 * **Menu** to manage menu.
 * **Pane** to manage dashboard items.
