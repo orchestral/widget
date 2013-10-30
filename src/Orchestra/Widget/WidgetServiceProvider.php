@@ -19,7 +19,7 @@ class WidgetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['orchestra.widget'] = $this->app->share(function ($app) {
+        $this->app->bindShared('orchestra.widget', function ($app) {
             return new WidgetManager($app);
         });
 
