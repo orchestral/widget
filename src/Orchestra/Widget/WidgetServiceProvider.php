@@ -22,11 +22,6 @@ class WidgetServiceProvider extends ServiceProvider
         $this->app->bindShared('orchestra.widget', function ($app) {
             return new WidgetManager($app);
         });
-
-        $this->app->booting(function () {
-            $loader = AliasLoader::getInstance();
-            $loader->alias('Orchestra\Widget', 'Orchestra\Support\Facades\Widget');
-        });
     }
 
     /**
