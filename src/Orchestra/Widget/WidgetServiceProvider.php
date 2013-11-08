@@ -1,7 +1,6 @@
 <?php namespace Orchestra\Widget;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\AliasLoader;
 
 class WidgetServiceProvider extends ServiceProvider
 {
