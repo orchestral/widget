@@ -57,9 +57,10 @@ class MenuTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             'defaults' => array(
-                'title'      => '',
-                'link'       => '#',
                 'attributes' => array(),
+                'icon'       => '',
+                'link'       => '#',
+                'title'      => '',
             ),
         );
 
@@ -86,18 +87,20 @@ class MenuTest extends \PHPUnit_Framework_TestCase
 
         $expected = array(
             'foo' => new Fluent(array(
-                'title'      => 'hello world',
-                'link'       => '#',
                 'attributes' => array(),
-                'id'         => 'foo',
                 'childs'     => array(),
+                'icon'       => '',
+                'id'         => 'foo',
+                'link'       => '#',
+                'title'      => 'hello world',
             )),
             'foobar' => new Fluent(array(
-                'title'      => 'hello world 2',
-                'link'       => '#',
                 'attributes' => array(),
-                'id'         => 'foobar',
                 'childs'     => array(),
+                'icon'       => '',
+                'id'         => 'foobar',
+                'link'       => '#',
+                'title'      => 'hello world 2',
             )),
         );
 

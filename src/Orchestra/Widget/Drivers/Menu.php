@@ -12,9 +12,10 @@ class Menu extends Driver
      */
     protected $config = array(
         'defaults' => array(
-            'title'      => '',
-            'link'       => '#',
             'attributes' => array(),
+            'icon'       => '',
+            'link'       => '#',
+            'title'      => '',
         ),
     );
 
