@@ -2,6 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\Drivers\Placeholder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class PlaceholderTest extends \PHPUnit_Framework_TestCase
@@ -87,7 +88,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
             return 'hello world';
         };
 
-        $expected = array(
+        $expected = new Collection(array(
             'foo' => new Fluent(array(
                 'value'  => $callback,
                 'id'     => 'foo',
@@ -103,7 +104,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
                 'id'     => 'hello',
                 'childs' => array(),
             )),
-        );
+        ));
 
         $stub->add('foo', $callback);
         $stub->add('foobar', '>:foo', $callback);

@@ -2,7 +2,6 @@
 
 use Closure;
 use Countable;
-use ArrayIterator;
 use IteratorAggregate;
 use InvalidArgumentException;
 use Illuminate\Container\Container;
@@ -142,16 +141,16 @@ abstract class Driver implements Countable, IteratorAggregate
      */
     public function count()
     {
-        return count($this->nesty->getItems());
+        return $this->nesty->getItems()->count();
     }
 
     /**
      * Get an iterator for the items.
      *
-     * @return \ArrayIterator
+     * @return \Illuminate\Support\Collection
      */
     public function getIterator()
     {
-        return new ArrayIterator($this->nesty->getItems());
+        return $this->nesty->getItems();
     }
 }

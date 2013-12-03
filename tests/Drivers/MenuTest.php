@@ -2,6 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\Drivers\Menu;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class MenuTest extends \PHPUnit_Framework_TestCase
@@ -85,7 +86,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
 
         $stub = new Menu($app, 'foo');
 
-        $expected = array(
+        $expected = new Collection(array(
             'foo' => new Fluent(array(
                 'attributes' => array(),
                 'childs'     => array(),
@@ -102,7 +103,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
                 'link'       => '#',
                 'title'      => 'hello world 2',
             )),
-        );
+        ));
 
         $stub->add('foo', function ($item) {
             $item->title = 'hello world';

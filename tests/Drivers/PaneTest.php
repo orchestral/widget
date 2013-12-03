@@ -2,6 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\Drivers\Pane;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class PaneTest extends \PHPUnit_Framework_TestCase
@@ -85,7 +86,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase
 
         $stub = new Pane($app, 'foo');
 
-        $expected = array(
+        $expected = new Collection(array(
             'foo' => new Fluent(array(
                 'attributes' => array(),
                 'title'      => '',
@@ -110,7 +111,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase
                 'id'         => 'hello',
                 'childs'     => array(),
             )),
-        );
+        ));
 
         $callback = function ($item) {
             $item->title('hello world');

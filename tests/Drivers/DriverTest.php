@@ -59,7 +59,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $name->getValue($stub));
         $this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
         $this->assertEquals('stub', $type->getValue($stub));
-        $this->assertInstanceOf('\ArrayIterator', $stub->getIterator());
+        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getIterator());
         $this->assertEquals(0, count($stub));
     }
 
@@ -77,8 +77,8 @@ class DriverTest extends \PHPUnit_Framework_TestCase
 
         $stub = new DriverStub($app, 'foo');
 
-        $this->assertEquals(array(), $stub->getItems());
-        $this->assertEquals(array(), $stub->items);
+        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getItems());
+        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->items);
         $this->assertNull($stub->is('foo'));
 
         $stub->add('foobar')->hello('world');
