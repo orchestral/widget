@@ -6,26 +6,10 @@ use Illuminate\Support\Fluent;
 class DriverTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Application mock instance.
-     *
-     * @var Illuminate\Foundation\Application
-     */
-    private $app = null;
-
-    /**
-     * Setup the test environment.
-     */
-    public function setUp()
-    {
-        $this->app = new \Illuminate\Container\Container;
-    }
-
-    /**
      * Teardown the test environment.
      */
     public function tearDown()
     {
-        unset($this->app);
         m::close();
     }
 
@@ -36,13 +20,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::stub.foo", m::any())->andReturn(array());
-
-        $stub = new DriverStub($app, 'foo');
+        $stub = new DriverStub('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -70,12 +48,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetItemMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()->andReturn(array());
-
-        $stub = new DriverStub($app, 'foo');
+        $stub = new DriverStub('foo', array());
 
         $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getItems());
         $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->items);
@@ -98,12 +71,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
      */
     public function testMagicMethodGetThrowsException()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()->andReturn(array());
-
-        with(new DriverStub($app, 'foo'))->helloWorld;
+        with(new DriverStub('foo', array()))->helloWorld;
     }
 }
 

@@ -8,26 +8,10 @@ use Illuminate\Support\Fluent;
 class PlaceholderTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Application mock instance.
-     *
-     * @var Illuminate\Foundation\Application
-     */
-    private $app = null;
-
-    /**
-     * Setup the test environment.
-     */
-    public function setUp()
-    {
-        $this->app = new \Illuminate\Container\Container;
-    }
-
-    /**
      * Teardown the test environment.
      */
     public function tearDown()
     {
-        unset($this->app);
         m::close();
     }
 
@@ -38,13 +22,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
-
-        $stub = new Placeholder($app, 'foo');
+        $stub = new Placeholder('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -76,13 +54,7 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
-
-        $stub = new Placeholder($app, 'foo');
+        $stub = new Placeholder('foo', array());
 
         $callback = function () {
             return 'hello world';

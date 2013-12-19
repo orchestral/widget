@@ -17,7 +17,9 @@ class WidgetManager extends Manager
      */
     protected function createMenuDriver($name)
     {
-        return new Drivers\Menu($this->app, $name);
+        $config = $this->app['config']->get("orchestra/widget::menu.{$name}", array());
+
+        return new Drivers\Menu($name, $config);
     }
 
     /**
@@ -28,7 +30,9 @@ class WidgetManager extends Manager
      */
     protected function createPaneDriver($name)
     {
-        return new Drivers\Pane($this->app, $name);
+        $config = $this->app['config']->get("orchestra/widget::pane.{$name}", array());
+
+        return new Drivers\Pane($name, $config);
     }
 
     /**
@@ -39,7 +43,9 @@ class WidgetManager extends Manager
      */
     protected function createPlaceholderDriver($name)
     {
-        return new Drivers\Placeholder($this->app, $name);
+        $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", array());
+
+        return new Drivers\Placeholder($name, $config);
     }
 
     /**

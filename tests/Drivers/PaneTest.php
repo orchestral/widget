@@ -8,26 +8,10 @@ use Illuminate\Support\Fluent;
 class PaneTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Application mock instance.
-     *
-     * @var Illuminate\Foundation\Application
-     */
-    private $app = null;
-
-    /**
-     * Setup the test environment.
-     */
-    public function setUp()
-    {
-        $this->app = new \Illuminate\Container\Container;
-    }
-
-    /**
      * Teardown the test environment.
      */
     public function tearDown()
     {
-        unset($this->app);
         m::close();
     }
 
@@ -38,13 +22,8 @@ class PaneTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
+        $stub   = new Pane('foo', array());
 
-        $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
-
-        $stub   = new Pane($app, 'foo');
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
         $name   = $refl->getProperty('name');
@@ -78,13 +57,7 @@ class PaneTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMethod()
     {
-        $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
-
-        $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
-
-        $stub = new Pane($app, 'foo');
+        $stub = new Pane('foo', array());
 
         $expected = new Collection(array(
             'foo' => new Fluent(array(
