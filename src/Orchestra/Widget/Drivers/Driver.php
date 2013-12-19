@@ -3,7 +3,6 @@
 use Closure;
 use Countable;
 use IteratorAggregate;
-use InvalidArgumentException;
 use Orchestra\Support\Nesty;
 
 abstract class Driver implements Countable, IteratorAggregate
