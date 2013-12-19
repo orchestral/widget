@@ -51,7 +51,6 @@ class DriverTest extends \PHPUnit_Framework_TestCase
         $stub = new DriverStub('foo', array());
 
         $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getItems());
-        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->items);
         $this->assertNull($stub->is('foo'));
 
         $stub->add('foobar')->hello('world');
@@ -62,16 +61,6 @@ class DriverTest extends \PHPUnit_Framework_TestCase
         ));
 
         $this->assertEquals($expected, $stub->is('foobar'));
-    }
-
-    /**
-     * Test Orchestra\Widget\Drivers\Driver::__get() throws an exception.
-     *
-     * @expectedException \InvalidArgumentException
-     */
-    public function testMagicMethodGetThrowsException()
-    {
-        with(new DriverStub('foo', array()))->helloWorld;
     }
 }
 

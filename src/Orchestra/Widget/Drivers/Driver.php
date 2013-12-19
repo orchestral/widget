@@ -107,22 +107,6 @@ abstract class Driver implements Countable, IteratorAggregate
     }
 
     /**
-     * Magic method to get all items.
-     *
-     * @param  string   $key
-     * @return mixed
-     * @throws \InvalidArgumentException
-     */
-    public function __get($key)
-    {
-        if ($key !== 'items') {
-            throw new InvalidArgumentException("Access to [{$key}] is not allowed.");
-        }
-
-        return $this->getItems();
-    }
-
-    /**
      * Get the number of items for the current page.
      *
      * @return integer
