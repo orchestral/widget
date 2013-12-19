@@ -4,24 +4,16 @@ use Closure;
 use Countable;
 use IteratorAggregate;
 use InvalidArgumentException;
-use Illuminate\Container\Container;
 use Orchestra\Support\Nesty;
 
 abstract class Driver implements Countable, IteratorAggregate
 {
     /**
-     * Application instance.
-     *
-     * @var \Illuminate\Container\Container
-     */
-    protected $app = null;
-
-    /**
      * Nesty instance.
      *
      * @var \Orchestra\Support\Nesty
      */
-    protected $nesty = null;
+    protected $nesty;
 
     /**
      * Name of this instance.
@@ -47,16 +39,12 @@ abstract class Driver implements Countable, IteratorAggregate
     /**
      * Construct a new instance.
      *
-     * @param  \Illuminate\Container\Container  $app
-     * @param  string                           $name
+     * @param  string  $name
+     * @param  array   $config
      */
-    public function __construct(Container $app, $name)
+    public function __construct($name, array $config = array())
     {
-        $this->app    = $app;
-        $this->config = array_merge(
-            $this->app['config']->get("orchestra/widget::{$this->type}.{$name}", array()),
-            $this->config
-        );
+        $this->config = array_merge($config, $this->config);
 
         $this->name  = $name;
         $this->nesty = new Nesty($this->config);

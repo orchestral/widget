@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Widget\Tests;
 
 use Mockery as m;
+use Illuminate\Container\Container;
 use Orchestra\Widget\WidgetManager;
 
 class WidgetManagerTest extends \PHPUnit_Framework_TestCase
@@ -17,7 +18,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->app = new \Illuminate\Container\Container;
+        $this->app = new Container;
     }
 
     /**
@@ -76,7 +77,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
     public function testMakeMethodForMenu()
     {
         $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
                 ->with("orchestra/widget::menu.foo", m::any())->andReturn(array())
@@ -98,7 +99,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
     public function testMakeMethodForPane()
     {
         $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
             ->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
@@ -116,12 +117,12 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
     public function testMakeMethodForPlaceholder()
     {
         $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
             ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
 
-        $stub = with(new \Orchestra\Widget\WidgetManager($app))->make('placeholder.foo');
+        $stub = with(new WidgetManager($app))->make('placeholder.foo');
 
         $this->assertInstanceOf('\Orchestra\Widget\Drivers\Placeholder', $stub);
     }
@@ -134,12 +135,12 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
     public function testMakeMethodForDefaultDriver()
     {
         $app = $this->app;
-        $app['config'] = $config = m::mock('Config');
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
             ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array());
 
-        $stub = with(new \Orchestra\Widget\WidgetManager($app))->driver();
+        $stub = with(new WidgetManager($app))->driver();
 
         $this->assertInstanceOf('\Orchestra\Widget\Drivers\Placeholder', $stub);
     }
@@ -152,6 +153,6 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodThrowsException()
     {
-        with(new \Orchestra\Widget\WidgetManager($this->app))->make('foobar');
+        with(new WidgetManager($this->app))->make('foobar');
     }
 }
