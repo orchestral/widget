@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\Tests\Drivers;
+<?php namespace Orchestra\Widget\TestCase;
 
 use Mockery as m;
-use Orchestra\Widget\Drivers\Pane;
+use Orchestra\Widget\MenuWidgetHandler;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Fluent;
 
-class PaneTest extends \PHPUnit_Framework_TestCase
+class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -16,14 +16,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Drivers\Pane
+     * Test construct a Orchestra\Widget\MenuWidgetHandler
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub   = new Pane('foo', array());
-
+        $stub   = new MenuWidgetHandler('foo', array());
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
         $name   = $refl->getProperty('name');
@@ -38,65 +37,53 @@ class PaneTest extends \PHPUnit_Framework_TestCase
         $expected = array(
             'defaults' => array(
                 'attributes' => array(),
+                'icon'       => '',
+                'link'       => '#',
                 'title'      => '',
-                'content'    => '',
-                'html'       => '',
             ),
         );
 
         $this->assertEquals($expected, $config->getValue($stub));
         $this->assertEquals('foo', $name->getValue($stub));
         $this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
-        $this->assertEquals('pane', $type->getValue($stub));
+        $this->assertEquals('menu', $type->getValue($stub));
     }
 
     /**
-     * Test Orchestra\Widget\Menu::add() method.
+     * Test Orchestra\Widget\MenuWidgetHandler::add() method.
      *
      * @test
      */
     public function testAddMethod()
     {
-        $stub = new Pane('foo', array());
+        $stub = new MenuWidgetHandler('foo', array());
 
         $expected = new Collection(array(
             'foo' => new Fluent(array(
                 'attributes' => array(),
-                'title'      => '',
-                'content'    => 'hello world',
-                'html'       => '',
-                'id'         => 'foo',
                 'childs'     => array(),
+                'icon'       => '',
+                'id'         => 'foo',
+                'link'       => '#',
+                'title'      => 'hello world',
             )),
             'foobar' => new Fluent(array(
                 'attributes' => array(),
-                'title'      => 'hello world',
-                'content'    => '',
-                'html'       => '',
+                'childs'     => array(),
+                'icon'       => '',
                 'id'         => 'foobar',
-                'childs'     => array(),
-            )),
-            'hello' => new Fluent(array(
-                'attributes' => array(),
-                'title'      => 'hello world',
-                'content'    => '',
-                'html'       => '',
-                'id'         => 'hello',
-                'childs'     => array(),
+                'link'       => '#',
+                'title'      => 'hello world 2',
             )),
         ));
 
-        $callback = function ($item) {
-            $item->title('hello world');
-        };
-
         $stub->add('foo', function ($item) {
-            $item->content('hello world');
+            $item->title = 'hello world';
         });
 
-        $stub->add('foobar', '>:foo', $callback);
-
-        $stub->add('hello', '^:foo', $callback);
+        $stub->add('foobar', '>:foo', function ($item) {
+            $item->title = 'hello world 2';
+        });
 
         $this->assertEquals($expected, $stub->getItems());
     }

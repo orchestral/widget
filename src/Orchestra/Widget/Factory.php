@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\Drivers;
+<?php namespace Orchestra\Widget;
 
 use Closure;
 use Countable;
 use IteratorAggregate;
 use Orchestra\Support\Nesty;
 
-abstract class Driver implements Countable, IteratorAggregate
+abstract class Factory implements Countable, IteratorAggregate
 {
     /**
      * Nesty instance.
@@ -19,7 +19,7 @@ abstract class Driver implements Countable, IteratorAggregate
      *
      * @var string
      */
-    protected $name = null;
+    protected $name;
 
     /**
      * Widget configuration.
@@ -33,7 +33,7 @@ abstract class Driver implements Countable, IteratorAggregate
      *
      * @var string
      */
-    protected $type = null;
+    protected $type;
 
     /**
      * Construct a new instance.

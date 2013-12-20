@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\Drivers;
+<?php namespace Orchestra\Widget;
 
-class Pane extends Driver
+class MenuWidgetHandler extends Factory
 {
     /**
      * {@inheritdoc}
      */
-    protected $type = 'pane';
+    protected $type = 'menu';
 
     /**
      * {@inheritdoc}
@@ -13,9 +13,9 @@ class Pane extends Driver
     protected $config = array(
         'defaults' => array(
             'attributes' => array(),
+            'icon'       => '',
+            'link'       => '#',
             'title'      => '',
-            'content'    => '',
-            'html'       => '',
         ),
     );
 
@@ -24,10 +24,6 @@ class Pane extends Driver
      */
     public function add($id, $location = '#', $callback = null)
     {
-        if (is_string($location) and starts_with($location, '^:')) {
-            $location = '#';
-        }
-
         return $this->addItem($id, $location, $callback);
     }
 }
