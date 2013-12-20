@@ -13,39 +13,39 @@ class WidgetManager extends Manager
      * Create Menu driver.
      *
      * @param  string   $name
-     * @return Drivers\Menu
+     * @return MenuWidgetHandler
      */
     protected function createMenuDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::menu.{$name}", array());
 
-        return new Drivers\Menu($name, $config);
+        return new MenuWidgetHandler($name, $config);
     }
 
     /**
      * Create Pane driver.
      *
      * @param  string   $name
-     * @return Drivers\Pane
+     * @return PaneWidgetHandler
      */
     protected function createPaneDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::pane.{$name}", array());
 
-        return new Drivers\Pane($name, $config);
+        return new PaneWidgetHandler($name, $config);
     }
 
     /**
      * Create Placeholder driver.
      *
      * @param  string   $name
-     * @return Drivers\Placeholder
+     * @return PlaceholderWidgetHandler
      */
     protected function createPlaceholderDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", array());
 
-        return new Drivers\Placeholder($name, $config);
+        return new PlaceholderWidgetHandler($name, $config);
     }
 
     /**

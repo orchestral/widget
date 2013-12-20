@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Widget\Tests;
+<?php namespace Orchestra\Widget\TestCase;
 
 use Mockery as m;
 use Illuminate\Container\Container;
@@ -86,7 +86,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('menu.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\Drivers\Menu', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\MenuWidgetHandler', $stub);
 
         with(new WidgetManager($app))->make('menu.foo.bar');
     }
@@ -106,7 +106,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('pane.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\Drivers\Pane', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\PaneWidgetHandler', $stub);
     }
 
     /**
@@ -124,7 +124,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('placeholder.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\Drivers\Placeholder', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
     }
 
     /**
@@ -142,7 +142,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->driver();
 
-        $this->assertInstanceOf('\Orchestra\Widget\Drivers\Placeholder', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
     }
 
     /**

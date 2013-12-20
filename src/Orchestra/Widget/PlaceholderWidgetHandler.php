@@ -1,8 +1,8 @@
-<?php namespace Orchestra\Widget\Drivers;
+<?php namespace Orchestra\Widget;
 
 use Closure;
 
-class Placeholder extends Driver
+class PlaceholderWidgetHandler extends Factory
 {
     /**
      * {@inheritdoc}

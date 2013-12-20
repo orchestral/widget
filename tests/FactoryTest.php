@@ -1,4 +1,4 @@
-<?php namespace Orchestra\Widget\Tests\Drivers;
+<?php namespace Orchestra\Widget\TestCase;
 
 use Mockery as m;
 use Illuminate\Support\Fluent;
@@ -20,7 +20,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $stub = new DriverStub('foo', array());
+        $stub = new FactoryStub('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -48,7 +48,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetItemMethod()
     {
-        $stub = new DriverStub('foo', array());
+        $stub = new FactoryStub('foo', array());
 
         $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getItems());
         $this->assertNull($stub->is('foo'));
@@ -64,7 +64,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class DriverStub extends \Orchestra\Widget\Drivers\Driver
+class FactoryStub extends \Orchestra\Widget\Factory
 {
     protected $type   = 'stub';
     protected $config = array();
