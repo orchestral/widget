@@ -138,11 +138,30 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array());
+                ->with("orchestra/widget::driver", 'placeholder.default')->andReturn('placeholder.default')
+            ->shouldReceive('get')->once()
+                ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array());
 
         $stub = with(new WidgetManager($app))->driver();
 
         $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
+    }
+
+    /**
+     * Test Orchestra\Widget\WidgetManager::setDefaultDriver() method.
+     *
+     * @rest
+     */
+    public function testSetDefaultDriverMethod()
+    {
+        $app = $this->app;
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
+
+        $config->shouldReceive('set')->once()
+                ->with('orchestra/widget::driver', 'foo')->andReturnNull();
+
+        $stub = new WidgetManager($app);
+        $stub->setDefaultDriver('foo');
     }
 
     /**

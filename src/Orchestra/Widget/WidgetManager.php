@@ -49,10 +49,23 @@ class WidgetManager extends Manager
     }
 
     /**
-     * {@inheritdoc}
+     * Get the default driver.
+     *
+     * @return string
      */
-    protected function getDefaultDriver()
+    public function getDefaultDriver()
     {
-        return 'placeholder.default';
+        return $this->app['config']->get('orchestra/widget::driver', 'placeholder.default');
+    }
+
+    /**
+     * Set the default driver.
+     *
+     * @param  string   $name
+     * @return void
+     */
+    public function setDefaultDriver($name)
+    {
+        $this->app['config']->set('orchestra/widget::driver', $name);
     }
 }
