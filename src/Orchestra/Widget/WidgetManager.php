@@ -1,5 +1,6 @@
 <?php namespace Orchestra\Widget;
 
+use Closure;
 use Orchestra\Support\Manager;
 
 class WidgetManager extends Manager
@@ -49,10 +50,41 @@ class WidgetManager extends Manager
     }
 
     /**
-     * {@inheritdoc}
+     * Get the default driver.
+     *
+     * @return string
      */
-    protected function getDefaultDriver()
+    public function getDefaultDriver()
     {
-        return 'placeholder.default';
+        return $this->app['config']->get('orchestra/widget::driver', 'placeholder.default');
+    }
+
+    /**
+     * Set the default driver.
+     *
+     * @param  string   $name
+     * @return void
+     */
+    public function setDefaultDriver($name)
+    {
+        $this->app['config']->set('orchestra/widget::driver', $name);
+    }
+
+    /**
+     * Get the selected driver and extend it via callback.
+     *
+     * @param  string   $name
+     * @param  \Closure $callback
+     * @return Factory
+     */
+    public function of($name, Closure $callback = null)
+    {
+        $instance = $this->make($name);
+
+        if ($instance instanceof Factory and ! is_null($callback)) {
+            call_user_func($callback, $instance);
+        }
+
+        return $instance;
     }
 }
