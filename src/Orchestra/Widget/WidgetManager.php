@@ -79,6 +79,11 @@ class WidgetManager extends Manager
      */
     public function of($name, Closure $callback = null)
     {
+        if ($name instanceof Closure) {
+            $callback = $name;
+            $name     = $this->getDefaultDriver();
+        }
+
         $instance = $this->make($name);
 
         if ($instance instanceof Factory and ! is_null($callback)) {
