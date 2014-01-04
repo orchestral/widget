@@ -2,6 +2,8 @@
 
 use Mockery as m;
 use Illuminate\Container\Container;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Fluent;
 use Orchestra\Widget\WidgetManager;
 
 class WidgetManagerTest extends \PHPUnit_Framework_TestCase
@@ -173,5 +175,34 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
     public function testMakeMethodThrowsException()
     {
         with(new WidgetManager($this->app))->make('foobar');
+    }
+
+    /**
+     * Test Orchestra\Widget\WidgetManager::of() method.
+     *
+     * @rest
+     */
+    public function testOfMethod()
+    {
+        $app = $this->app;
+        $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
+
+        $config->shouldReceive('get')->once()
+            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
+
+        $stub = with(new WidgetManager($app))->of('placeholder.foo', function ($p) {
+            $p->add('foobar')->value('Hello world');
+        });
+
+        $expected = new Collection(array(
+            'foobar' => new Fluent(array(
+                'id'     => 'foobar',
+                'value'  => 'Hello world',
+                'childs' => array(),
+            )),
+        ));
+
+        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
+        $this->assertEquals($expected, $stub->getItems());
     }
 }
