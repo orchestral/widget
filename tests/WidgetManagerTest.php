@@ -188,11 +188,11 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
-
-        $stub = with(new WidgetManager($app))->of('placeholder.foo', function ($p) {
-            $p->add('foobar')->value('Hello world');
-        });
+                ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array())
+            ->shouldReceive('get')->once()
+                ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array())
+            ->shouldReceive('get')->once()
+                ->with("orchestra/widget::driver", "placeholder.default")->andReturn("placeholder.default");
 
         $expected = new Collection(array(
             'foobar' => new Fluent(array(
@@ -202,7 +202,18 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
             )),
         ));
 
-        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
-        $this->assertEquals($expected, $stub->getItems());
+        $stub1 = with(new WidgetManager($app))->of('placeholder.foo', function ($p) {
+            $p->add('foobar')->value('Hello world');
+        });
+
+        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub1);
+        $this->assertEquals($expected, $stub1->getItems());
+
+        $stub2 = with(new WidgetManager($app))->of(function ($p) {
+            $p->add('foobar')->value('Hello world');
+        });
+
+        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub2);
+        $this->assertEquals($expected, $stub2->getItems());
     }
 }
