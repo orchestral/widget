@@ -86,7 +86,7 @@ class WidgetManager extends Manager
 
         $instance = $this->make($name);
 
-        if ($instance instanceof Factory and ! is_null($callback)) {
+        if ($instance instanceof Factory && ! is_null($callback)) {
             call_user_func($callback, $instance);
         }
 
