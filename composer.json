@@ -12,8 +12,8 @@
 		}
 	],
 	"autoload": {
-		"psr-0": {
-			"Orchestra\\Widget" : "src/"
+		"psr-4": {
+			"Orchestra\\Widget\\" : "src/Widget/"
 		}
 	},
 	"require": {
