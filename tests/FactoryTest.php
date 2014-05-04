@@ -37,7 +37,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $name->getValue($stub));
         $this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
         $this->assertEquals('stub', $type->getValue($stub));
-        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getIterator());
+        $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->getIterator());
         $this->assertEquals(0, count($stub));
     }
 
@@ -50,7 +50,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new FactoryStub('foo', array());
 
-        $this->assertInstanceOf('\Illuminate\Support\Collection', $stub->getItems());
+        $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->getItems());
         $this->assertNull($stub->is('foo'));
 
         $stub->add('foobar')->hello('world');

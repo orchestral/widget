@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\PaneWidgetHandler;
-use Illuminate\Support\Collection;
+use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class PaneWidgetHandlerTest extends \PHPUnit_Framework_TestCase
