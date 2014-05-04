@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\MenuWidgetHandler;
-use Illuminate\Support\Collection;
+use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase

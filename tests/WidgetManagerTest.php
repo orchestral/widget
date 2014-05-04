@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use Illuminate\Container\Container;
-use Illuminate\Support\Collection;
+use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
 use Orchestra\Widget\WidgetManager;
 

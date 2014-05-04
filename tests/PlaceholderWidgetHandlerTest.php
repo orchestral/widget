@@ -2,7 +2,7 @@
 
 use Mockery as m;
 use Orchestra\Widget\PlaceholderWidgetHandler;
-use Illuminate\Support\Collection;
+use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
 
 class PlaceholderWidgetHandlerTest extends \PHPUnit_Framework_TestCase
