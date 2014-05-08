@@ -20,7 +20,7 @@ To install through composer, simply put the following in your `composer.json` fi
 ```json
 {
 	"require": {
-		"orchestra/widget": "2.1.*"
+		"orchestra/widget": "2.2.*"
 	}
 }
 ```
@@ -39,4 +39,4 @@ Next add the service provider in `app/config/app.php`.
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/widget)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/widget/changes#v2-1)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/widget/changes#v2-2)
