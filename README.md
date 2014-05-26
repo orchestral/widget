@@ -9,7 +9,7 @@ Orchestra Platform Widget Component
 
 [![Latest Stable Version](https://poser.pugx.org/orchestra/widget/v/stable.png)](https://packagist.org/packages/orchestra/widget) 
 [![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads.png)](https://packagist.org/packages/orchestra/widget) 
-[![Build Status](https://travis-ci.org/orchestral/widget.png?branch=2.2)](https://travis-ci.org/orchestral/widget) 
+[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=2.2)](https://travis-ci.org/orchestral/widget) 
 [![Coverage Status](https://coveralls.io/repos/orchestral/widget/badge.png?branch=2.2)](https://coveralls.io/r/orchestral/widget?branch=2.2) 
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/widget/badges/quality-score.png?s=c45e8b240b7aedd08eaf70a0061c2b1d25c04f09)](https://scrutinizer-ci.com/g/orchestral/widget/) 
 
