@@ -2,7 +2,7 @@
 	"name": "orchestra/widget",
 	"description": "Orchestra Platform 2 Widget Component",
 	"homepage": "http://orchestraplatform.com/docs/latest/components/widget/",
-	"keywords": ["orchestra-platform", "orchestral", "laravel"],
+	"keywords": ["orchestra-platform", "orchestral", "laravel", "widget"],
 	"license": "MIT",
 	"authors": [
 		{
