@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Widget;
 
 use Closure;
+use Orchestra\Support\Str;
 
 class PlaceholderWidgetHandler extends Factory
 {
@@ -23,7 +24,7 @@ class PlaceholderWidgetHandler extends Factory
      */
     public function add($id, $location = '#', $callback = null)
     {
-        if (is_string($location) && starts_with($location, '^:')) {
+        if (is_string($location) && Str::startsWith($location, '^:')) {
             $location = '#';
         } elseif ($location instanceof Closure) {
             $callback = $location;
