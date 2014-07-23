@@ -1,5 +1,7 @@
 <?php namespace Orchestra\Widget;
 
+use Orchestra\Support\Str;
+
 class PaneWidgetHandler extends Factory
 {
     /**
@@ -24,7 +26,7 @@ class PaneWidgetHandler extends Factory
      */
     public function add($id, $location = '#', $callback = null)
     {
-        if (is_string($location) && starts_with($location, '^:')) {
+        if (is_string($location) && Str::startsWith($location, '^:')) {
             $location = '#';
         }
 
