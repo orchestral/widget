@@ -1,6 +1,6 @@
 {
 	"name": "orchestra/widget",
-	"description": "Orchestra Platform 2 Widget Component",
+	"description": "Widget Component for Orchestra Platform",
 	"homepage": "http://orchestraplatform.com/docs/latest/components/widget/",
 	"keywords": ["orchestra-platform", "orchestral", "laravel", "widget"],
 	"license": "MIT",
@@ -18,20 +18,20 @@
 	},
 	"require": {
 		"php": ">=5.4.0",
-		"orchestra/support": "2.3.*"
+		"orchestra/support": "3.0.*"
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "4.3.*",
-		"illuminate/support": "4.3.*"
+		"illuminate/container": "5.0.*",
+		"illuminate/support": "5.0.*"
 	},
 	"suggest": {
-		"laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform 2",
-		"orchestra/foundation": "Allow using orchestra/widget with Orchestra Platform 2"
+		"laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform",
+		"orchestra/foundation": "Allow using orchestra/widget with Orchestra Platform"
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "2.3-dev"
+			"dev-master": "3.0-dev"
 		}
 	},
 	"minimum-stability": "dev"
