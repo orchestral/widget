@@ -7,7 +7,7 @@ class WidgetServiceProvider extends ServiceProvider
     /**
      * Indicates if loading of the provider is deferred.
      *
-     * @var boolean
+     * @var bool
      */
     protected $defer = true;
 
@@ -30,7 +30,7 @@ class WidgetServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $path = realpath(__DIR__.'/../../');
+        $path = realpath(__DIR__.'/../');
 
         $this->package('orchestra/widget', 'orchestra/widget', $path);
     }
@@ -42,6 +42,6 @@ class WidgetServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array('orchestra.widget');
+        return ['orchestra.widget'];
     }
 }

@@ -10,14 +10,14 @@ class MenuWidgetHandler extends Factory
     /**
      * {@inheritdoc}
      */
-    protected $config = array(
-        'defaults' => array(
-            'attributes' => array(),
+    protected $config = [
+        'defaults' => [
+            'attributes' => [],
             'icon'       => '',
             'link'       => '#',
             'title'      => '',
-        ),
-    );
+        ],
+    ];
 
     /**
      * {@inheritdoc}

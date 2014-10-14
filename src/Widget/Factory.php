@@ -26,7 +26,7 @@ abstract class Factory implements Countable, IteratorAggregate
      *
      * @var array
      */
-    protected $config = array();
+    protected $config = [];
 
     /**
      * Type of widget.
@@ -41,7 +41,7 @@ abstract class Factory implements Countable, IteratorAggregate
      * @param  string  $name
      * @param  array   $config
      */
-    public function __construct($name, array $config = array())
+    public function __construct($name, array $config = [])
     {
         $this->config = array_merge($config, $this->config);
 
@@ -52,9 +52,9 @@ abstract class Factory implements Countable, IteratorAggregate
     /**
      * Add an item to current widget.
      *
-     * @param  string   $id
-     * @param  mixed    $location
-     * @param  \Closure $callback
+     * @param  string           $id
+     * @param  string|\Closure  $location
+     * @param  \Closure|null    $callback
      * @return mixed
      */
     abstract public function add($id, $location = 'parent', $callback = null);
@@ -62,9 +62,9 @@ abstract class Factory implements Countable, IteratorAggregate
     /**
      * Attach item to current widget.
      *
-     * @param  string   $id
-     * @param  mixed    $location
-     * @param  \Closure $callback
+     * @param  string           $id
+     * @param  string|\Closure  $location
+     * @param  \Closure|null    $callback
      * @return mixed
      */
     protected function addItem($id, $location = 'parent', $callback = null)
@@ -108,7 +108,7 @@ abstract class Factory implements Countable, IteratorAggregate
     /**
      * Get the number of items for the current page.
      *
-     * @return integer
+     * @return int
      */
     public function count()
     {

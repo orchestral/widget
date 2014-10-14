@@ -13,11 +13,11 @@ class PlaceholderWidgetHandler extends Factory
     /**
      * {@inheritdoc}
      */
-    protected $config = array(
-        'defaults' => array(
+    protected $config = [
+        'defaults' => [
             'value' => '',
-        ),
-    );
+        ],
+    ];
 
     /**
      * {@inheritdoc}

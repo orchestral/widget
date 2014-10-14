@@ -8,7 +8,7 @@ class WidgetManager extends Manager
     /**
      * {@inheritdoc}
      */
-    protected $blacklisted = array();
+    protected $blacklisted = [];
 
     /**
      * Create Menu driver.
@@ -18,7 +18,7 @@ class WidgetManager extends Manager
      */
     protected function createMenuDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::menu.{$name}", array());
+        $config = $this->app['config']->get("orchestra/widget::menu.{$name}", []);
 
         return new MenuWidgetHandler($name, $config);
     }
@@ -31,7 +31,7 @@ class WidgetManager extends Manager
      */
     protected function createPaneDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::pane.{$name}", array());
+        $config = $this->app['config']->get("orchestra/widget::pane.{$name}", []);
 
         return new PaneWidgetHandler($name, $config);
     }
@@ -44,7 +44,7 @@ class WidgetManager extends Manager
      */
     protected function createPlaceholderDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", array());
+        $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", []);
 
         return new PlaceholderWidgetHandler($name, $config);
     }
@@ -73,8 +73,8 @@ class WidgetManager extends Manager
     /**
      * Get the selected driver and extend it via callback.
      *
-     * @param  string   $name
-     * @param  \Closure $callback
+     * @param  string           $name
+     * @param  \Closure|null    $callback
      * @return Factory
      */
     public function of($name, Closure $callback = null)

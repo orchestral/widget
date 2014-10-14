@@ -12,14 +12,14 @@ class PaneWidgetHandler extends Factory
     /**
      * {@inheritdoc}
      */
-    protected $config = array(
-        'defaults' => array(
-            'attributes' => array(),
+    protected $config = [
+        'defaults' => [
+            'attributes' => [],
             'title'      => '',
             'content'    => '',
             'html'       => '',
-        ),
-    );
+        ],
+    ];
 
     /**
      * {@inheritdoc}
