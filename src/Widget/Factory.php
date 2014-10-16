@@ -98,11 +98,11 @@ abstract class Factory implements Countable, IteratorAggregate
      * Get all item from Nesty.
      *
      * @return array
-     * @see    \Orchestra\Support\Nesty::getItem()
+     * @see    \Orchestra\Support\Nesty::items()
      */
-    public function getItems()
+    public function items()
     {
-        return $this->nesty->getItems();
+        return $this->nesty->items();
     }
 
     /**
@@ -112,7 +112,7 @@ abstract class Factory implements Countable, IteratorAggregate
      */
     public function count()
     {
-        return $this->nesty->getItems()->count();
+        return $this->nesty->items()->count();
     }
 
     /**
@@ -122,6 +122,6 @@ abstract class Factory implements Countable, IteratorAggregate
      */
     public function getIterator()
     {
-        return $this->nesty->getItems();
+        return $this->nesty->items();
     }
 }
