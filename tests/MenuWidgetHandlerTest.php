@@ -85,6 +85,6 @@ class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase
             $item->title = 'hello world 2';
         });
 
-        $this->assertEquals($expected, $stub->getItems());
+        $this->assertEquals($expected, $stub->items());
     }
 }

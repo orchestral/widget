@@ -98,6 +98,6 @@ class PaneWidgetHandlerTest extends \PHPUnit_Framework_TestCase
 
         $stub->add('hello', '^:foo', $callback);
 
-        $this->assertEquals($expected, $stub->getItems());
+        $this->assertEquals($expected, $stub->items());
     }
 }

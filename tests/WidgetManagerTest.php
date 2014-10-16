@@ -207,13 +207,13 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
         });
 
         $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub1);
-        $this->assertEquals($expected, $stub1->getItems());
+        $this->assertEquals($expected, $stub1->items());
 
         $stub2 = with(new WidgetManager($app))->of(function ($p) {
             $p->add('foobar')->value('Hello world');
         });
 
         $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub2);
-        $this->assertEquals($expected, $stub2->getItems());
+        $this->assertEquals($expected, $stub2->items());
     }
 }

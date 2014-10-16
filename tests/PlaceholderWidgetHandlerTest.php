@@ -82,6 +82,6 @@ class PlaceholderWidgetHandlerTest extends \PHPUnit_Framework_TestCase
         $stub->add('foobar', '>:foo', $callback);
         $stub->add('hello', '^:foo', $callback);
 
-        $this->assertEquals($expected, $stub->getItems());
+        $this->assertEquals($expected, $stub->items());
     }
 }

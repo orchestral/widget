@@ -50,7 +50,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new FactoryStub('foo', array());
 
-        $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->getItems());
+        $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->items());
         $this->assertNull($stub->is('foo'));
 
         $stub->add('foobar')->hello('world');
