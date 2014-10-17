@@ -2,6 +2,9 @@
 
 use Closure;
 use Orchestra\Support\Manager;
+use Orchestra\Widget\Handlers\Menu;
+use Orchestra\Widget\Handlers\Pane;
+use Orchestra\Widget\Handlers\Placeholder;
 
 class WidgetManager extends Manager
 {
@@ -14,39 +17,39 @@ class WidgetManager extends Manager
      * Create Menu driver.
      *
      * @param  string   $name
-     * @return MenuWidgetHandler
+     * @return \Orchestra\Widget\Handlers\Menu
      */
     protected function createMenuDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::menu.{$name}", []);
 
-        return new MenuWidgetHandler($name, $config);
+        return new Menu($name, $config);
     }
 
     /**
      * Create Pane driver.
      *
      * @param  string   $name
-     * @return PaneWidgetHandler
+     * @return \Orchestra\Widget\Handlers\Pane
      */
     protected function createPaneDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::pane.{$name}", []);
 
-        return new PaneWidgetHandler($name, $config);
+        return new Pane($name, $config);
     }
 
     /**
      * Create Placeholder driver.
      *
      * @param  string   $name
-     * @return PlaceholderWidgetHandler
+     * @return \Orchestra\Widget\Handlers\Placeholder
      */
     protected function createPlaceholderDriver($name)
     {
         $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", []);
 
-        return new PlaceholderWidgetHandler($name, $config);
+        return new Placeholder($name, $config);
     }
 
     /**
@@ -75,7 +78,7 @@ class WidgetManager extends Manager
      *
      * @param  string           $name
      * @param  \Closure|null    $callback
-     * @return Factory
+     * @return \Orchestra\Widget\Handler
      */
     public function of($name, Closure $callback = null)
     {
@@ -86,7 +89,7 @@ class WidgetManager extends Manager
 
         $instance = $this->make($name);
 
-        if ($instance instanceof Factory && ! is_null($callback)) {
+        if ($instance instanceof Handler && ! is_null($callback)) {
             call_user_func($callback, $instance);
         }
 

@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\TestCase;
+<?php namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
-use Orchestra\Widget\MenuWidgetHandler;
-use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
+use Orchestra\Support\Collection;
+use Orchestra\Widget\Handlers\Menu;
 
-class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase
+class MenuTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -16,13 +16,13 @@ class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\MenuWidgetHandler
+     * Test construct a Orchestra\Widget\Handlers\Menu
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub   = new MenuWidgetHandler('foo', array());
+        $stub   = new Menu('foo', array());
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
         $name   = $refl->getProperty('name');
@@ -50,13 +50,13 @@ class MenuWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Orchestra\Widget\MenuWidgetHandler::add() method.
+     * Test Orchestra\Widget\Handlers\Menu::add() method.
      *
      * @test
      */
     public function testAddMethod()
     {
-        $stub = new MenuWidgetHandler('foo', array());
+        $stub = new Menu('foo', array());
 
         $expected = new Collection(array(
             'foo' => new Fluent(array(

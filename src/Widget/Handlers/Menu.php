@@ -1,6 +1,8 @@
-<?php namespace Orchestra\Widget;
+<?php namespace Orchestra\Widget\Handlers;
 
-class MenuWidgetHandler extends Factory
+use Orchestra\Widget\Handler;
+
+class Menu extends Handler
 {
     /**
      * {@inheritdoc}

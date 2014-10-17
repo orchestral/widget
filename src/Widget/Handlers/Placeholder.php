@@ -1,9 +1,10 @@
-<?php namespace Orchestra\Widget;
+<?php namespace Orchestra\Widget\Handlers;
 
 use Closure;
 use Orchestra\Support\Str;
+use Orchestra\Widget\Handler;
 
-class PlaceholderWidgetHandler extends Factory
+class Placeholder extends Handler
 {
     /**
      * {@inheritdoc}

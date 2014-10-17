@@ -1,9 +1,9 @@
 <?php namespace Orchestra\Widget\TestCase;
 
 use Mockery as m;
-use Illuminate\Container\Container;
-use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
+use Orchestra\Support\Collection;
+use Illuminate\Container\Container;
 use Orchestra\Widget\WidgetManager;
 
 class WidgetManagerTest extends \PHPUnit_Framework_TestCase
@@ -88,7 +88,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('menu.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\MenuWidgetHandler', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', $stub);
 
         with(new WidgetManager($app))->make('menu.foo.bar');
     }
@@ -108,7 +108,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('pane.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\PaneWidgetHandler', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Pane', $stub);
     }
 
     /**
@@ -126,7 +126,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->make('placeholder.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub);
     }
 
     /**
@@ -146,7 +146,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $stub = with(new WidgetManager($app))->driver();
 
-        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub);
     }
 
     /**
@@ -206,14 +206,14 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
             $p->add('foobar')->value('Hello world');
         });
 
-        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub1);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub1);
         $this->assertEquals($expected, $stub1->items());
 
         $stub2 = with(new WidgetManager($app))->of(function ($p) {
             $p->add('foobar')->value('Hello world');
         });
 
-        $this->assertInstanceOf('\Orchestra\Widget\PlaceholderWidgetHandler', $stub2);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub2);
         $this->assertEquals($expected, $stub2->items());
     }
 }

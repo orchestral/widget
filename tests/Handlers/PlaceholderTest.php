@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\TestCase;
+<?php namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
-use Orchestra\Widget\PlaceholderWidgetHandler;
-use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
+use Orchestra\Support\Collection;
+use Orchestra\Widget\Handlers\Placeholder;
 
-class PlaceholderWidgetHandlerTest extends \PHPUnit_Framework_TestCase
+class PlaceholderTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -16,13 +16,13 @@ class PlaceholderWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Drivers\PlaceholderWidgetHandler
+     * Test construct a Orchestra\Widget\Drivers\Handlers\Placeholder
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub = new PlaceholderWidgetHandler('foo', array());
+        $stub = new Placeholder('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -48,13 +48,13 @@ class PlaceholderWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Orchestra\Widget\PlaceholderWidgetHandler::add() method.
+     * Test Orchestra\Widget\Handlers\Placeholder::add() method.
      *
      * @test
      */
     public function testAddMethod()
     {
-        $stub = new PlaceholderWidgetHandler('foo', array());
+        $stub = new Placeholder('foo', array());
 
         $callback = function () {
             return 'hello world';

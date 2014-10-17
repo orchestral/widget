@@ -1,11 +1,11 @@
-<?php namespace Orchestra\Widget\TestCase;
+<?php namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
-use Orchestra\Widget\PaneWidgetHandler;
-use Orchestra\Support\Collection;
 use Illuminate\Support\Fluent;
+use Orchestra\Support\Collection;
+use Orchestra\Widget\Handlers\Pane;
 
-class PaneWidgetHandlerTest extends \PHPUnit_Framework_TestCase
+class PaneTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -16,13 +16,13 @@ class PaneWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\PaneWidgetHandler
+     * Test construct a Orchestra\Widget\Handlers\Pane
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub   = new PaneWidgetHandler('foo', array());
+        $stub   = new Pane('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -51,13 +51,13 @@ class PaneWidgetHandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Orchestra\Widget\PaneWidgetHandler::add() method.
+     * Test Orchestra\Widget\Handlers\Pane::add() method.
      *
      * @test
      */
     public function testAddMethod()
     {
-        $stub = new PaneWidgetHandler('foo', array());
+        $stub = new Pane('foo', array());
 
         $expected = new Collection(array(
             'foo' => new Fluent(array(

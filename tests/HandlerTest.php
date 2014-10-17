@@ -1,9 +1,11 @@
 <?php namespace Orchestra\Widget\TestCase;
 
+use Closure;
 use Mockery as m;
+use Orchestra\Widget\Handler;
 use Illuminate\Support\Fluent;
 
-class DriverTest extends \PHPUnit_Framework_TestCase
+class HandlerTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Teardown the test environment.
@@ -14,13 +16,13 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Drivers\Driver
+     * Test construct a Orchestra\Widget\Handler
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub = new FactoryStub('foo', array());
+        $stub = new HandlerStub('foo', array());
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -42,13 +44,13 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test Orchestra\Widget\Drivers\Driver::getItem() method.
+     * Test Orchestra\Widget\Handler::items() method.
      *
      * @test
      */
-    public function testGetItemMethod()
+    public function testItemsMethod()
     {
-        $stub = new FactoryStub('foo', array());
+        $stub = new HandlerStub('foo', array());
 
         $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->items());
         $this->assertNull($stub->is('foo'));
@@ -64,7 +66,7 @@ class DriverTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class FactoryStub extends \Orchestra\Widget\Factory
+class HandlerStub extends Handler
 {
     protected $type   = 'stub';
     protected $config = array();
@@ -73,7 +75,7 @@ class FactoryStub extends \Orchestra\Widget\Factory
     {
         $item = $this->nesty->add($id, $location ?: 'parent');
 
-        if ($callback instanceof \Closure) {
+        if ($callback instanceof Closure) {
             call_user_func($callback, $item);
         }
 

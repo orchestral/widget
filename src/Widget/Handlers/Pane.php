@@ -1,8 +1,9 @@
-<?php namespace Orchestra\Widget;
+<?php namespace Orchestra\Widget\Handlers;
 
 use Orchestra\Support\Str;
+use Orchestra\Widget\Handler;
 
-class PaneWidgetHandler extends Factory
+class Pane extends Handler
 {
     /**
      * {@inheritdoc}

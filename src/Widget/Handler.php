@@ -5,7 +5,7 @@ use Countable;
 use IteratorAggregate;
 use Orchestra\Support\Nesty;
 
-abstract class Factory implements Countable, IteratorAggregate
+abstract class Handler implements Countable, IteratorAggregate
 {
     /**
      * Nesty instance.
