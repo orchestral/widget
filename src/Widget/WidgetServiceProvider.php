@@ -1,6 +1,6 @@
 <?php namespace Orchestra\Widget;
 
-use Illuminate\Support\ServiceProvider;
+use Orchestra\Support\Providers\ServiceProvider;
 
 class WidgetServiceProvider extends ServiceProvider
 {
@@ -18,7 +18,7 @@ class WidgetServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bindShared('orchestra.widget', function ($app) {
+        $this->app->singleton('orchestra.widget', function ($app) {
             return new WidgetManager($app);
         });
     }
@@ -32,7 +32,7 @@ class WidgetServiceProvider extends ServiceProvider
     {
         $path = realpath(__DIR__.'/../');
 
-        $this->package('orchestra/widget', 'orchestra/widget', $path);
+        $this->addConfigComponent('orchestra/widget', 'orchestra/widget', $path.'/config');
     }
 
     /**
