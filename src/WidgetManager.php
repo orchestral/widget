@@ -16,7 +16,7 @@ class WidgetManager extends Manager
     /**
      * Create Menu driver.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return \Orchestra\Widget\Handlers\Menu
      */
     protected function createMenuDriver($name)
@@ -29,7 +29,7 @@ class WidgetManager extends Manager
     /**
      * Create Pane driver.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return \Orchestra\Widget\Handlers\Pane
      */
     protected function createPaneDriver($name)
@@ -42,7 +42,7 @@ class WidgetManager extends Manager
     /**
      * Create Placeholder driver.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return \Orchestra\Widget\Handlers\Placeholder
      */
     protected function createPlaceholderDriver($name)
@@ -65,7 +65,7 @@ class WidgetManager extends Manager
     /**
      * Set the default driver.
      *
-     * @param  string   $name
+     * @param  string  $name
      * @return void
      */
     public function setDefaultDriver($name)
@@ -76,8 +76,8 @@ class WidgetManager extends Manager
     /**
      * Get the selected driver and extend it via callback.
      *
-     * @param  string           $name
-     * @param  \Closure|null    $callback
+     * @param  string  $name
+     * @param  \Closure|null  $callback
      * @return \Orchestra\Widget\Handler
      */
     public function of($name, Closure $callback = null)
