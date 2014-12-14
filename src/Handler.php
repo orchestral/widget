@@ -86,7 +86,18 @@ abstract class Handler implements Countable, IteratorAggregate
     /**
      * Get an instance of item from current widget.
      *
-     * @param  string   $id
+     * @param  string  $id
+     * @return mixed
+     */
+    public function has($id)
+    {
+        return $this->nesty->has($id);
+    }
+
+    /**
+     * Get if the instance has an item.
+     *
+     * @param  string  $id
      * @return mixed
      */
     public function is($id)
