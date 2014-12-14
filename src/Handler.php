@@ -52,9 +52,9 @@ abstract class Handler implements Countable, IteratorAggregate
     /**
      * Add an item to current widget.
      *
-     * @param  string           $id
+     * @param  string  $id
      * @param  string|\Closure  $location
-     * @param  \Closure|null    $callback
+     * @param  \Closure|null  $callback
      * @return mixed
      */
     abstract public function add($id, $location = 'parent', $callback = null);
@@ -109,7 +109,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * Get all item from Nesty.
      *
      * @return array
-     * @see    \Orchestra\Support\Nesty::items()
+     * @see \Orchestra\Support\Nesty::items()
      */
     public function items()
     {
