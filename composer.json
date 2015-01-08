@@ -22,8 +22,7 @@
 	},
 	"require-dev": {
 		"mockery/mockery": "0.9.*",
-		"illuminate/container": "5.0.*",
-		"illuminate/support": "5.0.*"
+		"illuminate/container": "5.0.*"
 	},
 	"suggest": {
 		"laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform",
