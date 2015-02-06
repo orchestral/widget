@@ -7,13 +7,29 @@ Orchestra Platform Widget Component
 * **Pane** to manage dashboard items.
 * **Placeholder** to manage sidebar widgets.
 
-[![Latest Stable Version](https://poser.pugx.org/orchestra/widget/v/stable.png)](https://packagist.org/packages/orchestra/widget) 
-[![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads.png)](https://packagist.org/packages/orchestra/widget) 
-[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=2.2)](https://travis-ci.org/orchestral/widget) 
-[![Coverage Status](https://coveralls.io/repos/orchestral/widget/badge.png?branch=2.2)](https://coveralls.io/r/orchestral/widget?branch=2.2) 
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/orchestral/widget/badges/quality-score.png?s=c45e8b240b7aedd08eaf70a0061c2b1d25c04f09)](https://scrutinizer-ci.com/g/orchestral/widget/) 
+[![Latest Stable Version](https://img.shields.io/github/release/orchestral/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
+[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
+[![MIT License](https://img.shields.io/packagist/l/orchestra/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
+[![Build Status](https://img.shields.io/travis/orchestral/widget/2.2.svg?style=flat)](https://travis-ci.org/orchestral/widget)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/widget/2.2.svg?style=flat)](https://coveralls.io/r/orchestral/widget?branch=2.2)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/widget/2.2.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/widget/)
 
-## Quick Installation
+## Table of Content
+
+* [Version Compatibility](#version-compatibility)
+* [Installation](#installation)
+* [Configuration](#configuration)
+* [Resources](#resources)
+
+## Version Compatibility
+
+Laravel    | Widget
+:----------|:----------
+ 4.0.x     | 2.0.x
+ 4.1.x     | 2.1.x
+ 4.2.x     | 2.2.x
+
+## Installation
 
 To install through composer, simply put the following in your `composer.json` file:
 
@@ -25,15 +41,25 @@ To install through composer, simply put the following in your `composer.json` fi
 }
 ```
 
-Next add the service provider in `app/config/app.php`.
+And then run `composer install` from the terminal.
+
+### Quick Installation
+
+Above installation can also be simplify by using the following command:
+
+    composer require "orchestra/widget=2.2.*"
+
+## Configuration
+
+Add following service providers in `app/config/app.php`.
 
 ```php
-'providers' => array(
+'providers' => [
 
 	// ...
 
 	'Orchestra\Widget\WidgetServiceProvider',
-),
+],
 ```
 
 ## Resources
