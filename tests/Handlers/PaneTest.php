@@ -16,13 +16,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Handlers\Pane
+     * Test construct a Orchestra\Widget\Handlers\Pane.
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub   = new Pane('foo', array());
+        $stub   = new Pane('foo', []);
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -35,14 +35,14 @@ class PaneTest extends \PHPUnit_Framework_TestCase
         $nesty->setAccessible(true);
         $type->setAccessible(true);
 
-        $expected = array(
-            'defaults' => array(
-                'attributes' => array(),
+        $expected = [
+            'defaults' => [
+                'attributes' => [],
                 'title'      => '',
                 'content'    => '',
                 'html'       => '',
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $config->getValue($stub));
         $this->assertEquals('foo', $name->getValue($stub));
@@ -57,34 +57,34 @@ class PaneTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMethod()
     {
-        $stub = new Pane('foo', array());
+        $stub = new Pane('foo', []);
 
-        $expected = new Collection(array(
-            'foo' => new Fluent(array(
-                'attributes' => array(),
+        $expected = new Collection([
+            'foo' => new Fluent([
+                'attributes' => [],
                 'title'      => '',
                 'content'    => 'hello world',
                 'html'       => '',
                 'id'         => 'foo',
-                'childs'     => array(),
-            )),
-            'foobar' => new Fluent(array(
-                'attributes' => array(),
+                'childs'     => [],
+            ]),
+            'foobar' => new Fluent([
+                'attributes' => [],
                 'title'      => 'hello world',
                 'content'    => '',
                 'html'       => '',
                 'id'         => 'foobar',
-                'childs'     => array(),
-            )),
-            'hello' => new Fluent(array(
-                'attributes' => array(),
+                'childs'     => [],
+            ]),
+            'hello' => new Fluent([
+                'attributes' => [],
                 'title'      => 'hello world',
                 'content'    => '',
                 'html'       => '',
                 'id'         => 'hello',
-                'childs'     => array(),
-            )),
-        ));
+                'childs'     => [],
+            ]),
+        ]);
 
         $callback = function ($item) {
             $item->title('hello world');

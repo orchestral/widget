@@ -16,13 +16,13 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Handler
+     * Test construct a Orchestra\Widget\Handler.
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub = new HandlerStub('foo', array());
+        $stub = new HandlerStub('foo', []);
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -35,7 +35,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
         $nesty->setAccessible(true);
         $type->setAccessible(true);
 
-        $this->assertEquals(array(), $config->getValue($stub));
+        $this->assertEquals([], $config->getValue($stub));
         $this->assertEquals('foo', $name->getValue($stub));
         $this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
         $this->assertEquals('stub', $type->getValue($stub));
@@ -50,17 +50,17 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
      */
     public function testItemsMethod()
     {
-        $stub = new HandlerStub('foo', array());
+        $stub = new HandlerStub('foo', []);
 
         $this->assertInstanceOf('\Orchestra\Support\Collection', $stub->items());
         $this->assertNull($stub->is('foo'));
 
         $stub->add('foobar')->hello('world');
-        $expected = new Fluent(array(
+        $expected = new Fluent([
             'id'     => 'foobar',
             'hello'  => 'world',
-            'childs' => array(),
-        ));
+            'childs' => [],
+        ]);
 
         $this->assertEquals($expected, $stub->is('foobar'));
     }
@@ -69,7 +69,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 class HandlerStub extends Handler
 {
     protected $type   = 'stub';
-    protected $config = array();
+    protected $config = [];
 
     public function add($id, $location = 'parent', $callback = null)
     {

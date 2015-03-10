@@ -16,13 +16,13 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Drivers\Handlers\Placeholder
+     * Test construct a Orchestra\Widget\Drivers\Handlers\Placeholder.
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub = new Placeholder('foo', array());
+        $stub = new Placeholder('foo', []);
 
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
@@ -35,11 +35,11 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
         $nesty->setAccessible(true);
         $type->setAccessible(true);
 
-        $expected = array(
-            'defaults' => array(
+        $expected = [
+            'defaults' => [
                 'value' => '',
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $config->getValue($stub));
         $this->assertEquals('foo', $name->getValue($stub));
@@ -54,29 +54,29 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMethod()
     {
-        $stub = new Placeholder('foo', array());
+        $stub = new Placeholder('foo', []);
 
         $callback = function () {
             return 'hello world';
         };
 
-        $expected = new Collection(array(
-            'foo' => new Fluent(array(
+        $expected = new Collection([
+            'foo' => new Fluent([
                 'value'  => $callback,
                 'id'     => 'foo',
-                'childs' => array(),
-            )),
-            'foobar' => new Fluent(array(
+                'childs' => [],
+            ]),
+            'foobar' => new Fluent([
                 'value'  => $callback,
                 'id'     => 'foobar',
-                'childs' => array(),
-            )),
-            'hello' => new Fluent(array(
+                'childs' => [],
+            ]),
+            'hello' => new Fluent([
                 'value'  => $callback,
                 'id'     => 'hello',
-                'childs' => array(),
-            )),
-        ));
+                'childs' => [],
+            ]),
+        ]);
 
         $stub->add('foo', $callback);
         $stub->add('foobar', '>:foo', $callback);

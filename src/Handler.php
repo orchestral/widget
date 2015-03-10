@@ -55,6 +55,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * @param  string  $id
      * @param  string|\Closure  $location
      * @param  \Closure|null  $callback
+     *
      * @return mixed
      */
     abstract public function add($id, $location = 'parent', $callback = null);
@@ -65,6 +66,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * @param  string           $id
      * @param  string|\Closure  $location
      * @param  \Closure|null    $callback
+     *
      * @return mixed
      */
     protected function addItem($id, $location = 'parent', $callback = null)
@@ -87,6 +89,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * Get an instance of item from current widget.
      *
      * @param  string  $id
+     *
      * @return mixed
      */
     public function has($id)
@@ -98,6 +101,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * Get if the instance has an item.
      *
      * @param  string  $id
+     *
      * @return mixed
      */
     public function is($id)
@@ -109,6 +113,7 @@ abstract class Handler implements Countable, IteratorAggregate
      * Get all item from Nesty.
      *
      * @return array
+     *
      * @see \Orchestra\Support\Nesty::items()
      */
     public function items()
