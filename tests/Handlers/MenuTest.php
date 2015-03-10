@@ -16,13 +16,13 @@ class MenuTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test construct a Orchestra\Widget\Handlers\Menu
+     * Test construct a Orchestra\Widget\Handlers\Menu.
      *
      * @test
      */
     public function testConstructMethod()
     {
-        $stub   = new Menu('foo', array());
+        $stub   = new Menu('foo', []);
         $refl   = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
         $name   = $refl->getProperty('name');
@@ -34,14 +34,14 @@ class MenuTest extends \PHPUnit_Framework_TestCase
         $nesty->setAccessible(true);
         $type->setAccessible(true);
 
-        $expected = array(
-            'defaults' => array(
-                'attributes' => array(),
+        $expected = [
+            'defaults' => [
+                'attributes' => [],
                 'icon'       => '',
                 'link'       => '#',
                 'title'      => '',
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $config->getValue($stub));
         $this->assertEquals('foo', $name->getValue($stub));
@@ -56,26 +56,26 @@ class MenuTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddMethod()
     {
-        $stub = new Menu('foo', array());
+        $stub = new Menu('foo', []);
 
-        $expected = new Collection(array(
-            'foo' => new Fluent(array(
-                'attributes' => array(),
-                'childs'     => array(),
+        $expected = new Collection([
+            'foo' => new Fluent([
+                'attributes' => [],
+                'childs'     => [],
                 'icon'       => '',
                 'id'         => 'foo',
                 'link'       => '#',
                 'title'      => 'hello world',
-            )),
-            'foobar' => new Fluent(array(
-                'attributes' => array(),
-                'childs'     => array(),
+            ]),
+            'foobar' => new Fluent([
+                'attributes' => [],
+                'childs'     => [],
                 'icon'       => '',
                 'id'         => 'foobar',
                 'link'       => '#',
                 'title'      => 'hello world 2',
-            )),
-        ));
+            ]),
+        ]);
 
         $stub->add('foo', function ($item) {
             $item->title = 'hello world';

@@ -20,7 +20,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $this->app = new Container;
+        $this->app = new Container();
     }
 
     /**
@@ -60,11 +60,11 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
         $stub = new WidgetManager($this->app);
         $stub->extend('foo', $callback);
 
-        $refl = new \ReflectionObject($stub);
+        $refl           = new \ReflectionObject($stub);
         $customCreators = $refl->getProperty('customCreators');
         $customCreators->setAccessible(true);
 
-        $this->assertEquals(array('foo' => $callback), $customCreators->getValue($stub));
+        $this->assertEquals(['foo' => $callback], $customCreators->getValue($stub));
 
         $output = $stub->make('foo');
 
@@ -78,13 +78,13 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForMenu()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-                ->with("orchestra/widget::menu.foo", m::any())->andReturn(array())
+                ->with("orchestra/widget::menu.foo", m::any())->andReturn([])
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::menu.foo.bar", m::any())->andReturn(array());
+                ->with("orchestra/widget::menu.foo.bar", m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('menu.foo');
 
@@ -100,11 +100,11 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForPane()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::pane.foo", m::any())->andReturn(array());
+            ->with("orchestra/widget::pane.foo", m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('pane.foo');
 
@@ -118,11 +118,11 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForPlaceholder()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array());
+            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('placeholder.foo');
 
@@ -136,13 +136,13 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForDefaultDriver()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
                 ->with("orchestra/widget::driver", 'placeholder.default')->andReturn('placeholder.default')
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array());
+                ->with("orchestra/widget::placeholder.default", m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->driver();
 
@@ -156,7 +156,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDefaultDriverMethod()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('set')->once()
@@ -184,23 +184,23 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testOfMethod()
     {
-        $app = $this->app;
+        $app           = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.foo", m::any())->andReturn(array())
+                ->with("orchestra/widget::placeholder.foo", m::any())->andReturn([])
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.default", m::any())->andReturn(array())
+                ->with("orchestra/widget::placeholder.default", m::any())->andReturn([])
             ->shouldReceive('get')->once()
                 ->with("orchestra/widget::driver", "placeholder.default")->andReturn("placeholder.default");
 
-        $expected = new Collection(array(
-            'foobar' => new Fluent(array(
+        $expected = new Collection([
+            'foobar' => new Fluent([
                 'id'     => 'foobar',
                 'value'  => 'Hello world',
-                'childs' => array(),
-            )),
-        ));
+                'childs' => [],
+            ]),
+        ]);
 
         $stub1 = with(new WidgetManager($app))->of('placeholder.foo', function ($p) {
             $p->add('foobar')->value('Hello world');
