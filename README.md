@@ -10,9 +10,9 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 [![Latest Stable Version](https://img.shields.io/github/release/orchestral/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
 [![Total Downloads](https://img.shields.io/packagist/dt/orchestra/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
 [![MIT License](https://img.shields.io/packagist/l/orchestra/widget.svg?style=flat)](https://packagist.org/packages/orchestra/widget)
-[![Build Status](https://img.shields.io/travis/orchestral/widget/3.1.svg?style=flat)](https://travis-ci.org/orchestral/widget)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/widget/3.1.svg?style=flat)](https://coveralls.io/r/orchestral/widget?branch=3.1)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/widget/3.1.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/widget/)
+[![Build Status](https://img.shields.io/travis/orchestral/widget/master.svg?style=flat)](https://travis-ci.org/orchestral/widget)
+[![Coverage Status](https://img.shields.io/coveralls/orchestral/widget/master.svg?style=flat)](https://coveralls.io/r/orchestral/widget?branch=master)
+[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/widget/master.svg?style=flat)](https://scrutinizer-ci.com/g/orchestral/widget/)
 
 ## Table of Content
 
