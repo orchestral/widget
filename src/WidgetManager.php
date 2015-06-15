@@ -22,7 +22,7 @@ class WidgetManager extends Manager
      */
     protected function createMenuDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::menu.{$name}", []);
+        $config = $this->app->make('config')->get("orchestra/widget::menu.{$name}", []);
 
         return new Menu($name, $config);
     }
@@ -36,7 +36,7 @@ class WidgetManager extends Manager
      */
     protected function createPaneDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::pane.{$name}", []);
+        $config = $this->app->make('config')->get("orchestra/widget::pane.{$name}", []);
 
         return new Pane($name, $config);
     }
@@ -50,7 +50,7 @@ class WidgetManager extends Manager
      */
     protected function createPlaceholderDriver($name)
     {
-        $config = $this->app['config']->get("orchestra/widget::placeholder.{$name}", []);
+        $config = $this->app->make('config')->get("orchestra/widget::placeholder.{$name}", []);
 
         return new Placeholder($name, $config);
     }
@@ -62,7 +62,7 @@ class WidgetManager extends Manager
      */
     public function getDefaultDriver()
     {
-        return $this->app['config']->get('orchestra/widget::driver', 'placeholder.default');
+        return $this->app->make('config')->get('orchestra/widget::driver', 'placeholder.default');
     }
 
     /**
@@ -74,7 +74,7 @@ class WidgetManager extends Manager
      */
     public function setDefaultDriver($name)
     {
-        $this->app['config']->set('orchestra/widget::driver', $name);
+        $this->app->make('config')->set('orchestra/widget::driver', $name);
     }
 
     /**
