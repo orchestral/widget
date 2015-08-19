@@ -1,37 +1,37 @@
 {
-	"name": "orchestra/widget",
-	"description": "Widget Component for Orchestra Platform",
-	"homepage": "http://orchestraplatform.com/docs/latest/components/widget/",
-	"keywords": ["orchestra-platform", "orchestral", "laravel", "widget"],
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Mior Muhammad Zaki",
-			"email": "crynobone@gmail.com",
-			"homepage": "https://github.com/crynobone"
-		}
-	],
-	"autoload": {
-		"psr-4": {
-			"Orchestra\\Widget\\" : "src/"
-		}
-	},
-	"require": {
-		"php": ">=5.5.0",
-		"orchestra/support": "~3.1.0"
-	},
-	"require-dev": {
-		"mockery/mockery": "0.9.*",
-		"illuminate/container": "~5.1.0"
-	},
-	"suggest": {
-		"laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform (~5.1).",
-		"orchestra/foundation": "Allow using orchestra/widget with Orchestra Platform (~3.1)."
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-master": "3.2-dev"
-		}
-	},
-	"minimum-stability": "dev"
+    "name": "orchestra/widget",
+    "description": "Widget Component for Orchestra Platform",
+    "homepage": "http://orchestraplatform.com/docs/latest/components/widget/",
+    "keywords": ["orchestra-platform", "orchestral", "laravel", "widget"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mior Muhammad Zaki",
+            "email": "crynobone@gmail.com",
+            "homepage": "https://github.com/crynobone"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Orchestra\\Widget\\" : "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "orchestra/support": "~3.1.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "illuminate/container": "~5.1.0"
+    },
+    "suggest": {
+        "laravel/framework": "Allow using orchestra/widget component outside of Orchestra Platform (~5.1).",
+        "orchestra/foundation": "Allow using orchestra/widget with Orchestra Platform (~3.1)."
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.2-dev"
+        }
+    },
+    "minimum-stability": "dev"
 }
