@@ -63,7 +63,7 @@ Add following service providers in `config/app.php`.
 
 	// ...
 
-	'Orchestra\Widget\WidgetServiceProvider',
+	Orchestra\Widget\WidgetServiceProvider::class,
 ],
 ```
 
