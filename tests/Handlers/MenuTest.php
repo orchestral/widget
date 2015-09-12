@@ -22,12 +22,12 @@ class MenuTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $stub   = new Menu('foo', []);
-        $refl   = new \ReflectionObject($stub);
+        $stub = new Menu('foo', []);
+        $refl = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
-        $name   = $refl->getProperty('name');
-        $nesty  = $refl->getProperty('nesty');
-        $type   = $refl->getProperty('type');
+        $name = $refl->getProperty('name');
+        $nesty = $refl->getProperty('nesty');
+        $type = $refl->getProperty('type');
 
         $config->setAccessible(true);
         $name->setAccessible(true);
@@ -35,13 +35,13 @@ class MenuTest extends \PHPUnit_Framework_TestCase
         $type->setAccessible(true);
 
         $expected = [
-            'fluent'   => Fluent::class,
+            'fluent' => Fluent::class,
             'defaults' => [
                 'attributes' => [],
-                'icon'       => '',
-                'link'       => '#',
-                'title'      => '',
-                'handles'    => null,
+                'icon' => '',
+                'link' => '#',
+                'title' => '',
+                'handles' => null,
             ],
         ];
 
@@ -63,21 +63,21 @@ class MenuTest extends \PHPUnit_Framework_TestCase
         $expected = new Collection([
             'foo' => new Fluent([
                 'attributes' => [],
-                'childs'     => [],
-                'icon'       => '',
-                'id'         => 'foo',
-                'link'       => '#',
-                'title'      => 'hello world',
-                'handles'    => null,
+                'childs' => [],
+                'icon' => '',
+                'id' => 'foo',
+                'link' => '#',
+                'title' => 'hello world',
+                'handles' => null,
             ]),
             'foobar' => new Fluent([
                 'attributes' => [],
-                'childs'     => [],
-                'icon'       => '',
-                'id'         => 'foobar',
-                'link'       => '#',
-                'title'      => 'hello world 2',
-                'handles'    => null,
+                'childs' => [],
+                'icon' => '',
+                'id' => 'foobar',
+                'link' => '#',
+                'title' => 'hello world 2',
+                'handles' => null,
             ]),
         ]);
 

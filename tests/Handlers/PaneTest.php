@@ -22,13 +22,13 @@ class PaneTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructMethod()
     {
-        $stub   = new Pane('foo', []);
+        $stub = new Pane('foo', []);
 
-        $refl   = new \ReflectionObject($stub);
+        $refl = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
-        $name   = $refl->getProperty('name');
-        $nesty  = $refl->getProperty('nesty');
-        $type   = $refl->getProperty('type');
+        $name = $refl->getProperty('name');
+        $nesty = $refl->getProperty('nesty');
+        $type = $refl->getProperty('type');
 
         $config->setAccessible(true);
         $name->setAccessible(true);
@@ -38,9 +38,9 @@ class PaneTest extends \PHPUnit_Framework_TestCase
         $expected = [
             'defaults' => [
                 'attributes' => [],
-                'title'      => '',
-                'content'    => '',
-                'html'       => '',
+                'title' => '',
+                'content' => '',
+                'html' => '',
             ],
         ];
 
@@ -62,27 +62,27 @@ class PaneTest extends \PHPUnit_Framework_TestCase
         $expected = new Collection([
             'foo' => new Fluent([
                 'attributes' => [],
-                'title'      => '',
-                'content'    => 'hello world',
-                'html'       => '',
-                'id'         => 'foo',
-                'childs'     => [],
+                'title' => '',
+                'content' => 'hello world',
+                'html' => '',
+                'id' => 'foo',
+                'childs' => [],
             ]),
             'foobar' => new Fluent([
                 'attributes' => [],
-                'title'      => 'hello world',
-                'content'    => '',
-                'html'       => '',
-                'id'         => 'foobar',
-                'childs'     => [],
+                'title' => 'hello world',
+                'content' => '',
+                'html' => '',
+                'id' => 'foobar',
+                'childs' => [],
             ]),
             'hello' => new Fluent([
                 'attributes' => [],
-                'title'      => 'hello world',
-                'content'    => '',
-                'html'       => '',
-                'id'         => 'hello',
-                'childs'     => [],
+                'title' => 'hello world',
+                'content' => '',
+                'html' => '',
+                'id' => 'hello',
+                'childs' => [],
             ]),
         ]);
 

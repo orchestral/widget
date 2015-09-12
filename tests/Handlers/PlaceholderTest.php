@@ -24,11 +24,11 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new Placeholder('foo', []);
 
-        $refl   = new \ReflectionObject($stub);
+        $refl = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
-        $name   = $refl->getProperty('name');
-        $nesty  = $refl->getProperty('nesty');
-        $type   = $refl->getProperty('type');
+        $name = $refl->getProperty('name');
+        $nesty = $refl->getProperty('nesty');
+        $type = $refl->getProperty('type');
 
         $config->setAccessible(true);
         $name->setAccessible(true);
@@ -62,18 +62,18 @@ class PlaceholderTest extends \PHPUnit_Framework_TestCase
 
         $expected = new Collection([
             'foo' => new Fluent([
-                'value'  => $callback,
-                'id'     => 'foo',
+                'value' => $callback,
+                'id' => 'foo',
                 'childs' => [],
             ]),
             'foobar' => new Fluent([
-                'value'  => $callback,
-                'id'     => 'foobar',
+                'value' => $callback,
+                'id' => 'foobar',
                 'childs' => [],
             ]),
             'hello' => new Fluent([
-                'value'  => $callback,
-                'id'     => 'hello',
+                'value' => $callback,
+                'id' => 'hello',
                 'childs' => [],
             ]),
         ]);
