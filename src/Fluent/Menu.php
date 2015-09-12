@@ -24,6 +24,6 @@ class Menu extends Fluent
     {
         $link = $this->get('link');
 
-        return (! empty($link) && $link != '#');
+        return ! (empty($link) || $link == '#');
     }
 }
