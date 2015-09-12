@@ -16,11 +16,10 @@ class Menu extends Handler
     protected $config = [
         'fluent'   => Fluent::class,
         'defaults' => [
-            'attributes' => [],
-            'icon'       => '',
-            'link'       => '#',
-            'title'      => '',
-            'handles'    => null,
+            'icon'    => '',
+            'link'    => '#',
+            'title'   => '',
+            'handles' => null,
         ],
     ];
 

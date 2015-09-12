@@ -60,7 +60,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
         $stub = new WidgetManager($this->app);
         $stub->extend('foo', $callback);
 
-        $refl           = new \ReflectionObject($stub);
+        $refl = new \ReflectionObject($stub);
         $customCreators = $refl->getProperty('customCreators');
         $customCreators->setAccessible(true);
 
@@ -78,7 +78,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForMenu()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
@@ -100,7 +100,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForPane()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
@@ -118,7 +118,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForPlaceholder()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
@@ -136,7 +136,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testMakeMethodForDefaultDriver()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
@@ -156,7 +156,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDefaultDriverMethod()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('set')->once()
@@ -184,7 +184,7 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
      */
     public function testOfMethod()
     {
-        $app           = $this->app;
+        $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
@@ -196,8 +196,8 @@ class WidgetManagerTest extends \PHPUnit_Framework_TestCase
 
         $expected = new Collection([
             'foobar' => new Fluent([
-                'id'     => 'foobar',
-                'value'  => 'Hello world',
+                'id' => 'foobar',
+                'value' => 'Hello world',
                 'childs' => [],
             ]),
         ]);

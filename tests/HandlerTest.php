@@ -24,11 +24,11 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
     {
         $stub = new HandlerStub('foo', []);
 
-        $refl   = new \ReflectionObject($stub);
+        $refl = new \ReflectionObject($stub);
         $config = $refl->getProperty('config');
-        $name   = $refl->getProperty('name');
-        $nesty  = $refl->getProperty('nesty');
-        $type   = $refl->getProperty('type');
+        $name = $refl->getProperty('name');
+        $nesty = $refl->getProperty('nesty');
+        $type = $refl->getProperty('type');
 
         $config->setAccessible(true);
         $name->setAccessible(true);
@@ -57,8 +57,8 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 
         $stub->add('foobar')->hello('world');
         $expected = new Fluent([
-            'id'     => 'foobar',
-            'hello'  => 'world',
+            'id' => 'foobar',
+            'hello' => 'world',
             'childs' => [],
         ]);
 
@@ -68,7 +68,7 @@ class HandlerTest extends \PHPUnit_Framework_TestCase
 
 class HandlerStub extends Handler
 {
-    protected $type   = 'stub';
+    protected $type = 'stub';
     protected $config = [];
 
     public function add($id, $location = 'parent', $callback = null)
