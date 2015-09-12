@@ -40,6 +40,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
                 'icon'       => '',
                 'link'       => '#',
                 'title'      => '',
+                'handles'    => null,
             ],
         ];
 
@@ -66,6 +67,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
                 'id'         => 'foo',
                 'link'       => '#',
                 'title'      => 'hello world',
+                'handles'    => null,
             ]),
             'foobar' => new Fluent([
                 'attributes' => [],
@@ -74,6 +76,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
                 'id'         => 'foobar',
                 'link'       => '#',
                 'title'      => 'hello world 2',
+                'handles'    => null,
             ]),
         ]);
 

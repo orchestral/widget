@@ -18,6 +18,7 @@ class Menu extends Handler
             'icon'       => '',
             'link'       => '#',
             'title'      => '',
+            'handles'    => null,
         ],
     ];
 
