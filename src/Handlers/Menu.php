@@ -1,6 +1,7 @@
 <?php namespace Orchestra\Widget\Handlers;
 
 use Orchestra\Widget\Handler;
+use Orchestra\Widget\Fluent\Menu as Fluent;
 
 class Menu extends Handler
 {
@@ -13,6 +14,7 @@ class Menu extends Handler
      * {@inheritdoc}
      */
     protected $config = [
+        'fluent'   => Fluent::class,
         'defaults' => [
             'attributes' => [],
             'icon'       => '',

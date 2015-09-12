@@ -1,9 +1,9 @@
 <?php namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
-use Illuminate\Support\Fluent;
 use Orchestra\Support\Collection;
 use Orchestra\Widget\Handlers\Menu;
+use Orchestra\Widget\Fluent\Menu as Fluent;
 
 class MenuTest extends \PHPUnit_Framework_TestCase
 {
@@ -35,6 +35,7 @@ class MenuTest extends \PHPUnit_Framework_TestCase
         $type->setAccessible(true);
 
         $expected = [
+            'fluent'   => Fluent::class,
             'defaults' => [
                 'attributes' => [],
                 'icon'       => '',
