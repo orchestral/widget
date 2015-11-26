@@ -71,4 +71,4 @@ Add following service providers in `config/app.php`.
 ## Resources
 
 * [Documentation](http://orchestraplatform.com/docs/latest/components/widget)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/widget/changes#v3-2)
+* [Change Log](http://orchestraplatform.com/docs/latest/components/widget/changes#v3-3)
