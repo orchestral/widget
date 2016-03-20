@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Widget\Fluent;
+<?php
+
+namespace Orchestra\Widget\Fluent;
 
 use Illuminate\Support\Fluent;
 use Orchestra\Support\Facades\Foundation;

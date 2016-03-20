@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Widget\Handlers;
+<?php
+
+namespace Orchestra\Widget\Handlers;
 
 use Orchestra\Widget\Handler;
 use Orchestra\Widget\Fluent\Menu as Fluent;

@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Widget;
+<?php
+
+namespace Orchestra\Widget;
 
 use Orchestra\Support\Providers\ServiceProvider;
 

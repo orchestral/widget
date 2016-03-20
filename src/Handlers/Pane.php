@@ -1,4 +1,6 @@
-<?php namespace Orchestra\Widget\Handlers;
+<?php
+
+namespace Orchestra\Widget\Handlers;
 
 use Orchestra\Support\Str;
 use Orchestra\Widget\Handler;
