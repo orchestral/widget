@@ -95,7 +95,7 @@ class WidgetManager extends Manager
         $instance = $this->make($name);
 
         if ($instance instanceof Handler && ! is_null($callback)) {
-            call_user_func($callback, $instance);
+            $callback($instance);
         }
 
         return $instance;

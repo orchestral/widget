@@ -79,7 +79,7 @@ abstract class Handler implements Countable, IteratorAggregate
         $item = $this->nesty->add($id, $location ?: 'parent');
 
         if ($callback instanceof Closure) {
-            call_user_func($callback, $item);
+            $callback($item);
         }
 
         return $item;
