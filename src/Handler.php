@@ -6,8 +6,9 @@ use Closure;
 use Countable;
 use IteratorAggregate;
 use Orchestra\Support\Nesty;
+use Illuminate\Contracts\Support\Jsonable;
 
-abstract class Handler implements Countable, IteratorAggregate
+abstract class Handler implements Countable, IteratorAggregate, Jsonable
 {
     /**
      * Nesty instance.
@@ -81,7 +82,7 @@ abstract class Handler implements Countable, IteratorAggregate
         $item = $this->nesty->add($id, $location ?: 'parent');
 
         if ($callback instanceof Closure) {
-            call_user_func($callback, $item);
+            $callback($item);
         }
 
         return $item;
@@ -121,6 +122,18 @@ abstract class Handler implements Countable, IteratorAggregate
     public function items()
     {
         return $this->nesty->items();
+    }
+
+    /**
+     * Convert the object to its JSON representation.
+     *
+     * @param  int  $options
+     *
+     * @return string
+     */
+    public function toJson($options = 0)
+    {
+        return $this->items()->toJson($options);
     }
 
     /**
