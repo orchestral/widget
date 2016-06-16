@@ -4,6 +4,7 @@ namespace Orchestra\Widget;
 
 use Closure;
 use Orchestra\Support\Manager;
+use Orchestra\Widget\Handlers\Dash;
 use Orchestra\Widget\Handlers\Menu;
 use Orchestra\Widget\Handlers\Pane;
 use Orchestra\Widget\Handlers\Placeholder;
@@ -14,6 +15,20 @@ class WidgetManager extends Manager
      * {@inheritdoc}
      */
     protected $blacklisted = [];
+
+    /**
+     * Create Dash driver.
+     *
+     * @param  string  $name
+     *
+     * @return \Orchestra\Widget\Handlers\Dash
+     */
+    protected function createDashDriver($name)
+    {
+        $config = $this->app->make('config')->get("orchestra/widget::dash.{$name}", []);
+
+        return new Dash($name, $config);
+    }
 
     /**
      * Create Menu driver.
