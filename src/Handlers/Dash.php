@@ -17,8 +17,8 @@ class Dash extends Handler
      */
     protected $config = [
         'defaults' => [
-            'icon'   => 'pie-chart',
-            'color'  => 'orange',
+            'icon'   => '',
+            'color'  => '',
             'prefix' => '',
             'suffix' => '',
             'title'  => '',
