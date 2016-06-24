@@ -137,13 +137,23 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     }
 
     /**
-     * Get the number of items for the current page.
+     * Get the number of items.
      *
      * @return int
      */
     public function count()
     {
-        return $this->nesty->items()->count();
+        return $this->items()->count();
+    }
+
+   /**
+     * Determine if the items is empty or not.
+     *
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return $this->items()->isEmpty();
     }
 
     /**
@@ -153,6 +163,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      */
     public function getIterator()
     {
-        return $this->nesty->items();
+        return $this->items();
     }
 }

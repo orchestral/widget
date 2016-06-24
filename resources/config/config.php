@@ -22,7 +22,7 @@ return [
     'dash' => [
         'defaults' => [
             'icon'   => '',
-            'color'  => 'orange',
+            'color'  => '',
             'prefix' => '',
             'suffix' => '',
             'title'  => '',
