@@ -1,8 +1,6 @@
 Widget Component for Orchestra Platform
 ==============
 
-[![Join the chat at https://gitter.im/orchestral/platform](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/orchestral/platform?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Widget Component allow you to manage widgetize actions in Orchestra Platform. By default Orchestra Platform provides the following widgets:
 
 * **Menu** to manage menu.
@@ -22,7 +20,6 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 * [Installation](#installation)
 * [Configuration](#configuration)
 * [Resources](#resources)
-* [Change Log](http://orchestraplatform.com/docs/latest/components/widget/changes#v3-3)
 
 ## Version Compatibility
 
