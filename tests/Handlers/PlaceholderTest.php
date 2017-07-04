@@ -1,11 +1,14 @@
-<?php namespace Orchestra\Widget\Handlers\TestCase;
+<?php
+
+namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
 use Illuminate\Support\Fluent;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
 use Orchestra\Widget\Handlers\Placeholder;
 
-class PlaceholderTest extends \PHPUnit_Framework_TestCase
+class PlaceholderTest extends TestCase
 {
     /**
      * Teardown the test environment.

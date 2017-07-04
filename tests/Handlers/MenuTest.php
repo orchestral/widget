@@ -1,11 +1,14 @@
-<?php namespace Orchestra\Widget\Handlers\TestCase;
+<?php
+
+namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
 use Orchestra\Widget\Handlers\Menu;
 use Orchestra\Widget\Fluent\Menu as Fluent;
 
-class MenuTest extends \PHPUnit_Framework_TestCase
+class MenuTest extends TestCase
 {
     /**
      * Teardown the test environment.
