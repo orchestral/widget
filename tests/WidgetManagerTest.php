@@ -1,12 +1,15 @@
-<?php namespace Orchestra\Widget\TestCase;
+<?php
+
+namespace Orchestra\Widget\TestCase;
 
 use Mockery as m;
 use Illuminate\Support\Fluent;
+use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
 use Illuminate\Container\Container;
 use Orchestra\Widget\WidgetManager;
 
-class WidgetManagerTest extends \PHPUnit_Framework_TestCase
+class WidgetManagerTest extends TestCase
 {
     /**
      * Application mock instance.

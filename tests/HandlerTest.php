@@ -1,11 +1,14 @@
-<?php namespace Orchestra\Widget\TestCase;
+<?php
+
+namespace Orchestra\Widget\TestCase;
 
 use Closure;
 use Mockery as m;
 use Orchestra\Widget\Handler;
 use Illuminate\Support\Fluent;
+use PHPUnit\Framework\TestCase;
 
-class HandlerTest extends \PHPUnit_Framework_TestCase
+class HandlerTest extends TestCase
 {
     /**
      * Teardown the test environment.
