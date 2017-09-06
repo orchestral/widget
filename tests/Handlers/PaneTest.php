@@ -3,7 +3,7 @@
 namespace Orchestra\Widget\Handlers\TestCase;
 
 use Mockery as m;
-use Illuminate\Support\Fluent;
+use Orchestra\Support\Fluent;
 use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
 use Orchestra\Widget\Handlers\Pane;
