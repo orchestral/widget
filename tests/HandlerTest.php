@@ -5,7 +5,7 @@ namespace Orchestra\Widget\TestCase;
 use Closure;
 use Mockery as m;
 use Orchestra\Widget\Handler;
-use Illuminate\Support\Fluent;
+use Orchestra\Support\Fluent;
 use PHPUnit\Framework\TestCase;
 
 class HandlerTest extends TestCase
