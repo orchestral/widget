@@ -7,19 +7,18 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 * **Pane** to manage dashboard items.
 * **Placeholder** to manage sidebar widgets.
 
-[![Latest Stable Version](https://img.shields.io/github/release/orchestral/widget.svg?style=flat-square)](https://packagist.org/packages/orchestra/widget)
-[![Total Downloads](https://img.shields.io/packagist/dt/orchestra/widget.svg?style=flat-square)](https://packagist.org/packages/orchestra/widget)
-[![MIT License](https://img.shields.io/packagist/l/orchestra/widget.svg?style=flat-square)](https://packagist.org/packages/orchestra/widget)
-[![Build Status](https://img.shields.io/travis/orchestral/widget/master.svg?style=flat-square)](https://travis-ci.org/orchestral/widget)
-[![Coverage Status](https://img.shields.io/coveralls/orchestral/widget/master.svg?style=flat-square)](https://coveralls.io/r/orchestral/widget?branch=master)
-[![Scrutinizer Quality Score](https://img.shields.io/scrutinizer/g/orchestral/widget/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/orchestral/widget/)
+[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=3.5)](https://travis-ci.org/orchestral/widget)
+[![Latest Stable Version](https://poser.pugx.org/orchestra/widget/version)](https://packagist.org/packages/orchestra/widget)
+[![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads)](https://packagist.org/packages/orchestra/widget)
+[![Latest Unstable Version](https://poser.pugx.org/orchestra/widget/v/unstable)](//packagist.org/packages/orchestra/widget)
+[![License](https://poser.pugx.org/orchestra/widget/license)](https://packagist.org/packages/orchestra/widget)
 
 ## Table of Content
 
 * [Version Compatibility](#version-compatibility)
 * [Installation](#installation)
 * [Configuration](#configuration)
-* [Resources](#resources)
+* [Changelog](https://github.com/orchestral/widget/releases)
 
 ## Version Compatibility
 
@@ -32,7 +31,7 @@ Laravel    | Widget
  5.1.x     | 3.1.x
  5.2.x     | 3.2.x
  5.3.x     | 3.3.x
- 5.4.x     | 3.4.x@dev  
+ 5.4.x     | 3.4.x
  5.5.x     | 3.5.x@dev
 
 ## Installation
@@ -41,9 +40,9 @@ To install through composer, simply put the following in your `composer.json` fi
 
 ```json
 {
-	"require": {
-		"orchestra/widget": "~3.0"
-	}
+    "require": {
+        "orchestra/widget": "~3.0"
+    }
 }
 ```
 
@@ -62,12 +61,9 @@ Add following service providers in `config/app.php`.
 ```php
 'providers' => [
 
-	// ...
+    // ...
 
-	Orchestra\Widget\WidgetServiceProvider::class,
+    Orchestra\Widget\WidgetServiceProvider::class,
 ],
 ```
 
-## Resources
-
-* [Documentation](http://orchestraplatform.com/docs/latest/components/widget)
