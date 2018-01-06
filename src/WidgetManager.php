@@ -4,9 +4,6 @@ namespace Orchestra\Widget;
 
 use Closure;
 use Orchestra\Support\Manager;
-use Orchestra\Widget\Handlers\Dash;
-use Orchestra\Widget\Handlers\Menu;
-use Orchestra\Widget\Handlers\Pane;
 use Orchestra\Widget\Handlers\Placeholder;
 
 class WidgetManager extends Manager
@@ -23,11 +20,11 @@ class WidgetManager extends Manager
      *
      * @return \Orchestra\Widget\Handlers\Dash
      */
-    protected function createDashDriver($name)
+    protected function createDashDriver(string $name): Handlers\Dash
     {
         $config = $this->app->make('config')->get("orchestra/widget::dash.{$name}", []);
 
-        return new Dash($name, $config);
+        return new Handlers\Dash($name, $config);
     }
 
     /**
@@ -37,11 +34,11 @@ class WidgetManager extends Manager
      *
      * @return \Orchestra\Widget\Handlers\Menu
      */
-    protected function createMenuDriver($name)
+    protected function createMenuDriver(string $name): Handlers\Menu
     {
         $config = $this->app->make('config')->get("orchestra/widget::menu.{$name}", []);
 
-        return new Menu($name, $config);
+        return new Handlers\Menu($name, $config);
     }
 
     /**
@@ -51,11 +48,11 @@ class WidgetManager extends Manager
      *
      * @return \Orchestra\Widget\Handlers\Pane
      */
-    protected function createPaneDriver($name)
+    protected function createPaneDriver(string $name): Handlers\Pane
     {
         $config = $this->app->make('config')->get("orchestra/widget::pane.{$name}", []);
 
-        return new Pane($name, $config);
+        return new Handlers\Pane($name, $config);
     }
 
     /**
@@ -65,11 +62,11 @@ class WidgetManager extends Manager
      *
      * @return \Orchestra\Widget\Handlers\Placeholder
      */
-    protected function createPlaceholderDriver($name)
+    protected function createPlaceholderDriver(string $name): Handlers\Placeholder
     {
         $config = $this->app->make('config')->get("orchestra/widget::placeholder.{$name}", []);
 
-        return new Placeholder($name, $config);
+        return new Handlers\Placeholder($name, $config);
     }
 
     /**
@@ -97,16 +94,16 @@ class WidgetManager extends Manager
     /**
      * Get the selected driver and extend it via callback.
      *
-     * @param  string  $name
+     * @param  string|\Closure  $name
      * @param  \Closure|null  $callback
      *
      * @return \Orchestra\Widget\Handler
      */
-    public function of($name, Closure $callback = null)
+    public function of($name, Closure $callback = null): Handler
     {
         if ($name instanceof Closure) {
             $callback = $name;
-            $name     = $this->getDefaultDriver();
+            $name = $this->getDefaultDriver();
         }
 
         $instance = $this->make($name);

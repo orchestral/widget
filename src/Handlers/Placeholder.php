@@ -25,7 +25,7 @@ class Placeholder extends Handler
     /**
      * {@inheritdoc}
      */
-    public function add($id, $location = '#', $callback = null)
+    public function add(string $id, $location = '#', $callback = null)
     {
         if (is_string($location) && Str::startsWith($location, '^:')) {
             $location = '#';

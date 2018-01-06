@@ -6,6 +6,8 @@ use Closure;
 use Countable;
 use IteratorAggregate;
 use Orchestra\Support\Nesty;
+use Orchestra\Support\Fluent;
+use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Jsonable;
 
 abstract class Handler implements Countable, IteratorAggregate, Jsonable
@@ -44,7 +46,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      * @param  string  $name
      * @param  array   $config
      */
-    public function __construct($name, array $config = [])
+    public function __construct(string $name, array $config = [])
     {
         $this->config = array_merge($config, $this->config);
 
@@ -61,18 +63,18 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      *
      * @return mixed
      */
-    abstract public function add($id, $location = 'parent', $callback = null);
+    abstract public function add(string $id, $location = 'parent', $callback = null);
 
     /**
      * Attach item to current widget.
      *
-     * @param  string           $id
+     * @param  string  $id
      * @param  string|\Closure  $location
-     * @param  \Closure|null    $callback
+     * @param  \Closure|null  $callback
      *
-     * @return mixed
+     *  @return mixed
      */
-    protected function addItem($id, $location = 'parent', $callback = null)
+    protected function addItem(string $id, $location = 'parent', $callback = null): ?Fluent
     {
         if ($location instanceof Closure) {
             $callback = $location;
@@ -93,9 +95,9 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      *
      * @param  string  $id
      *
-     * @return mixed
+     * @return bool
      */
-    public function has($id)
+    public function has(string $id): bool
     {
         return $this->nesty->has($id);
     }
@@ -103,11 +105,11 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     /**
      * Get if the instance has an item.
      *
-     * @param  string  $id
+     * @param  string|null  $id
      *
      * @return mixed
      */
-    public function is($id)
+    public function is(?string $id)
     {
         return $this->nesty->is($id);
     }
@@ -115,11 +117,9 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     /**
      * Get all item from Nesty.
      *
-     * @return array
-     *
-     * @see \Orchestra\Support\Nesty::items()
+     * @return \Orchestra\Support\Collection
      */
-    public function items()
+    public function items(): Collection
     {
         return $this->nesty->items();
     }
@@ -141,7 +141,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      *
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return $this->items()->count();
     }
@@ -151,7 +151,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      *
      * @return bool
      */
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return $this->items()->isEmpty();
     }
@@ -159,9 +159,9 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     /**
      * Get an iterator for the items.
      *
-     * @return \Illuminate\Support\Collection
+     * @return \Orchestra\Support\Collection
      */
-    public function getIterator()
+    public function getIterator(): Collection
     {
         return $this->items();
     }

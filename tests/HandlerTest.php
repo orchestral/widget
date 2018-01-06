@@ -74,7 +74,7 @@ class HandlerStub extends Handler
     protected $type = 'stub';
     protected $config = [];
 
-    public function add($id, $location = 'parent', $callback = null)
+    public function add(string $id, $location = 'parent', $callback = null)
     {
         $item = $this->nesty->add($id, $location ?: 'parent');
 

@@ -2,7 +2,7 @@
 
 namespace Orchestra\Widget\Fluent;
 
-use Illuminate\Support\Fluent;
+use Orchestra\Support\Fluent;
 use Orchestra\Support\Facades\Foundation;
 
 class Menu extends Fluent
@@ -12,7 +12,7 @@ class Menu extends Fluent
      *
      * @return bool
      */
-    public function active()
+    public function active(): bool
     {
         return Foundation::is($this->get('handles').'*');
     }
@@ -22,7 +22,7 @@ class Menu extends Fluent
      *
      * @return bool
      */
-    public function hasLink()
+    public function hasLink(): bool
     {
         $link = $this->get('link');
 

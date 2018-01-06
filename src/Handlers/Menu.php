@@ -28,7 +28,7 @@ class Menu extends Handler
     /**
      * {@inheritdoc}
      */
-    public function add($id, $location = '#', $callback = null)
+    public function add(string $id, $location = '#', $callback = null)
     {
         return $this->addItem($id, $location, $callback);
     }
