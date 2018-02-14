@@ -16,11 +16,11 @@ class Menu extends Handler
      * {@inheritdoc}
      */
     protected $config = [
-        'fluent'   => Fluent::class,
+        'fluent' => Fluent::class,
         'defaults' => [
-            'icon'    => '',
-            'link'    => '#',
-            'title'   => '',
+            'icon' => '',
+            'link' => '#',
+            'title' => '',
             'handles' => null,
         ],
     ];

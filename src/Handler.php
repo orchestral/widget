@@ -50,7 +50,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     {
         $this->config = array_merge($config, $this->config);
 
-        $this->name  = $name;
+        $this->name = $name;
         $this->nesty = new Nesty($this->config);
     }
 
@@ -146,7 +146,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
         return $this->items()->count();
     }
 
-   /**
+    /**
      * Determine if the items is empty or not.
      *
      * @return bool

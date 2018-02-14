@@ -21,12 +21,12 @@ return [
 
     'dash' => [
         'defaults' => [
-            'icon'   => '',
-            'color'  => '',
+            'icon' => '',
+            'color' => '',
             'prefix' => '',
             'suffix' => '',
-            'title'  => '',
-            'value'  => 0,
+            'title' => '',
+            'value' => 0,
         ],
     ],
 
@@ -39,9 +39,9 @@ return [
     'menu' => [
         'defaults' => [
             'attributes' => [],
-            'icon'       => '',
-            'link'       => '#',
-            'title'      => '',
+            'icon' => '',
+            'link' => '#',
+            'title' => '',
         ],
     ],
 
@@ -54,9 +54,9 @@ return [
     'pane' => [
         'defaults' => [
             'attributes' => [],
-            'title'      => '',
-            'content'    => '',
-            'html'       => '',
+            'title' => '',
+            'content' => '',
+            'html' => '',
         ],
     ],
 

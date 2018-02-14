@@ -18,9 +18,9 @@ class Pane extends Handler
     protected $config = [
         'defaults' => [
             'attributes' => [],
-            'title'      => '',
-            'content'    => '',
-            'html'       => '',
+            'title' => '',
+            'content' => '',
+            'html' => '',
         ],
     ];
 

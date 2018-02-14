@@ -17,12 +17,12 @@ class Dash extends Handler
      */
     protected $config = [
         'defaults' => [
-            'icon'   => '',
-            'color'  => '',
+            'icon' => '',
+            'color' => '',
             'prefix' => '',
             'suffix' => '',
-            'title'  => '',
-            'value'  => 0,
+            'title' => '',
+            'value' => 0,
         ],
     ];
 

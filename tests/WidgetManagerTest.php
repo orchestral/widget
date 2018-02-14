@@ -85,9 +85,9 @@ class WidgetManagerTest extends TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-                ->with("orchestra/widget::menu.foo", m::any())->andReturn([])
+                ->with('orchestra/widget::menu.foo', m::any())->andReturn([])
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::menu.foo.bar", m::any())->andReturn([]);
+                ->with('orchestra/widget::menu.foo.bar', m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('menu.foo');
 
@@ -107,7 +107,7 @@ class WidgetManagerTest extends TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::pane.foo", m::any())->andReturn([]);
+            ->with('orchestra/widget::pane.foo', m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('pane.foo');
 
@@ -125,7 +125,7 @@ class WidgetManagerTest extends TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-            ->with("orchestra/widget::placeholder.foo", m::any())->andReturn([]);
+            ->with('orchestra/widget::placeholder.foo', m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->make('placeholder.foo');
 
@@ -143,9 +143,9 @@ class WidgetManagerTest extends TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-                ->with("orchestra/widget::driver", 'placeholder.default')->andReturn('placeholder.default')
+                ->with('orchestra/widget::driver', 'placeholder.default')->andReturn('placeholder.default')
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.default", m::any())->andReturn([]);
+                ->with('orchestra/widget::placeholder.default', m::any())->andReturn([]);
 
         $stub = with(new WidgetManager($app))->driver();
 
@@ -191,11 +191,11 @@ class WidgetManagerTest extends TestCase
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
 
         $config->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.foo", m::any())->andReturn([])
+                ->with('orchestra/widget::placeholder.foo', m::any())->andReturn([])
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::placeholder.default", m::any())->andReturn([])
+                ->with('orchestra/widget::placeholder.default', m::any())->andReturn([])
             ->shouldReceive('get')->once()
-                ->with("orchestra/widget::driver", "placeholder.default")->andReturn("placeholder.default");
+                ->with('orchestra/widget::driver', 'placeholder.default')->andReturn('placeholder.default');
 
         $expected = new Collection([
             'foobar' => new Fluent([
