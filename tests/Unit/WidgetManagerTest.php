@@ -36,34 +36,13 @@ class WidgetManagerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_contructed()
+    public function it_has_proper_signature()
     {
         $stub = new WidgetManager($this->app);
 
         $this->assertInstanceOf('\Orchestra\Widget\WidgetManager', $stub);
         $this->assertInstanceOf('\Orchestra\Support\Manager', $stub);
         $this->assertInstanceOf('\Illuminate\Support\Manager', $stub);
-    }
-
-    /** @test */
-    public function it_can_be_extended()
-    {
-        $callback = function () {
-            return 'foobar';
-        };
-
-        $stub = new WidgetManager($this->app);
-        $stub->extend('foo', $callback);
-
-        $refl = new \ReflectionObject($stub);
-        $customCreators = $refl->getProperty('customCreators');
-        $customCreators->setAccessible(true);
-
-        $this->assertEquals(['foo' => $callback], $customCreators->getValue($stub));
-
-        $output = $stub->make('foo');
-
-        $this->assertEquals('foobar', $output);
     }
 
     /** @test */
@@ -77,11 +56,13 @@ class WidgetManagerTest extends TestCase
             ->shouldReceive('get')->once()
                 ->with('orchestra/widget::menu.foo.bar', m::any())->andReturn([]);
 
-        $stub = with(new WidgetManager($app))->make('menu.foo');
+        $stub1 = with(new WidgetManager($app))->make('menu.foo');
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', $stub);
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', $stub1);
 
-        with(new WidgetManager($app))->make('menu.foo.bar');
+        $stub2 = with(new WidgetManager($app))->make('menu.foo.bar');
+
+        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', $stub2);
     }
 
     /** @test */
