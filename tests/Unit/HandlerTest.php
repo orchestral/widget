@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase;
+namespace Orchestra\Widget\TestCase\Unit;
 
 use Closure;
 use Mockery as m;
@@ -13,17 +13,13 @@ class HandlerTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test construct a Orchestra\Widget\Handler.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_be_constructed()
     {
         $stub = new HandlerStub('foo', []);
 
@@ -46,12 +42,8 @@ class HandlerTest extends TestCase
         $this->assertEquals(0, count($stub));
     }
 
-    /**
-     * Test Orchestra\Widget\Handler::items() method.
-     *
-     * @test
-     */
-    public function testItemsMethod()
+    /** @test */
+    public function it_can_return_iterable()
     {
         $stub = new HandlerStub('foo', []);
 

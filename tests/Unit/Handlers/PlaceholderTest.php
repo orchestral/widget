@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\Handlers\TestCase;
+namespace Orchestra\Widget\TestCase\Unit\Handlers;
 
 use Mockery as m;
 use Orchestra\Support\Fluent;
@@ -13,17 +13,13 @@ class PlaceholderTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test construct a Orchestra\Widget\Drivers\Handlers\Placeholder.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_be_constructed()
     {
         $stub = new Placeholder('foo', []);
 
@@ -50,12 +46,8 @@ class PlaceholderTest extends TestCase
         $this->assertEquals('placeholder', $type->getValue($stub));
     }
 
-    /**
-     * Test Orchestra\Widget\Handlers\Placeholder::add() method.
-     *
-     * @test
-     */
-    public function testAddMethod()
+    /** @test */
+    public function it_can_add_placeholders()
     {
         $stub = new Placeholder('foo', []);
 
