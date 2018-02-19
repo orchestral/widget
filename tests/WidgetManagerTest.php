@@ -16,12 +16,12 @@ class WidgetManagerTest extends TestCase
      *
      * @var Illuminate\Foundation\Application
      */
-    private $app = null;
+    private $app;
 
     /**
      * Setup the test environment.
      */
-    public function setUp()
+    protected function setUp(): void
     {
         $this->app = new Container();
     }
@@ -29,18 +29,14 @@ class WidgetManagerTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         unset($this->app);
         m::close();
     }
 
-    /**
-     * Test construct a new Orchestra\Widget\WidgetManager.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_be_contructed()
     {
         $stub = new WidgetManager($this->app);
 
@@ -49,12 +45,8 @@ class WidgetManagerTest extends TestCase
         $this->assertInstanceOf('\Illuminate\Support\Manager', $stub);
     }
 
-    /**
-     * Test Orchestra\Widget\WidgetManager::extend() method.
-     *
-     * @test
-     */
-    public function testExtendMethod()
+    /** @test */
+    public function it_can_be_extended()
     {
         $callback = function () {
             return 'foobar';
@@ -74,12 +66,8 @@ class WidgetManagerTest extends TestCase
         $this->assertEquals('foobar', $output);
     }
 
-    /**
-     * Test Orchestra\Widget\WidgetManager::make() method for menu.
-     *
-     * @test
-     */
-    public function testMakeMethodForMenu()
+    /** @test */
+    public function it_can_make_menu()
     {
         $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
@@ -96,12 +84,8 @@ class WidgetManagerTest extends TestCase
         with(new WidgetManager($app))->make('menu.foo.bar');
     }
 
-    /**
-     * Test Orchestra\Widget\WidgetManager::make() method for pane.
-     *
-     * @test
-     */
-    public function testMakeMethodForPane()
+    /** @test */
+    public function it_can_make_pane()
     {
         $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
@@ -132,12 +116,8 @@ class WidgetManagerTest extends TestCase
         $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub);
     }
 
-    /**
-     * Test Orchestra\Widget\WidgetManager::make() using default driver method.
-     *
-     * @test
-     */
-    public function testMakeMethodForDefaultDriver()
+    /** @test */
+    public function it_can_make_based_on_default_driver()
     {
         $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
@@ -153,11 +133,9 @@ class WidgetManagerTest extends TestCase
     }
 
     /**
-     * Test Orchestra\Widget\WidgetManager::setDefaultDriver() method.
-     *
      * @rest
      */
-    public function testSetDefaultDriverMethod()
+    public function it_can_set_default_driver()
     {
         $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');
@@ -170,22 +148,16 @@ class WidgetManagerTest extends TestCase
     }
 
     /**
-     * Test Orchestra\Widget\WidgetManager::make() method throws expection
-     * for unknown widget type.
-     *
+     * @test
      * @expectedException \InvalidArgumentException
      */
-    public function testMakeMethodThrowsException()
+    public function it_throws_exception_given_invalid_handler()
     {
         with(new WidgetManager($this->app))->make('foobar');
     }
 
-    /**
-     * Test Orchestra\Widget\WidgetManager::of() method.
-     *
-     * @rest
-     */
-    public function testOfMethod()
+    /** @test */
+    public function it_can_get_item_using_of_helper()
     {
         $app = $this->app;
         $app['config'] = $config = m::mock('\Illuminate\Config\Repository');

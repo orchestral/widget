@@ -13,17 +13,13 @@ class PaneTest extends TestCase
     /**
      * Teardown the test environment.
      */
-    public function tearDown()
+    protected function tearDown(): void
     {
         m::close();
     }
 
-    /**
-     * Test construct a Orchestra\Widget\Handlers\Pane.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_be_constructed()
     {
         $stub = new Pane('foo', []);
 
@@ -53,12 +49,8 @@ class PaneTest extends TestCase
         $this->assertEquals('pane', $type->getValue($stub));
     }
 
-    /**
-     * Test Orchestra\Widget\Handlers\Pane::add() method.
-     *
-     * @test
-     */
-    public function testAddMethod()
+    /** @test */
+    public function it_can_add_panes()
     {
         $stub = new Pane('foo', []);
 

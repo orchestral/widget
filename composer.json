@@ -16,6 +16,11 @@
             "Orchestra\\Widget\\" : "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Orchestra\\Widget\\TestCase\\" : "tests/"
+        }
+    },
     "require": {
         "php": ">=7.1",
         "orchestra/support": "~3.6.0"

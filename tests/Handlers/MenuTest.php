@@ -18,12 +18,8 @@ class MenuTest extends TestCase
         m::close();
     }
 
-    /**
-     * Test construct a Orchestra\Widget\Handlers\Menu.
-     *
-     * @test
-     */
-    public function testConstructMethod()
+    /** @test */
+    public function it_can_be_constructed()
     {
         $stub = new Menu('foo', []);
         $refl = new \ReflectionObject($stub);
@@ -47,18 +43,14 @@ class MenuTest extends TestCase
             ],
         ];
 
-        $this->assertEquals($expected, $config->getValue($stub));
-        $this->assertEquals('foo', $name->getValue($stub));
+        $this->assertSame($expected, $config->getValue($stub));
+        $this->assertSame('foo', $name->getValue($stub));
         $this->assertInstanceOf('\Orchestra\Support\Nesty', $nesty->getValue($stub));
         $this->assertEquals('menu', $type->getValue($stub));
     }
 
-    /**
-     * Test Orchestra\Widget\Handlers\Menu::add() method.
-     *
-     * @test
-     */
-    public function testAddMethod()
+    /** @test */
+    public function it_can_add_menus()
     {
         $stub = new Menu('foo', []);
 
