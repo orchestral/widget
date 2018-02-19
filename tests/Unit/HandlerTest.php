@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase;
+namespace Orchestra\Widget\TestCase\Unit;
 
 use Closure;
 use Mockery as m;

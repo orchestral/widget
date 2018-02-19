@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase;
+namespace Orchestra\Widget\TestCase\Unit;
 
 use Mockery as m;
 use Orchestra\Support\Fluent;
