@@ -43,7 +43,7 @@ class HandlerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_return_iterable()
+    public function it_can_retrieve_items()
     {
         $stub = new HandlerStub('foo', []);
 
