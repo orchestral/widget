@@ -12,6 +12,7 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 [![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads)](https://packagist.org/packages/orchestra/widget)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/widget/v/unstable)](//packagist.org/packages/orchestra/widget)
 [![License](https://poser.pugx.org/orchestra/widget/license)](https://packagist.org/packages/orchestra/widget)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=3.6)](https://coveralls.io/github/orchestral/widget?branch=3.6)
 
 ## Table of Content
 
