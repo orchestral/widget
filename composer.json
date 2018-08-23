@@ -22,7 +22,7 @@
         }
     },
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "orchestra/support": "~3.8.0"
     },
     "require-dev": {
