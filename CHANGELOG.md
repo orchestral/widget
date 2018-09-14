@@ -2,6 +2,14 @@
 
 This changelog references the relevant changes (bug and security fixes) done to `orchestra/widget`.
 
+## 3.7.0
+
+Released: 2018-09-14
+
+### Changes
+
+* Update support for Laravel Framework v5.7.
+
 ## 3.6.0
 
 Released: 2018-02-20
@@ -17,11 +25,3 @@ Released: 2017-11-09
 ### Changes
 
 * Update support for Laravel Framework v5.5.
-
-## 3.4.0
-
-Released: 2017-02-13
-
-### Changes
-
-* Update support for Laravel Framework v5.4.
