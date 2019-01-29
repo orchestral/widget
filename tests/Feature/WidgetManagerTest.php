@@ -98,7 +98,7 @@ class WidgetManagerTest extends TestCase
         config([
             'orchestra/widget::placeholder.foo' => [],
             'orchestra/widget::placeholder.default' => [],
-            'orchestra/widget::driver' => 'placeholder.default'
+            'orchestra/widget::driver' => 'placeholder.default',
         ]);
 
         $expected = new Collection([

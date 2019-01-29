@@ -3,16 +3,10 @@
 namespace Orchestra\Widget;
 
 use Orchestra\Support\Providers\ServiceProvider;
+use Illuminate\Contracts\Support\DeferrableProvider;
 
-class WidgetServiceProvider extends ServiceProvider
+class WidgetServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Register the service provider.
      *
