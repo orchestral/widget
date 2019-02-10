@@ -71,9 +71,7 @@ class WidgetManagerTest extends TestCase
         $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', Widget::driver());
     }
 
-    /**
-     * @rest
-     */
+    /** @test */
     public function it_can_set_default_driver()
     {
         $this->assertNotSame('foo', Widget::getDefaultDriver());
@@ -83,12 +81,11 @@ class WidgetManagerTest extends TestCase
         $this->assertSame('foo', Widget::getDefaultDriver());
     }
 
-    /**
-     * @test
-     * @expectedException \InvalidArgumentException
-     */
+    /** @test */
     public function it_throws_exception_given_invalid_handler()
     {
+        $this->expectException('InvalidArgumentException');
+
         Widget::make('foobar');
     }
 
