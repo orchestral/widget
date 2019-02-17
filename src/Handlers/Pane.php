@@ -29,7 +29,7 @@ class Pane extends Handler
      */
     public function add(string $id, $location = '#', $callback = null)
     {
-        if (is_string($location) && Str::startsWith($location, '^:')) {
+        if (\is_string($location) && Str::startsWith($location, '^:')) {
             $location = '#';
         }
 
