@@ -48,7 +48,7 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
      */
     public function __construct(string $name, array $config = [])
     {
-        $this->config = array_merge($config, $this->config);
+        $this->config = \array_merge($config, $this->config);
 
         $this->name = $name;
         $this->nesty = new Nesty($this->config);
