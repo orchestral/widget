@@ -7,12 +7,12 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 * **Pane** to manage dashboard items.
 * **Placeholder** to manage sidebar widgets.
 
-[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=master)](https://travis-ci.org/orchestral/widget)
+[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=3.8)](https://travis-ci.org/orchestral/widget)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/widget/version)](https://packagist.org/packages/orchestra/widget)
 [![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads)](https://packagist.org/packages/orchestra/widget)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/widget/v/unstable)](//packagist.org/packages/orchestra/widget)
 [![License](https://poser.pugx.org/orchestra/widget/license)](https://packagist.org/packages/orchestra/widget)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=master)](https://coveralls.io/github/orchestral/widget?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=3.8)](https://coveralls.io/github/orchestral/widget?branch=3.8)
 
 ## Table of Content
 
@@ -28,6 +28,7 @@ Laravel    | Widget
  5.5.x     | 3.5.x
  5.6.x     | 3.6.x
  5.7.x     | 3.7.x
+ 5.8.x     | 3.8.x@dev
 
 ## Installation
 
