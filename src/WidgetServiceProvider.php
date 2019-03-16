@@ -26,7 +26,7 @@ class WidgetServiceProvider extends ServiceProvider implements DeferrableProvide
      */
     public function boot()
     {
-        $path = \realpath(__DIR__.'/../resources');
+        $path = \realpath(__DIR__.'/../');
 
         $this->addConfigComponent('orchestra/widget', 'orchestra/widget', $path.'/config');
     }
