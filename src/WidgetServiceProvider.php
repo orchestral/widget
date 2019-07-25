@@ -14,7 +14,7 @@ class WidgetServiceProvider extends ServiceProvider implements DeferrableProvide
      */
     public function register()
     {
-        $this->app->singleton('orchestra.widget', function ($app) {
+        $this->app->singleton('orchestra.widget', static function ($app) {
             return new WidgetManager($app);
         });
     }
