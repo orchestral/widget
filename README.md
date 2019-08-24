@@ -7,7 +7,7 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 * **Pane** to manage dashboard items.
 * **Placeholder** to manage sidebar widgets.
 
-[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=4.x)](https://travis-ci.org/orchestral/widget)
+[![Build Status](https://travis-ci.org/orchestral/widget.svg?branch=master)](https://travis-ci.org/orchestral/widget)
 [![Latest Stable Version](https://poser.pugx.org/orchestra/widget/version)](https://packagist.org/packages/orchestra/widget)
 [![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads)](https://packagist.org/packages/orchestra/widget)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/widget/v/unstable)](//packagist.org/packages/orchestra/widget)
