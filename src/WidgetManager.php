@@ -22,7 +22,7 @@ class WidgetManager extends Manager
      */
     protected function createDashDriver(string $name): Handlers\Dash
     {
-        $config = $this->app->make('config')->get("orchestra/widget::dash.{$name}", []);
+        $config = $this->config->get("orchestra/widget::dash.{$name}", []);
 
         return new Handlers\Dash($name, $config);
     }
@@ -36,7 +36,7 @@ class WidgetManager extends Manager
      */
     protected function createMenuDriver(string $name): Handlers\Menu
     {
-        $config = $this->app->make('config')->get("orchestra/widget::menu.{$name}", []);
+        $config = $this->config->get("orchestra/widget::menu.{$name}", []);
 
         return new Handlers\Menu($name, $config);
     }
@@ -50,7 +50,7 @@ class WidgetManager extends Manager
      */
     protected function createPaneDriver(string $name): Handlers\Pane
     {
-        $config = $this->app->make('config')->get("orchestra/widget::pane.{$name}", []);
+        $config = $this->config->get("orchestra/widget::pane.{$name}", []);
 
         return new Handlers\Pane($name, $config);
     }
@@ -64,7 +64,7 @@ class WidgetManager extends Manager
      */
     protected function createPlaceholderDriver(string $name): Handlers\Placeholder
     {
-        $config = $this->app->make('config')->get("orchestra/widget::placeholder.{$name}", []);
+        $config = $this->config->get("orchestra/widget::placeholder.{$name}", []);
 
         return new Handlers\Placeholder($name, $config);
     }
@@ -76,7 +76,7 @@ class WidgetManager extends Manager
      */
     public function getDefaultDriver()
     {
-        return $this->app->make('config')->get('orchestra/widget::driver', 'placeholder.default');
+        return $this->config->get('orchestra/widget::driver', 'placeholder.default');
     }
 
     /**
@@ -88,7 +88,7 @@ class WidgetManager extends Manager
      */
     public function setDefaultDriver($name)
     {
-        $this->app->make('config')->set('orchestra/widget::driver', $name);
+        $this->config->set('orchestra/widget::driver', $name);
     }
 
     /**
