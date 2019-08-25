@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase\Unit;
+namespace Orchestra\Widget\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Orchestra\Widget\WidgetServiceProvider;

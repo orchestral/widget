@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase\Feature;
+namespace Orchestra\Widget\Tests\Feature;
 
 use Orchestra\Support\Fluent;
 use Orchestra\Support\Collection;
@@ -13,9 +13,9 @@ class WidgetManagerTest extends TestCase
     {
         $stub = $this->app->make('orchestra.widget');
 
-        $this->assertInstanceOf('\Orchestra\Widget\WidgetManager', $stub);
-        $this->assertInstanceOf('\Orchestra\Support\Manager', $stub);
-        $this->assertInstanceOf('\Illuminate\Support\Manager', $stub);
+        $this->assertInstanceOf('Orchestra\Widget\WidgetManager', $stub);
+        $this->assertInstanceOf('Orchestra\Support\Manager', $stub);
+        $this->assertInstanceOf('Illuminate\Support\Manager', $stub);
     }
 
     /** @test */
@@ -36,8 +36,8 @@ class WidgetManagerTest extends TestCase
             'orchestra/widget::menu.foo.bar' => [],
         ]);
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', Widget::make('menu.foo'));
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Menu', Widget::make('menu.foo.bar'));
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Menu', Widget::make('menu.foo'));
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Menu', Widget::make('menu.foo.bar'));
     }
 
     /** @test */
@@ -47,7 +47,7 @@ class WidgetManagerTest extends TestCase
             'orchestra/widget::pane.foo' => [],
         ]);
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Pane', Widget::make('pane.foo'));
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Pane', Widget::make('pane.foo'));
     }
 
     /** @test */
@@ -57,7 +57,7 @@ class WidgetManagerTest extends TestCase
             'orchestra/widget::placeholder.foo' => [],
         ]);
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', Widget::make('placeholder.foo'));
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Placeholder', Widget::make('placeholder.foo'));
     }
 
     /** @test */
@@ -68,7 +68,7 @@ class WidgetManagerTest extends TestCase
             'orchestra/widget::placeholder.default' => [],
         ]);
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', Widget::driver());
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Placeholder', Widget::driver());
     }
 
     /** @test */
@@ -110,14 +110,14 @@ class WidgetManagerTest extends TestCase
             $p->add('foobar')->value('Hello world');
         });
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub1);
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Placeholder', $stub1);
         $this->assertEquals($expected, $stub1->items());
 
         $stub2 = Widget::of(function ($p) {
             $p->add('foobar')->value('Hello world');
         });
 
-        $this->assertInstanceOf('\Orchestra\Widget\Handlers\Placeholder', $stub2);
+        $this->assertInstanceOf('Orchestra\Widget\Handlers\Placeholder', $stub2);
         $this->assertEquals($expected, $stub2->items());
     }
 }
