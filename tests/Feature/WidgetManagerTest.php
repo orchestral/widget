@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase\Feature;
+namespace Orchestra\Widget\Tests\Feature;
 
 use Orchestra\Support\Fluent;
 use Orchestra\Support\Collection;

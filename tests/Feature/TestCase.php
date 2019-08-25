@@ -1,6 +1,6 @@
 <?php
 
-namespace Orchestra\Widget\TestCase\Feature;
+namespace Orchestra\Widget\Tests\Feature;
 
 use Orchestra\Testbench\TestCase as Testbench;
 
