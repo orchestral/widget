@@ -2,8 +2,8 @@
 
 namespace Orchestra\Widget;
 
-use Orchestra\Support\Providers\ServiceProvider;
 use Illuminate\Contracts\Support\DeferrableProvider;
+use Orchestra\Support\Providers\ServiceProvider;
 
 class WidgetServiceProvider extends ServiceProvider implements DeferrableProvider
 {

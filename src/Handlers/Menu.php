@@ -2,8 +2,8 @@
 
 namespace Orchestra\Widget\Handlers;
 
-use Orchestra\Widget\Handler;
 use Orchestra\Widget\Fluent\Menu as Fluent;
+use Orchestra\Widget\Handler;
 
 class Menu extends Handler
 {

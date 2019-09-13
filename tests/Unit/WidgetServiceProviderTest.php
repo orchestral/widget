@@ -2,8 +2,8 @@
 
 namespace Orchestra\Widget\Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
 use Orchestra\Widget\WidgetServiceProvider;
+use PHPUnit\Framework\TestCase;
 
 class WidgetServiceProviderTest extends TestCase
 {

@@ -3,10 +3,10 @@
 namespace Orchestra\Widget\Tests\Unit\Handlers;
 
 use Mockery as m;
-use Orchestra\Support\Fluent;
-use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
+use Orchestra\Support\Fluent;
 use Orchestra\Widget\Handlers\Placeholder;
+use PHPUnit\Framework\TestCase;
 
 class PlaceholderTest extends TestCase
 {

@@ -4,11 +4,11 @@ namespace Orchestra\Widget;
 
 use Closure;
 use Countable;
-use IteratorAggregate;
-use Orchestra\Support\Nesty;
-use Orchestra\Support\Fluent;
-use Illuminate\Support\Collection;
 use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Support\Collection;
+use IteratorAggregate;
+use Orchestra\Support\Fluent;
+use Orchestra\Support\Nesty;
 
 abstract class Handler implements Countable, IteratorAggregate, Jsonable
 {

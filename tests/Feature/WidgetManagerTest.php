@@ -2,9 +2,9 @@
 
 namespace Orchestra\Widget\Tests\Feature;
 
-use Orchestra\Support\Fluent;
 use Orchestra\Support\Collection;
 use Orchestra\Support\Facades\Widget;
+use Orchestra\Support\Fluent;
 
 class WidgetManagerTest extends TestCase
 {
