@@ -3,10 +3,10 @@
 namespace Orchestra\Widget\Tests\Unit\Handlers;
 
 use Mockery as m;
-use PHPUnit\Framework\TestCase;
 use Orchestra\Support\Collection;
-use Orchestra\Widget\Handlers\Menu;
 use Orchestra\Widget\Fluent\Menu as Fluent;
+use Orchestra\Widget\Handlers\Menu;
+use PHPUnit\Framework\TestCase;
 
 class MenuTest extends TestCase
 {

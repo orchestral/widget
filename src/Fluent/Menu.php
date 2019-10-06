@@ -2,8 +2,8 @@
 
 namespace Orchestra\Widget\Fluent;
 
-use Orchestra\Support\Fluent;
 use Orchestra\Support\Facades\Foundation;
+use Orchestra\Support\Fluent;
 
 class Menu extends Fluent
 {
