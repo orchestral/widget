@@ -12,7 +12,7 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 [![Total Downloads](https://poser.pugx.org/orchestra/widget/downloads)](https://packagist.org/packages/orchestra/widget)
 [![Latest Unstable Version](https://poser.pugx.org/orchestra/widget/v/unstable)](//packagist.org/packages/orchestra/widget)
 [![License](https://poser.pugx.org/orchestra/widget/license)](https://packagist.org/packages/orchestra/widget)
-[![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=4.x)](https://coveralls.io/github/orchestral/widget?branch=4.x)
+[![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=master)](https://coveralls.io/github/orchestral/widget?branch=master)
 
 ## Table of Content
 
@@ -30,26 +30,13 @@ Laravel    | Widget
  5.7.x     | 3.7.x
  5.8.x     | 3.8.x
  6.x       | 4.x
+ 7.x       | 5.x
 
 ## Installation
 
-To install through composer, simply put the following in your `composer.json` file:
+To install through composer, run the following command from terminal:
 
-```json
-{
-    "require": {
-        "orchestra/widget": "^4.0"
-    }
-}
-```
-
-And then run `composer install` from the terminal.
-
-### Quick Installation
-
-Above installation can also be simplify by using the following command:
-
-    composer require "orchestra/widget=^4.0"
+    composer require "orchestra/widget"
 
 ## Configuration
 
