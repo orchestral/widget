@@ -2,6 +2,7 @@
 
 namespace Orchestra\Widget;
 
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Orchestra\Support\Providers\ServiceProvider;
 
@@ -14,7 +15,7 @@ class WidgetServiceProvider extends ServiceProvider implements DeferrableProvide
      */
     public function register()
     {
-        $this->app->singleton('orchestra.widget', static function ($app) {
+        $this->app->singleton('orchestra.widget', static function (Container $app) {
             return new WidgetManager($app);
         });
     }

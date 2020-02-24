@@ -42,9 +42,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Construct a new instance.
-     *
-     * @param  string  $name
-     * @param  array   $config
      */
     public function __construct(string $name, array $config = [])
     {
@@ -57,7 +54,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     /**
      * Add an item to current widget.
      *
-     * @param  string  $id
      * @param  string|\Closure  $location
      * @param  \Closure|null  $callback
      *
@@ -68,7 +64,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
     /**
      * Attach item to current widget.
      *
-     * @param  string  $id
      * @param  string|\Closure  $location
      * @param  \Closure|null  $callback
      *
@@ -92,10 +87,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Get an instance of item from current widget.
-     *
-     * @param  string  $id
-     *
-     * @return bool
      */
     public function has(string $id): bool
     {
@@ -104,8 +95,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Get if the instance has an item.
-     *
-     * @param  string|null  $id
      *
      * @return mixed
      */
@@ -116,8 +105,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Get all item from Nesty.
-     *
-     * @return \Orchestra\Support\Collection
      */
     public function items(): Collection
     {
@@ -138,8 +125,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Get the number of items.
-     *
-     * @return int
      */
     public function count(): int
     {
@@ -148,8 +133,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Determine if the items is empty or not.
-     *
-     * @return bool
      */
     public function isEmpty(): bool
     {
@@ -158,8 +141,6 @@ abstract class Handler implements Countable, IteratorAggregate, Jsonable
 
     /**
      * Get an iterator for the items.
-     *
-     * @return \Orchestra\Support\Collection
      */
     public function getIterator(): Collection
     {

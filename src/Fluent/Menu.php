@@ -9,8 +9,6 @@ class Menu extends Fluent
 {
     /**
      * Is currently active.
-     *
-     * @return bool
      */
     public function active(): bool
     {
@@ -19,8 +17,6 @@ class Menu extends Fluent
 
     /**
      * Has link.
-     *
-     * @return bool
      */
     public function hasLink(): bool
     {
