@@ -16,8 +16,6 @@ class WidgetManager extends Manager
     /**
      * Create Dash driver.
      *
-     * @param  string  $name
-     *
      * @return \Orchestra\Widget\Handlers\Dash
      */
     protected function createDashDriver(string $name): Handlers\Dash
@@ -29,8 +27,6 @@ class WidgetManager extends Manager
 
     /**
      * Create Menu driver.
-     *
-     * @param  string  $name
      *
      * @return \Orchestra\Widget\Handlers\Menu
      */
@@ -44,8 +40,6 @@ class WidgetManager extends Manager
     /**
      * Create Pane driver.
      *
-     * @param  string  $name
-     *
      * @return \Orchestra\Widget\Handlers\Pane
      */
     protected function createPaneDriver(string $name): Handlers\Pane
@@ -57,8 +51,6 @@ class WidgetManager extends Manager
 
     /**
      * Create Placeholder driver.
-     *
-     * @param  string  $name
      *
      * @return \Orchestra\Widget\Handlers\Placeholder
      */
@@ -95,7 +87,6 @@ class WidgetManager extends Manager
      * Get the selected driver and extend it via callback.
      *
      * @param  string|\Closure  $name
-     * @param  \Closure|null  $callback
      *
      * @return \Orchestra\Widget\Handler
      */
