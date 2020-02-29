@@ -28,6 +28,11 @@
     "require-dev": {
         "orchestra/testbench": "^5.0"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "5.0-dev"
+        }
+    },
     "config": {
         "sort-packages": true
     },
