@@ -33,6 +33,11 @@
             "dev-master": "6.0-dev"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "6.0-dev"
+        }
+    },
     "config": {
         "sort-packages": true
     },
