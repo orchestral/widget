@@ -1,7 +1,6 @@
 {
     "name": "orchestra/widget",
     "description": "Widget Component for Orchestra Platform",
-    "homepage": "http://orchestraplatform.com/docs/latest/components/widget/",
     "keywords": ["orchestra-platform", "orchestral", "laravel", "widget"],
     "license": "MIT",
     "authors": [
@@ -22,11 +21,11 @@
         }
     },
     "require": {
-        "php": ">=7.3",
+        "php": "^7.3 || ^8.0",
         "orchestra/support": "^6.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0"
+        "orchestra/testbench": "^6.17"
     },
     "extra": {
         "branch-alias": {
