@@ -14,13 +14,6 @@ Widget Component allow you to manage widgetize actions in Orchestra Platform. By
 [![License](https://poser.pugx.org/orchestra/widget/license)](https://packagist.org/packages/orchestra/widget)
 [![Coverage Status](https://coveralls.io/repos/github/orchestral/widget/badge.svg?branch=6.x)](https://coveralls.io/github/orchestral/widget?branch=6.x)
 
-## Table of Content
-
-* [Version Compatibility](#version-compatibility)
-* [Installation](#installation)
-* [Configuration](#configuration)
-* [Changelog](https://github.com/orchestral/widget/releases)
-
 ## Version Compatibility
 
 Laravel    | Widget
